@@ -15,20 +15,17 @@
     <link rel="stylesheet" href="<?= base_url() ?>tmp/assets/css/preloader.min.css" type="text/css" />
 
     <!-- Bootstrap Css -->
-    <link href="<?= base_url() ?>tmp/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet"
-        type="text/css" />
+    <link href="<?= base_url() ?>tmp/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
     <link href="<?= base_url() ?>tmp/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="<?= base_url() ?>tmp/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
     <!-- alertifyjs Css -->
-    <link href="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/css/alertify.min.css" rel="stylesheet"
-        type="text/css" />
+    <link href="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/css/alertify.min.css" rel="stylesheet" type="text/css" />
 
     <!-- alertifyjs default themes  Css -->
-    <link href="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/css/themes/default.min.css" rel="stylesheet"
-        type="text/css" />
+    <link href="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/css/themes/default.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -72,66 +69,63 @@
                                             <div class="col-md-6">
                                                 <div class="form-group mt-4">
                                                     <label for="jenis_pemohon">Nama Pribadi</label>
-                                                    <input type="text" name="tblpemohon_nama" id="tblpemohon_nama"
-                                                        class="form-control">
+                                                    <input type="text" name="tblpemohon_nama" id="tblpemohon_nama" class="form-control">
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-4">
-                                                    <label for="jenis_pemohon">Alamat</label>
-                                                    <input type="text" name="tblpemohon_alamat" id="tblpemohon_alamat"
-                                                        class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-4">
-                                                    <label for="jenis_pemohon">Alamat Email Pribadi</label>
-                                                    <input type="text" name="tblpemohon_email" id="tblpemohon_email"
-                                                        class="form-control">
-                                                </div>
-                                            </div>
-
                                             <div class="col-md-6">
                                                 <div class="form-group mt-4">
                                                     <label for="jenis_pemohon">Nomor WA Pribadi</label>
-                                                    <input type="text" name="tblpemohon_telpon" id="tblpemohon_telpon"
-                                                        class="form-control">
+                                                    <input type="text" name="tblpemohon_telpon" id="tblpemohon_telpon" class="form-control">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group mt-4">
+                                                    <label for="jenis_pemohon">Alamat</label>
+                                                    <textarea name="tblpemohon_alamat" id="tblpemohon_alamat" class="form-control" placeholder="Alamat/RT/RW/Kecamatan/Kelurahan"></textarea>
+
                                                 </div>
                                             </div>
                                         </div>
 
-
-
-
                                         <div class="row">
+
                                             <div class="col-md-6">
                                                 <div class="form-group mt-4">
                                                     <label for="jenis_pemohon">Username</label>
-                                                    <input type="text" name="username" id="username"
-                                                        class="form-control" value="<?= $this->session->username ?>"
-                                                        readonly>
+                                                    <input type="text" name="username" id="username" class="form-control" value="<?= $this->session->username ?>" readonly>
                                                 </div>
                                             </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-4">
+                                                    <label for="jenis_pemohon"> Email Pribadi</label>
+                                                    <input type="text" name="tblpemohon_email" id="tblpemohon_email" class="form-control">
+                                                </div>
+                                            </div>
+
+
+
                                         </div>
+
+
+
+
 
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group mt-4">
                                                     <label for="jenis_pemohon">Password</label>
-                                                    <input type="text" name="tblpengguna_password"
-                                                        id="tblpengguna_password" class="form-control">
+                                                    <input type="text" name="tblpengguna_password" id="tblpengguna_password" class="form-control">
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="form-group mt-4">
                                                     <label for="jenis_pemohon">Konfirmasi Password</label>
-                                                    <input type="text" name="konfirmasi" id="konfirmasi"
-                                                        class="form-control">
+                                                    <input type="text" name="konfirmasi" id="konfirmasi" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -143,8 +137,7 @@
 
 
 
-                                            <button type="submit"
-                                                class="btn btn-primary w-100 waves-effect waves-light">
+                                            <button type="submit" class="btn btn-primary w-100 waves-effect waves-light">
                                                 Mendaftar</button>
                                         </div>
 
@@ -204,35 +197,14 @@
 
 
     <script>
-    <?php if ($this->session->userdata('error')) : ?>
-    alertify.error('<?= $this->session->userdata('error') ?>');
-    <?php endif ?>
+        <?php if ($this->session->userdata('error')) : ?>
+            alertify.error('<?= $this->session->userdata('error') ?>');
+        <?php endif ?>
 
 
-    <?php if ($this->session->userdata('success')) : ?>
-    alertify.success('<?= $this->session->userdata('success') ?>');
-    <?php endif ?>
-    $('document').ready(function() {
-
-        $('.npwp').hide();
-        $('.nik').hide();
-
-        $('#jenis').change(function() {
-
-            if ($(this).val() == 1) {
-                $('.npwp').show();
-                $('.nik').hide();
-                $("#tblpemohon_npwp").prop('required', true);
-                $("#tblpemohon_noidentitas").prop('required', false);
-            } else {
-                $('.npwp').hide();
-                $('.nik').show();
-
-                $("#tblpemohon_npwp").prop('required', false);
-                $("#tblpemohon_noidentitas").prop('required', true);
-            }
-        });
-    })
+        <?php if ($this->session->userdata('success')) : ?>
+            alertify.success('<?= $this->session->userdata('success') ?>');
+        <?php endif ?>
     </script>
 </body>
 

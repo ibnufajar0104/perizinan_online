@@ -4,20 +4,29 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Registrasi extends CI_Controller
 {
 
-	protected $ip = 'http://192.168.100.100/ptsp/';
+
 	public function __construct()
 	{
 		parent::__construct();
 
 		$this->load->model('M_jwt', 'jwt');
 	}
+
 	public function index()
 	{
 		$this->load->view('registrasi');
 	}
 
+
+
 	public function form()
 	{
+
+		if (!$this->session->cek) {
+			$this->session->set_flashdata('error', 'Lakukan pengecekan terlebih dahulu');
+			redirect('registrasi');
+		}
+
 		$this->load->view('registrasi_form');
 	}
 
@@ -37,7 +46,7 @@ class Registrasi extends CI_Controller
 
 
 
-		$token = $this->get_token();
+	 $token = $this->jwt->get_token();
 
 
 		if (!$token) {
@@ -50,7 +59,7 @@ class Registrasi extends CI_Controller
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-			CURLOPT_URL => $this->ip . 'pendaftaran/pernah_daftar',
+			CURLOPT_URL => ip() . 'pendaftaran/pernah_daftar',
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => '',
 			CURLOPT_MAXREDIRS => 10,
@@ -85,6 +94,7 @@ class Registrasi extends CI_Controller
 		if (isset($response['status'])) {
 			if ($response['status']) {
 				$newdata = array(
+					'cek' => true,
 					'username'  => $response['username']
 				);
 
@@ -92,11 +102,21 @@ class Registrasi extends CI_Controller
 				$this->session->set_flashdata('success', $response['msg']);
 				redirect('registrasi/form');
 			} else {
+				$newdata = array(
+					'cek' => false,
+				);
+
+				$this->session->set_userdata($newdata);
 				$this->session->set_flashdata('error', $response['msg']);
 				redirect('registrasi');
 			}
 		} else {
-			$this->session->set_flashdata('', 'Terjadi kesalahan');
+			$newdata = array(
+				'cek' => false,
+			);
+
+			$this->session->set_userdata($newdata);
+			$this->session->set_flashdata('error', 'Terjadi kesalahan');
 			redirect('registrasi');
 		}
 	}
@@ -104,7 +124,10 @@ class Registrasi extends CI_Controller
 
 	public function daftar()
 	{
-		$token = $this->get_token();
+
+
+
+		$token = $this->jwt->get_token();
 
 
 		if (!$token) {
@@ -118,7 +141,7 @@ class Registrasi extends CI_Controller
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-			CURLOPT_URL => $this->ip . 'pendaftaran/daftar_akun',
+			CURLOPT_URL => ip() . 'pendaftaran/daftar_akun',
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => '',
 			CURLOPT_MAXREDIRS => 10,
@@ -154,19 +177,22 @@ class Registrasi extends CI_Controller
 
 		curl_close($curl);
 
-		// $response = json_decode($response, true);
+		$response = json_decode($response, true);
+		if (isset($response['status'])) {
+			if ($response['status']) {
 
-		echo $response;
-	}
+				$this->session->set_flashdata('success', 'Berhasil mendaftar, silahkan melakukan login untuk memulai sesi');
+				redirect('login');
+			} else {
 
-	public function get_token()
-	{
-		$token = $this->jwt->get_token();
-
-		if (!$token['status']) {
-			return false;
+				$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
+				redirect('registrasi/form');
+			}
+		} else {
+			$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
+			redirect('registrasi/form');
 		}
 
-		return $token;
+		$this->session->sess_destroy();
 	}
 }

@@ -4,28 +4,105 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Permohonan extends CI_Controller
 {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/userguide3/general/urls.html
-	 */
+
+	public function __construct()
+	{
+		parent::__construct();
+
+		$this->load->model('M_jwt', 'jwt');
+	}
 	public function index()
 	{
-		$this->load->view('pendaftaran');
+		$this->load->view('permohonan/view');
 	}
 
-	public function list()
+	public function form()
 	{
-		$this->load->view('pendaftaran_list');
+		$data['izin'] = $this->daftar_izin();
+
+
+		$this->load->view('permohonan/form_page', $data);
+	}
+
+	public function daftar_izin()
+	{
+
+
+
+		$token = $this->jwt->get_token();
+		if (!$token) {
+			$res = array('status' => false, 'msg' => 'Maaf, terjadi kesalahan');
+			echo json_encode($res, true);
+			die();
+		}
+
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => ip() . 'perizinan/daftar_izin',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'GET',
+			CURLOPT_HTTPHEADER => array(
+				'Content-Type: application/json',
+				'Authorization: Bearer ' . $token['token']
+			),
+		));
+
+		$response = curl_exec($curl);
+
+		curl_close($curl);
+
+		$row =  json_decode($response, true);
+		return $row['data'];
+	}
+
+	public function daftar_permohonan()
+	{
+
+
+
+		$token = $this->jwt->get_token();
+		if (!$token) {
+			$res = array('status' => false, 'msg' => 'Maaf, terjadi kesalahan');
+			echo json_encode($res, true);
+			die();
+		}
+
+		$izin = $this->input->post('tblizin_id', true);
+
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => ip() . 'perizinan/daftar_permohonan',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'POST',
+
+			CURLOPT_POSTFIELDS => '{
+            "tblizin_id" : "' . $izin . '"
+            }',
+
+
+			CURLOPT_HTTPHEADER => array(
+				'Content-Type: application/json',
+				'Authorization: Bearer ' . $token['token']
+			),
+		));
+
+		$response = curl_exec($curl);
+
+		curl_close($curl);
+
+		$row =  json_decode($response, true);
+		echo json_encode($row);
 	}
 }

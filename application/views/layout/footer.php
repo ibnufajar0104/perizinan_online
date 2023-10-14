@@ -148,16 +148,69 @@
 <script src="<?= base_url() ?>tmp/assets/js/pages/form-validation.init.js"></script>
 
 <!-- Required datatable js -->
-<script src="<?= base_url()?>tmp/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="<?= base_url()?>tmp/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url() ?>tmp/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?= base_url() ?>tmp/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 
 
 <!-- Responsive examples -->
-<script src="<?= base_url()?>tmp/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="<?= base_url()?>tmp/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+<script src="<?= base_url() ?>tmp/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+>
 
 <!-- Datatable init js -->
-<script src="<?= base_url()?>tmp/assets/js/pages/datatables.init.js"></script>
+<script src="<?= base_url() ?>tmp/assets/js/pages/datatables.init.js"></script>
+
+<!-- alertifyjs js -->
+<script src="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/alertify.min.js"></script>
+
+
+<script>
+<?php if ($this->session->userdata('error')) : ?>
+alertify.error('<?= $this->session->userdata('error') ?>');
+<?php endif ?>
+
+
+<?php if ($this->session->userdata('success')) : ?>
+alertify.success('<?= $this->session->userdata('success') ?>');
+<?php endif ?>
+</script>
+
+<script>
+$('#tblizin_id').change(function() {
+    permohonan_dinamis($(this).val(), '#tblizinpermohonan_id');
+});
+
+function permohonan_dinamis(id, el, select = null) {
+
+    $(el).find('option').not(':first').remove();
+    $.ajax({
+        url: "<?php echo site_url('permohonan/daftar_permohonan') ?>", // Ganti dengan URL yang sesuai
+        type: 'POST',
+        data: {
+            tblizin_id: id,
+        },
+        dataType: 'json',
+        success: function(response) {
+            console.log(response);
+            if (response.status) {
+                // Tambahkan opsi subkategori berdasarkan respons dari server
+                $.each(response.data, function(key, value) {
+
+                    $(el).append('<option value="' + value
+                        .tblizinpermohonan_id + '">' + value.tblizinpermohonan_nama +
+                        '</option>');
+                });
+
+                if (select) {
+                    $(el).val(select);
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText);
+        }
+    });
+}
+</script>
 </body>
 
 </html>

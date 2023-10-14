@@ -24,13 +24,22 @@
 
 
     <!-- DataTables -->
-    <link href="<?= base_url()?>tmp/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+    <link href="<?= base_url() ?>tmp/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet"
         type="text/css" />
-    <link href="<?= base_url()?>tmp/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css"
+    <link href="<?= base_url() ?>tmp/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css"
         rel="stylesheet" type="text/css" />
 
     <!-- Responsive datatable examples -->
-    <link href="<?= base_url()?>tmp/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"
-        rel="stylesheet" type="text/css" </head>
+    <link href="<?= base_url() ?>tmp/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"
+        rel="stylesheet" type="text/css" />
+
+    <!-- alertifyjs Css -->
+    <link href="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/css/alertify.min.css" rel="stylesheet"
+        type="text/css" />
+
+    <!-- alertifyjs default themes  Css -->
+    <link href="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/css/themes/default.min.css" rel="stylesheet"
+        type="text/css" />
+</head>
 
 <body data-layout="horizontal" data-topbar="dark">

@@ -15,20 +15,17 @@
     <link rel="stylesheet" href="<?= base_url() ?>tmp/assets/css/preloader.min.css" type="text/css" />
 
     <!-- Bootstrap Css -->
-    <link href="<?= base_url() ?>tmp/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet"
-        type="text/css" />
+    <link href="<?= base_url() ?>tmp/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
     <link href="<?= base_url() ?>tmp/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="<?= base_url() ?>tmp/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
     <!-- alertifyjs Css -->
-    <link href="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/css/alertify.min.css" rel="stylesheet"
-        type="text/css" />
+    <link href="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/css/alertify.min.css" rel="stylesheet" type="text/css" />
 
     <!-- alertifyjs default themes  Css -->
-    <link href="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/css/themes/default.min.css" rel="stylesheet"
-        type="text/css" />
+    <link href="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/css/themes/default.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -77,23 +74,20 @@
                                         </div>
 
                                         <div class="form-group mt-4 npwp">
-                                            <label for="jenis_pemohon">Nomor NPWP</label>
-                                            <input type="text" name="tblpemohon_npwp" id="tblpemohon_npwp"
-                                                class="form-control">
+                                            <label for="jenis_pemohon">NPWP</label>
+                                            <input type="text" name="tblpemohon_npwp" id="tblpemohon_npwp" class="form-control">
                                         </div>
 
                                         <div class="form-group mt-4 nik">
                                             <label for="jenis_pemohon">NIK</label>
-                                            <input type="text" name="tblpemohon_noidentitas" id="tblpemohon_noidentitas"
-                                                class="form-control">
+                                            <input type="text" name="tblpemohon_noidentitas" id="tblpemohon_noidentitas" class="form-control">
                                         </div>
 
                                         <div class="mt-4 mb-3">
 
 
 
-                                            <button type="submit"
-                                                class="btn btn-primary w-100 waves-effect waves-light">Cek Pernah
+                                            <button type="submit" class="btn btn-primary w-100 waves-effect waves-light">Cek Pernah
                                                 Mendaftar</button>
                                         </div>
 
@@ -153,35 +147,35 @@
 
 
     <script>
-    <?php if ($this->session->userdata('error')) : ?>
-    alertify.error('<?= $this->session->userdata('error') ?>');
-    <?php endif ?>
+        <?php if ($this->session->userdata('error')) : ?>
+            alertify.error('<?= $this->session->userdata('error') ?>');
+        <?php endif ?>
 
 
-    <?php if ($this->session->userdata('success')) : ?>
-    alertify.success('<?= $this->session->userdata('success') ?>');
-    <?php endif ?>
-    $('document').ready(function() {
+        <?php if ($this->session->userdata('success')) : ?>
+            alertify.success('<?= $this->session->userdata('success') ?>');
+        <?php endif ?>
+        $('document').ready(function() {
 
-        $('.npwp').hide();
-        $('.nik').hide();
+            $('.npwp').hide();
+            $('.nik').hide();
 
-        $('#jenis').change(function() {
+            $('#jenis').change(function() {
 
-            if ($(this).val() == 1) {
-                $('.npwp').show();
-                $('.nik').hide();
-                $("#tblpemohon_npwp").prop('required', true);
-                $("#tblpemohon_noidentitas").prop('required', false);
-            } else {
-                $('.npwp').hide();
-                $('.nik').show();
+                if ($(this).val() == 1) {
+                    $('.npwp').show();
+                    $('.nik').hide();
+                    $("#tblpemohon_npwp").prop('required', true);
+                    $("#tblpemohon_noidentitas").prop('required', false);
+                } else {
+                    $('.npwp').hide();
+                    $('.nik').show();
 
-                $("#tblpemohon_npwp").prop('required', false);
-                $("#tblpemohon_noidentitas").prop('required', true);
-            }
-        });
-    })
+                    $("#tblpemohon_npwp").prop('required', false);
+                    $("#tblpemohon_noidentitas").prop('required', true);
+                }
+            });
+        })
     </script>
 </body>
 

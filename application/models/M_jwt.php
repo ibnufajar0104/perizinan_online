@@ -8,7 +8,7 @@ class M_jwt extends CI_Model
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'http://192.168.100.100/ptsp/login_jwt',
+            CURLOPT_URL => ip() . 'login_jwt',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
