@@ -17,7 +17,7 @@
                 <!-- start page title -->
                 <?php
                 $maintitle = "Permohonan";
-                $title = "Daftar Permohonan";
+                $title = "Detail Permohonan";
                 ?>
                 <!-- start page title -->
                 <div class="row">
@@ -27,7 +27,8 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo $maintitle; ?></a></li>
+                                    <li class="breadcrumb-item"><a
+                                            href="javascript: void(0);"><?php echo $maintitle; ?></a></li>
                                     <li class="breadcrumb-item active"><?php echo $title; ?></li>
                                 </ol>
                             </div>
@@ -65,19 +66,25 @@
                                             <?php $no = 1 ?>
                                             <?php foreach ($log as $r) : ?>
 
-                                                <tr>
-                                                    <td><?= $no ?>.</td>
-                                                    <td><?= $r['nama_asal'] ?></td>
-                                                    <td><?= $r['tblkendalibloksistemtugas_nama'] ?></td>
-                                                    <td><?= $r['tgl_mulai'] ?></td>
-                                                    <td><?= $r['tgl_selesai'] ?></td>
-                                                    <td><?= $r['nama_tujuan'] ?></td>
-                                                    <td><?= $r['tgl_berkas'] ?></td>
-                                                    <td><?= $r['tblkendaliproses_catatan'] ?></td>
-                                                    <td><?= $r['status'] ?></td>
-                                                    <td><button class="btn btn-primary">Perbaiki</button></td>
-                                                </tr>
-                                                <?php $no++; ?>
+                                            <tr>
+                                                <td><?= $no ?>.</td>
+                                                <td><?= $r['nama_asal'] ?></td>
+                                                <td><?= $r['tblkendalibloksistemtugas_nama'] ?></td>
+                                                <td><?= $r['tgl_mulai'] ?></td>
+                                                <td><?= $r['tgl_selesai'] ?></td>
+                                                <td><?= $r['nama_tujuan'] ?></td>
+                                                <td><?= $r['tgl_berkas'] ?></td>
+                                                <td><?= $r['tblkendaliproses_catatan'] ?></td>
+                                                <td><?= $r['status'] ?></td>
+                                                <td>
+
+                                                    <?php if ($r['tblkendaliproses_status'] == 10) : ?>
+                                                    <button class="btn btn-success">Perbaiki</button>
+                                                    <?php endif ?>
+
+                                                </td>
+                                            </tr>
+                                            <?php $no++; ?>
                                             <?php endforeach ?>
                                         </table>
                                     </div>
@@ -125,12 +132,17 @@
                                                 <td>:</td>
                                                 <td><?= $r['tblizinpendaftaran_telponpemohon'] ?></td>
                                             </tr>
-
+                                            <tr>
+                                                <td>Kecamatan</td>
+                                                <td>:</td>
+                                                <td><?= $r['tblkecamatan_nama'] ?></td>
+                                            </tr>
                                             <tr>
                                                 <td>Keterangan</td>
                                                 <td>:</td>
                                                 <td><?= $r['tblizinpendaftaran_keterangan'] ?></td>
                                             </tr>
+
                                         </table>
                                     </div>
 
@@ -160,11 +172,7 @@
 
                                                 <td><?= $r['tblizinpendaftaran_lokasiizin'] ?></td>
                                             </tr>
-                                            <tr>
-                                                <td>Kecamatan</td>
-                                                <td>:</td>
-                                                <td><?= $r['tblkecamatan_nama'] ?></td>
-                                            </tr>
+
                                             <tr>
                                                 <td>Kelurahan</td>
                                                 <td>:</td>
@@ -194,7 +202,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <script>
-                            document.write(new Date().getFullYear())
+                        document.write(new Date().getFullYear())
                         </script> © Dason.
                     </div>
                     <div class="col-sm-6">

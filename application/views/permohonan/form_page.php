@@ -49,7 +49,8 @@
 
                             <div class="card-body">
                                 <form class="needs-validation" novalidate
-                                    action="<?= site_url('permohonan/pendaftaran') ?>" method="POST">
+                                    action="<?= site_url('permohonan/pendaftaran') ?>" method="POST"
+                                    enctype="multipart/form-data">
                                     <div class="row">
                                         <input type="hidden" name="tblpemohon_id" id="tblpemohon_id"
                                             value="<?= $this->session->tblpemohon_id ?>">

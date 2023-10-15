@@ -27,7 +27,8 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo $maintitle; ?></a></li>
+                                    <li class="breadcrumb-item"><a
+                                            href="javascript: void(0);"><?php echo $maintitle; ?></a></li>
                                     <li class="breadcrumb-item active"><?php echo $title; ?></li>
                                 </ol>
                             </div>
@@ -50,32 +51,44 @@
                             </div>
                             <div class="card-body">
 
-                                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Opsi</th>
-                                            <th>Izin</th>
-                                            <th>Permohonan</th>
-                                            <th>Usaha</th>
-                                            <th>Tanggal</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
+                                <div class="table-responsive">
+                                    <table class="table table-striped w-100">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
 
-                                    <tbody>
-                                        <?php $no = 1 ?>
-                                        <?php foreach ($permohonan as $r) : ?>
+                                                <th>Izin</th>
+                                                <th>Permohonan</th>
+                                                <th>Nama Usaha</th>
+                                                <th>Tanggal</th>
+                                                <th>Status</th>
+                                                <th>Opsi</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <?php $no = 1 ?>
+                                            <?php foreach ($permohonan as $r) : ?>
                                             <tr>
                                                 <td><?= $no ?></td>
+
+                                                <td><?= $r['tblizin_nama'] ?></td>
+                                                <td><?= $r['tblizinpermohonan_nama'] ?></td>
+                                                <td><?= $r['tblizinpendaftaran_usaha'] ?></td>
+
+                                                <td><?= $r['tgl_daftar'] ?></td>
+                                                <td><?= $r['status'] ?></td>
                                                 <td>
 
                                                     <div class="btn-group" role="group">
-                                                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <button id="btnGroupDrop1" type="button"
+                                                            class="btn btn-success dropdown-toggle btn-sm"
+                                                            data-bs-toggle="dropdown" aria-expanded="false">
                                                             Opsi <i class="mdi mdi-chevron-down"></i>
                                                         </button>
                                                         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                            <li><a class="dropdown-item" href="<?= site_url('permohonan/detail/' . $r['tblizinpendaftaran_id']) ?>">Detail</a>
+                                                            <li><a class="dropdown-item"
+                                                                    href="<?= site_url('permohonan/detail/' . $r['tblizinpendaftaran_id']) ?>">Detail</a>
                                                             </li>
                                                             <li><a class="dropdown-item" href="#">Edit</a>
                                                             </li>
@@ -83,16 +96,12 @@
                                                         </ul>
                                                     </div>
                                                 </td>
-                                                <td><?= $r['tblizin_nama'] ?></td>
-                                                <td><?= $r['tblizinpendaftaran_usaha'] ?></td>
-                                                <td><?= $r['tblizinpermohonan_nama'] ?></td>
-                                                <td><?= $r['tblizinpermohonan_nama'] ?></td>
-                                                <td><?= $r['status'] ?></td>
                                             </tr>
                                             <?php $no++ ?>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                </table>
+                                            <?php endforeach ?>
+                                        </tbody>
+                                    </table>
+                                </div>
 
                             </div>
                         </div>
@@ -113,7 +122,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <script>
-                            document.write(new Date().getFullYear())
+                        document.write(new Date().getFullYear())
                         </script> © Dason.
                     </div>
                     <div class="col-sm-6">
