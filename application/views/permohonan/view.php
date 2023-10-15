@@ -1,10 +1,10 @@
-<?php include 'layout/head.php' ?>
+<?php include(APPPATH . 'views/layout/head.php'); ?>
 
 <!-- Begin page -->
 <div id="layout-wrapper">
 
     <?php include(APPPATH . 'views/layout/topbar.php'); ?>
-    <?php include(APPPATH . 'views/out/layout/menu.php'); ?>
+    <?php include(APPPATH . 'views/layout/menu.php'); ?>
 
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -27,7 +27,8 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo $maintitle; ?></a></li>
+                                    <li class="breadcrumb-item"><a
+                                            href="javascript: void(0);"><?php echo $maintitle; ?></a></li>
                                     <li class="breadcrumb-item active"><?php echo $title; ?></li>
                                 </ol>
                             </div>
@@ -84,7 +85,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <script>
-                            document.write(new Date().getFullYear())
+                        document.write(new Date().getFullYear())
                         </script> © Dason.
                     </div>
                     <div class="col-sm-6">
@@ -101,4 +102,4 @@
 </div>
 <!-- END layout-wrapper -->
 
-<?php include 'layout/footer.php' ?>
+<?php include(APPPATH . 'views/layout/footer.php'); ?>

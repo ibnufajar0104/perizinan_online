@@ -179,6 +179,10 @@ $('#tblizin_id').change(function() {
     permohonan_dinamis($(this).val(), '#tblizinpermohonan_id');
 });
 
+$('#tblkecamatan_id').change(function() {
+    kelurahan_dinamis($(this).val(), '#tblkelurahan_id');
+});
+
 function permohonan_dinamis(id, el, select = null) {
 
     $(el).find('option').not(':first').remove();
@@ -197,6 +201,39 @@ function permohonan_dinamis(id, el, select = null) {
 
                     $(el).append('<option value="' + value
                         .tblizinpermohonan_id + '">' + value.tblizinpermohonan_nama +
+                        '</option>');
+                });
+
+                if (select) {
+                    $(el).val(select);
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText);
+        }
+    });
+}
+
+function kelurahan_dinamis(id, el, select) {
+
+    $(el).find('option').not(':first').remove();
+    $.ajax({
+        url: "<?php echo site_url('permohonan/daftar_kelurahan') ?>", // Ganti dengan URL yang sesuai
+        type: 'POST',
+        data: {
+            id_kecamatan: id,
+
+        },
+        dataType: 'json',
+        success: function(response) {
+            console.log(response);
+            if (response.status) {
+                // Tambahkan opsi subkategori berdasarkan respons dari server
+                $.each(response.data, function(key, value) {
+
+                    $(el).append('<option value="' + value
+                        .tblkelurahan_id + '">' + value.tblkelurahan_nama +
                         '</option>');
                 });
 
