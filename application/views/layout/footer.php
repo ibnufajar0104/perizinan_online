@@ -247,6 +247,34 @@ function kelurahan_dinamis(id, el, select) {
         }
     });
 }
+
+
+$('#tblizinpermohonan_id').change(function() {
+
+    persyaratan_dinamis($(this).val());
+});
+
+
+function persyaratan_dinamis(id, id_pendaftaran = null) {
+
+    $.ajax({
+        url: "<?php echo site_url('permohonan/daftar_persyaratan') ?>", // Ganti dengan URL yang sesuai
+        type: 'POST',
+        data: {
+            id: id,
+
+        },
+        dataType: 'html',
+        success: function(response) {
+
+            $('.persyaratan').html(response);
+
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText);
+        }
+    });
+}
 </script>
 </body>
 

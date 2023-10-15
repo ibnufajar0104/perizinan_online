@@ -64,7 +64,7 @@
                                         </p>
                                     </div>
                                     <form method="post" action="<?= site_url('registrasi/daftar') ?>">
-
+                                        <input type="hidden" name="tblpemohon_noidentitas" value="<?= $this->session->username ?>">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group mt-4">

@@ -46,7 +46,7 @@ class Registrasi extends CI_Controller
 
 
 
-	 $token = $this->jwt->get_token();
+		$token = $this->jwt->get_token();
 
 
 		if (!$token) {
@@ -126,7 +126,6 @@ class Registrasi extends CI_Controller
 	{
 
 
-
 		$token = $this->jwt->get_token();
 
 
@@ -180,7 +179,7 @@ class Registrasi extends CI_Controller
 		$response = json_decode($response, true);
 		if (isset($response['status'])) {
 			if ($response['status']) {
-
+				$this->session->sess_destroy();
 				$this->session->set_flashdata('success', 'Berhasil mendaftar, silahkan melakukan login untuk memulai sesi');
 				redirect('login');
 			} else {
@@ -192,7 +191,5 @@ class Registrasi extends CI_Controller
 			$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
 			redirect('registrasi/form');
 		}
-
-		$this->session->sess_destroy();
 	}
 }

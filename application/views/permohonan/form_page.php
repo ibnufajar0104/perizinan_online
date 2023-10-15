@@ -48,14 +48,20 @@
                             </div>
 
                             <div class="card-body">
-                                <form class="needs-validation" novalidate>
+                                <form class="needs-validation" novalidate
+                                    action="<?= site_url('permohonan/pendaftaran') ?>" method="POST">
                                     <div class="row">
+                                        <input type="hidden" name="tblpemohon_id" id="tblpemohon_id"
+                                            value="<?= $this->session->tblpemohon_id ?>">
+                                        <input type="hidden" name="tblpengguna_id" id="tblpengguna_id"
+                                            value="<?= $this->session->id ?>">
                                         <div class="col-md-6 col-12 mb-4">
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nomor Identitas</label>
                                                 <input type="number" class="form-control"
                                                     name="tblizinpendaftaran_idpemohon"
-                                                    id="tblizinpendaftaran_idpemohon" required>
+                                                    id="tblizinpendaftaran_idpemohon"
+                                                    value="<?= $this->session->no_identitas ?>" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12 mb-4">
@@ -63,7 +69,8 @@
                                                 <label for="" class="mb-1">Nama Pemohon</label>
                                                 <input type="text" class="form-control"
                                                     name="tblizinpendaftaran_namapemohon"
-                                                    id="tblizinpendaftaran_namapemohon" required>
+                                                    id="tblizinpendaftaran_namapemohon"
+                                                    value="<?= $this->session->nama ?>" required>
                                             </div>
                                         </div>
 
@@ -73,7 +80,7 @@
                                                 <label for="" class="mb-1">Alamat</label>
                                                 <textarea name="tblizinpendaftaran_almtpemohon"
                                                     id="tblizinpendaftaran_almtpemohon" class="form-control" rows="2"
-                                                    required></textarea>
+                                                    required><?= $this->session->alamat ?> </textarea>
                                             </div>
                                         </div>
 
@@ -91,7 +98,8 @@
                                                 <label for="" class="mb-1">Nomor Telepon</label>
                                                 <input type="tel" class="form-control"
                                                     name="tblizinpendaftaran_telponpemohon"
-                                                    id="tblizinpendaftaran_telponpemohon" required>
+                                                    id="tblizinpendaftaran_telponpemohon" required
+                                                    value="<?= $this->session->telepon ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12 mb-4">

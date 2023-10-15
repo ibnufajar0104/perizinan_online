@@ -78,8 +78,13 @@ class Login extends CI_Controller
 				$newdata = array(
 					'status' => $response['username'],
 					'id'  => $response['id'],
+					'tblpemohon_id'  => $response['tblpemohon_id'],
+					'no_identitas'  => $response['no_identitas'],
 					'nama'  => $response['nama'],
-					'tblpemohon_id'  => $response['tblpemohon_id']
+					'telepon'  => $response['telepon'],
+					'alamat'  => $response['alamat']
+
+
 				);
 
 				$this->session->set_userdata($newdata);
