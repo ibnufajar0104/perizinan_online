@@ -58,59 +58,31 @@
                                             value="<?= $p['tblpemohon_id'] ?>">
                                         <input type="hidden" name="tblpengguna_id" id="tblpengguna_id"
                                             value="<?= $p['tblpengguna_id'] ?>">
-                                        <div class="col-md-6 col-12 mb-4">
-                                            <div class="form-group">
-                                                <label for="" class="mb-1">Nomor Identitas</label>
-                                                <input type="number" class="form-control"
-                                                    name="tblizinpendaftaran_idpemohon"
-                                                    id="tblizinpendaftaran_idpemohon"
-                                                    value="<?= $p['tblizinpendaftaran_idpemohon'] ?>" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12 mb-4">
-                                            <div class="form-group">
-                                                <label for="" class="mb-1">Nama Pemohon</label>
-                                                <input type="text" class="form-control"
-                                                    name="tblizinpendaftaran_namapemohon"
-                                                    id="tblizinpendaftaran_namapemohon"
-                                                    value="<?= $p['tblizinpendaftaran_namapemohon'] ?>" required>
-                                            </div>
-                                        </div>
+                                        <input type="hidden" class="form-control" name="tblizinpendaftaran_idpemohon"
+                                            id="tblizinpendaftaran_idpemohon"
+                                            value="<?= $p['tblizinpendaftaran_idpemohon'] ?>" required>
+                                        <input type="hidden" class="form-control" name="tblizinpendaftaran_namapemohon"
+                                            id="tblizinpendaftaran_namapemohon"
+                                            value="<?= $p['tblizinpendaftaran_namapemohon'] ?>" required>
+
+                                        <input type="hidden" name="tblizinpendaftaran_almtpemohon"
+                                            id="tblizinpendaftaran_almtpemohon" class="form-control"
+                                            value="<?= $p['tblizinpendaftaran_almtpemohon'] ?>" required>
 
 
-                                        <div class="col-md-6 col-12 mb-4">
-                                            <div class="form-group">
-                                                <label for="" class="mb-1">Alamat</label>
-                                                <textarea name="tblizinpendaftaran_almtpemohon"
-                                                    id="tblizinpendaftaran_almtpemohon" class="form-control"
-                                                    required><?= $p['tblizinpendaftaran_almtpemohon'] ?> </textarea>
-                                            </div>
-                                        </div>
+                                        <input type="hidden" class="form-control" name="tblizinpendaftaran_npwp"
+                                            id="tblizinpendaftaran_npwp" value="<?= $p['tblizinpendaftaran_npwp'] ?>"
+                                            required>
 
-
-
-                                        <div class="col-md-6 col-12 mb-4">
-                                            <div class="form-group">
-                                                <label for="" class="mb-1">Nomor NPWP</label>
-                                                <input type="number" class="form-control" name="tblizinpendaftaran_npwp"
-                                                    id="tblizinpendaftaran_npwp"
-                                                    value="<?= $p['tblizinpendaftaran_npwp'] ?>" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12 mb-4">
-                                            <div class="form-group">
-                                                <label for="" class="mb-1">Nomor Telepon</label>
-                                                <input type="tel" class="form-control"
-                                                    name="tblizinpendaftaran_telponpemohon"
-                                                    id="tblizinpendaftaran_telponpemohon" required
-                                                    value="<?= $p['tblizinpendaftaran_telponpemohon'] ?>">
-                                            </div>
-                                        </div>
+                                        <input type="hidden" class="form-control"
+                                            name="tblizinpendaftaran_telponpemohon"
+                                            id="tblizinpendaftaran_telponpemohon" required
+                                            value="<?= $p['tblizinpendaftaran_telponpemohon'] ?>">
                                         <div class="col-md-6 col-12 mb-4">
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nama Izin</label>
-                                                <select data-trigger name="tblizin_id" id="tblizin_id"
-                                                    class="form-control" required>
+                                                <select name="tblizin_id" id="tblizin_id" class="form-control select"
+                                                    required>
                                                     <option value="">Pilih</option>
                                                     <?php foreach ($izin as $r) : ?>
                                                     <option <?= selected($r['tblizin_id'], $p['tblizin_id']) ?>
@@ -125,7 +97,7 @@
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nama Permohonan</label>
                                                 <select name="tblizinpermohonan_id" id="tblizinpermohonan_id"
-                                                    class="form-control single-select" required>
+                                                    class="form-control select" required>
                                                     <option value="">Pilih</option>
 
                                                 </select>
@@ -153,8 +125,8 @@
                                         <div class="col-md-6 col-12 mb-4">
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nama Kecamatan </label>
-                                                <select data-trigger name="tblkecamatan_id" id="tblkecamatan_id"
-                                                    class="form-control single-select" required>
+                                                <select name="tblkecamatan_id" id="tblkecamatan_id"
+                                                    class="form-control select" required>
                                                     <option value="">Pilih</option>
                                                     <?php foreach ($kecamatan as $r) : ?>
                                                     <option
@@ -172,7 +144,7 @@
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nama Kelurahan / Desa</label>
                                                 <select name="tblkelurahan_id" id="tblkelurahan_id"
-                                                    class="form-control single-select" required>
+                                                    class="form-control select" required>
                                                     <option value="">Pilih</option>
 
                                                 </select>

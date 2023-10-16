@@ -45,6 +45,10 @@
     <link href="<?= base_url() ?>tmp/assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet"
         type="text/css" />
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
+
     <style>
     body {
         font-size: 14px;
@@ -52,6 +56,11 @@
 
     .form-control {
         height: 45px;
+    }
+
+    .select2-container--default .select2-selection--single {
+        height: 45px;
+        /* You can change this value to your desired height */
     }
     </style>
 </head>

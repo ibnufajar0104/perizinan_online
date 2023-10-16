@@ -166,7 +166,8 @@
 <!-- choices js -->
 <script src="<?= base_url() ?>tmp/assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
 <!-- init js -->
-<!-- <script src="<?= base_url() ?>tmp/assets/js/pages/form-advanced.init.js"></script> -->
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
 <?php if ($this->session->userdata('error')) : ?>
 alertify.error('<?= $this->session->userdata('error') ?>');
@@ -180,6 +181,7 @@ alertify.success('<?= $this->session->userdata('success') ?>');
 
 <script>
 $(document).ready(function() {
+    $('.select').select2();
     var genericExamples = document.querySelectorAll("[data-trigger]");
     for (i = 0; i < genericExamples.length; ++i) {
         var element = genericExamples[i];
@@ -192,10 +194,11 @@ $(document).ready(function() {
     <?php if ($this->uri->segment(3)) : ?>
     permohonan_dinamis(<?= $p['tblizin_id'] ?>, '#tblizinpermohonan_id', <?= $p['tblizinpermohonan_id'] ?>);
     kelurahan_dinamis(<?= $p['tblkecamatan_id'] ?>, '#tblkelurahan_id', <?= $p['tblkelurahan_id'] ?>);
-    persyaratan_dinamis(<?= $p['tblizinpermohonan_id'] ?>, <?= $p['tblpemohon_id'] ?>)
+    persyaratan_dinamis(<?= $p['tblizinpermohonan_id'] ?>, <?= $p['tblpemohon_id'] ?>);
 
-    <?php else : ?>
-    $('.persyaratan_upload').prop('required', true);
+    setTimeout(function() {
+        $('.persyaratan_upload').prop('required', false);
+    }, 2000); // 2000 milidetik = 2 detik
     <?php endif ?>
 });
 

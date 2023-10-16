@@ -34,7 +34,10 @@
                     </td>
                     <td>
                         <input type="file" name="<?= $r['tblpersyaratan_id'] ?>" id="<?= $r['tblpersyaratan_id'] ?>"
-                            class="form-control persyaratan_upload">
+                            class="form-control persyaratan_upload" required>
+                        <div class="invalid-feedback">
+                            Harus diisi.
+                        </div>
                     </td>
                 </tr>
                 <?php $no++ ?>

@@ -44,6 +44,27 @@ class Permohonan extends CI_Controller
 		$this->load->view('permohonan/form_page', $data);
 	}
 
+	public function riwayat()
+	{
+
+		$id = $this->session->tblpemohon_id;
+		$endpoint = 'pendaftaran/riwayat_permohonan';
+		$d['tblpemohon_id'] = $id;
+
+		$row = $this->reg($endpoint, $d);
+
+		$r = [];
+		if ($row['data']) {
+			$r = $row['data'];
+		}
+		$data['riwayat'] = $r;
+		$data['title'] = 'Riwayat Permohonan';
+		$this->load->view('permohonan/riwayat', $data);
+	}
+
+
+
+
 	public function edit($id)
 	{
 		$row =  $this->permohonan_by_id($id);

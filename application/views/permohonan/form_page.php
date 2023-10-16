@@ -55,64 +55,44 @@
                                             value="<?= $this->session->tblpemohon_id ?>">
                                         <input type="hidden" name="tblpengguna_id" id="tblpengguna_id"
                                             value="<?= $this->session->id ?>">
-                                        <div class="col-md-6 col-12 mb-4">
-                                            <div class="form-group">
-                                                <label for="" class="mb-1">Nomor Identitas</label>
-                                                <input type="number" class="form-control"
-                                                    name="tblizinpendaftaran_idpemohon"
-                                                    id="tblizinpendaftaran_idpemohon"
-                                                    value="<?= $this->session->no_identitas ?>" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12 mb-4">
-                                            <div class="form-group">
-                                                <label for="" class="mb-1">Nama Pemohon</label>
-                                                <input type="text" class="form-control"
-                                                    name="tblizinpendaftaran_namapemohon"
-                                                    id="tblizinpendaftaran_namapemohon"
-                                                    value="<?= $this->session->nama ?>" required>
-                                            </div>
-                                        </div>
+                                        <input type="hidden" class="form-control" name="tblizinpendaftaran_idpemohon"
+                                            id="tblizinpendaftaran_idpemohon"
+                                            value="<?= $this->session->no_identitas ?>" required>
+                                        <input type="hidden" class="form-control" name="tblizinpendaftaran_namapemohon"
+                                            id="tblizinpendaftaran_namapemohon" value="<?= $this->session->nama ?>"
+                                            required>
+                                        <input name="tblizinpendaftaran_almtpemohon" type="hidden"
+                                            id="tblizinpendaftaran_almtpemohon" class="form-control" required
+                                            value="<?= $this->session->alamat ?>">
+                                        <input type="hidden" class="form-control"
+                                            name="tblizinpendaftaran_telponpemohon"
+                                            id="tblizinpendaftaran_telponpemohon" required
+                                            value="<?= $this->session->telepon ?>">
 
+                                        <input type="hidden" class="form-control" name="tblizinpendaftaran_npwp"
+                                            id="tblizinpendaftaran_npwp" value="-" required>
 
-                                        <div class="col-md-6 col-12 mb-4">
-                                            <div class="form-group">
-                                                <label for="" class="mb-1">Alamat</label>
-                                                <textarea name="tblizinpendaftaran_almtpemohon"
-                                                    id="tblizinpendaftaran_almtpemohon" class="form-control" rows="2"
-                                                    required><?= $this->session->alamat ?> </textarea>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="col-md-6 col-12 mb-4">
+                                        <!-- <div class="col-md-6 col-12 mb-4">
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nomor NPWP</label>
-                                                <input type="number" class="form-control" name="tblizinpendaftaran_npwp"
-                                                    id="tblizinpendaftaran_npwp" required>
+                                                
                                             </div>
-                                        </div>
-                                        <div class="col-md-6 col-12 mb-4">
-                                            <div class="form-group">
-                                                <label for="" class="mb-1">Nomor Telepon</label>
-                                                <input type="tel" class="form-control"
-                                                    name="tblizinpendaftaran_telponpemohon"
-                                                    id="tblizinpendaftaran_telponpemohon" required
-                                                    value="<?= $this->session->telepon ?>">
-                                            </div>
-                                        </div>
+                                        </div> -->
+
                                         <div class="col-md-6 col-12 mb-4">
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nama Izin</label>
-                                                <select data-trigger name="tblizin_id" id="tblizin_id"
-                                                    class="form-control" required>
+                                                <select name="tblizin_id" id="tblizin_id" class="form-control select"
+                                                    required>
                                                     <option value="">Pilih</option>
                                                     <?php foreach ($izin as $r) : ?>
                                                     <option value="<?= $r['tblizin_id'] ?>"><?= $r['tblizin_nama'] ?>
                                                     </option>
                                                     <?php endforeach ?>
                                                 </select>
+                                                <div class="invalid-feedback">
+                                                    Harus diisi.
+                                                </div>
                                             </div>
 
                                         </div>
@@ -120,10 +100,13 @@
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nama Permohonan</label>
                                                 <select name="tblizinpermohonan_id" id="tblizinpermohonan_id"
-                                                    class="form-control single-select" required>
+                                                    class="form-control select" required>
                                                     <option value="">Pilih</option>
 
                                                 </select>
+                                                <div class="invalid-feedback">
+                                                    Harus diisi.
+                                                </div>
                                             </div>
 
                                         </div>
@@ -132,6 +115,9 @@
                                                 <label for="" class="mb-1">Nama Usaha</label>
                                                 <input type="text" class="form-control" name="tblizinpendaftaran_usaha"
                                                     id="tblizinpendaftaran_usaha" required>
+                                                <div class="invalid-feedback">
+                                                    Harus diisi.
+                                                </div>
                                             </div>
                                         </div>
 
@@ -141,13 +127,16 @@
                                                 <input type="text" class="form-control"
                                                     name="tblizinpendaftaran_lokasiizin"
                                                     id="tblizinpendaftaran_lokasiizin" required>
+                                                <div class="invalid-feedback">
+                                                    Harus diisi.
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12 mb-4">
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nama Kecamatan </label>
-                                                <select data-trigger name="tblkecamatan_id" id="tblkecamatan_id"
-                                                    class="form-control single-select" required>
+                                                <select name="tblkecamatan_id" id="tblkecamatan_id"
+                                                    class="form-control select" required style="height: 200px">
                                                     <option value="">Pilih</option>
                                                     <?php foreach ($kecamatan as $r) : ?>
                                                     <option value="<?= $r['tblkecamatan_id'] ?>">
@@ -155,6 +144,9 @@
                                                     </option>
                                                     <?php endforeach ?>
                                                 </select>
+                                                <div class="invalid-feedback">
+                                                    Harus diisi.
+                                                </div>
                                             </div>
 
                                         </div>
@@ -163,10 +155,13 @@
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nama Kelurahan / Desa</label>
                                                 <select name="tblkelurahan_id" id="tblkelurahan_id"
-                                                    class="form-control single-select" required>
+                                                    class="form-control select" required>
                                                     <option value="">Pilih</option>
 
                                                 </select>
+                                                <div class="invalid-feedback">
+                                                    Harus diisi.
+                                                </div>
                                             </div>
 
                                         </div>
@@ -176,6 +171,9 @@
                                                 <textarea name="tblizinpendaftaran_keterangan"
                                                     id="tblizinpendaftaran_keterangan" class="form-control" rows="2"
                                                     required></textarea>
+                                                <div class="invalid-feedback">
+                                                    Harus diisi.
+                                                </div>
                                             </div>
                                         </div>
 

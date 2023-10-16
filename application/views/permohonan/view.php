@@ -78,7 +78,7 @@
                                             <?php if ($permohonan) : ?>
                                             <?php foreach ($permohonan as $r) : ?>
                                             <tr>
-                                                <td><?= $no ?></td>
+                                                <td><?= $no ?>.</td>
 
                                                 <td><?= $r['tblizin_nama'] ?></td>
                                                 <td><?= $r['tblizinpermohonan_nama'] ?></td>
@@ -90,7 +90,7 @@
 
                                                     <div class="btn-group" role="group">
                                                         <button id="btnGroupDrop1" type="button"
-                                                            class="btn btn-success dropdown-toggle btn-sm"
+                                                            class="btn btn-secondary dropdown-toggle btn-sm"
                                                             data-bs-toggle="dropdown" aria-expanded="false">
                                                             Opsi <i class="mdi mdi-chevron-down"></i>
                                                         </button>
@@ -98,7 +98,8 @@
                                                             <li><a class="dropdown-item"
                                                                     href="<?= site_url('permohonan/detail/' . $r['tblizinpendaftaran_id']) ?>">Detail</a>
                                                             </li>
-                                                            <li><a class="dropdown-item" href="#">Edit</a>
+                                                            <li><a class="dropdown-item"
+                                                                    href="<?= site_url('permohonan/edit/' . $r['tblizinpendaftaran_id']) ?>">Edit</a>
                                                             </li>
 
                                                         </ul>
