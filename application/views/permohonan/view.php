@@ -42,9 +42,16 @@
                         <div class="card">
                             <div class="card-header">
 
+                                <?php if ($permohonan) : ?>
+                                Selalu periksa perkembangan permohonan anda dengan mengklik "opsi" kemudian klik
+                                "detail"
+                                <?php else : ?>
                                 Mulai permohonan anda dengan menekan tombol "Ajukan Permohonan".
+                                <?php endif ?>
 
-                                <!-- Selalu periksa perkembangan permohonan Anda dengan mengklik opsi kemudian klik progres -->
+
+
+
                                 <a href="<?= site_url('permohonan/form') ?>" class="btn btn-primary float-sm-end">Ajukan
                                     Permohonan</a>
 
@@ -68,6 +75,7 @@
 
                                         <tbody>
                                             <?php $no = 1 ?>
+                                            <?php if ($permohonan) : ?>
                                             <?php foreach ($permohonan as $r) : ?>
                                             <tr>
                                                 <td><?= $no ?></td>
@@ -99,6 +107,11 @@
                                             </tr>
                                             <?php $no++ ?>
                                             <?php endforeach ?>
+                                            <?php else : ?>
+                                            <tr>
+                                                <td colspan="7" class="text-center">Belum ada permohonan</td>
+                                            </tr>
+                                            <?php endif ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -117,26 +130,12 @@
         </div>
         <!-- End Page-content -->
 
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <script>
-                        document.write(new Date().getFullYear())
-                        </script> © Dason.
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="text-sm-end d-none d-sm-block">
-                            Design & Develop by <a href="#!" class="text-decoration-underline">Themesdesign</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+
+        <?php include(APPPATH . 'views/layout/footer.php'); ?>
     </div>
     <!-- end main content-->
 
 </div>
 <!-- END layout-wrapper -->
 
-<?php include(APPPATH . 'views/layout/footer.php'); ?>
+<?php include(APPPATH . 'views/layout/js.php'); ?>

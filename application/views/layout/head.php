@@ -2,14 +2,14 @@
 
 <head>
 
-    <title> Dason - Admin & Dashboard Template</title>
+    <title> <?= $title ?></title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="<?= base_url() ?>tmp/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/logo%20tala.png">
 
     <!-- preloader css -->
     <link rel="stylesheet" href="<?= base_url() ?>tmp/assets/css/preloader.min.css" type="text/css" />
@@ -40,6 +40,20 @@
     <!-- alertifyjs default themes  Css -->
     <link href="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/css/themes/default.min.css" rel="stylesheet"
         type="text/css" />
+
+    <!-- choices css -->
+    <link href="<?= base_url() ?>tmp/assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet"
+        type="text/css" />
+
+    <style>
+    body {
+        font-size: 14px;
+    }
+
+    .form-control {
+        height: 45px;
+    }
+    </style>
 </head>
 
 <body data-layout="horizontal" data-topbar="dark">

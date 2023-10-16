@@ -58,13 +58,13 @@
                                                 <th>Tanggal Mulai</th>
                                                 <th>Tanggal Selesai</th>
                                                 <th>Dikirim Ke</th>
-                                                <th>Tanggal Berkas Fisik Dikirim</th>
+
                                                 <th>Catatan</th>
                                                 <th>Status</th>
-                                                <th>Opsi</th>
+                                                <th></th>
                                             </tr>
                                             <?php $no = 1 ?>
-                                            <?php foreach ($log as $r) : ?>
+                                            <?php foreach ($log as $key =>  $r) : ?>
 
                                             <tr>
                                                 <td><?= $no ?>.</td>
@@ -73,13 +73,15 @@
                                                 <td><?= $r['tgl_mulai'] ?></td>
                                                 <td><?= $r['tgl_selesai'] ?></td>
                                                 <td><?= $r['nama_tujuan'] ?></td>
-                                                <td><?= $r['tgl_berkas'] ?></td>
+
                                                 <td><?= $r['tblkendaliproses_catatan'] ?></td>
                                                 <td><?= $r['status'] ?></td>
                                                 <td>
 
-                                                    <?php if ($r['tblkendaliproses_status'] == 10) : ?>
-                                                    <button class="btn btn-success">Perbaiki</button>
+                                                    <?php if ($r['tblkendaliproses_status'] == 10 && $key == 0) : ?>
+                                                    <a class="btn btn-success btn-sm"
+                                                        href="<?= site_url('permohonan/edit/' . $r['tblizinpendaftaran_id']) ?>">Perbaiki</a>
+
                                                     <?php endif ?>
 
                                                 </td>
@@ -197,26 +199,12 @@
         </div>
         <!-- End Page-content -->
 
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <script>
-                        document.write(new Date().getFullYear())
-                        </script> © Dason.
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="text-sm-end d-none d-sm-block">
-                            Design & Develop by <a href="#!" class="text-decoration-underline">Themesdesign</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+
+        <?php include(APPPATH . 'views/layout/footer.php'); ?>
     </div>
     <!-- end main content-->
 
 </div>
 <!-- END layout-wrapper -->
 
-<?php include(APPPATH . 'views/layout/footer.php'); ?>
+<?php include(APPPATH . 'views/layout/js.php'); ?>

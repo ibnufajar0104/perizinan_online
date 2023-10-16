@@ -28,12 +28,15 @@ class Permohonan extends CI_Controller
 	}
 	public function index()
 	{
+		$data['title'] = 'Permohonan';
 		$data['permohonan'] = $this->permohonan_by_id_pemohon();
 		$this->load->view('permohonan/view', $data);
 	}
 
 	public function form()
 	{
+
+		$data['title'] = 'Form Permohonan';
 		$data['izin'] = $this->daftar_izin();
 		$data['kecamatan'] = $this->daftar_kecamatan();
 
@@ -41,10 +44,21 @@ class Permohonan extends CI_Controller
 		$this->load->view('permohonan/form_page', $data);
 	}
 
+	public function edit($id)
+	{
+		$row =  $this->permohonan_by_id($id);
+		$data['title'] = 'Form Permohonan';
+		$data['izin'] = $this->daftar_izin();
+		$data['kecamatan'] = $this->daftar_kecamatan();
+		$data['p'] = $row['pendaftaran'];
+		$this->load->view('permohonan/form_edit', $data);
+	}
+
 	public function detail($id)
 	{
-
 		$row = $this->permohonan_by_id($id);
+		$data['title'] = 'Detail Permohonan';
+
 		$data['r'] = $row['pendaftaran'];
 		$data['log'] = $row['log'];
 
@@ -226,6 +240,52 @@ class Permohonan extends CI_Controller
 		}
 	}
 
+	public function update_pendaftaran()
+	{
+		$token = $this->jwt->get_token();
+		if (!$token) {
+			$res = array('status' => false, 'msg' => 'Maaf, terjadi kesalahan');
+			echo json_encode($res, true);
+			die();
+		}
+
+		$endpoint = ip() . 'pendaftaran/update_permohonan';
+		$data = array();
+		foreach ($this->allowedFields as $r) {
+			$data[$r] = $this->input->post($r, true);
+		}
+
+
+		$data['tblizinpendaftaran_id'] = $this->input->post('tblizinpendaftaran_id');
+		$data['tblpengguna_id'] = $this->input->post('tblpengguna_id');
+		$data['status_online'] = 1;
+
+		$per = $this->get_persyaratan($data['tblizinpermohonan_id']);
+
+		foreach ($per as $r) {
+			$file = $this->upload($r['tblpersyaratan_id']);
+			if ($file) {
+				$data[$r['tblpersyaratan_id']] = new CURLFILE('tmp/' . $file);
+			}
+		}
+
+		$response = $this->sendPostRequest($endpoint, $data, $token['token']);
+
+		if (isset($response['status'])) {
+			if ($response['status']) {
+
+				$this->session->set_flashdata('success', 'Permohonan berhasil diajukan kembali');
+				redirect('permohonan');
+			} else {
+
+				$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
+				redirect('permohonan');
+			}
+		} else {
+			$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
+			redirect('permohonan');
+		}
+	}
 
 	private function upload($str)
 	{
@@ -301,9 +361,10 @@ class Permohonan extends CI_Controller
 
 
 		$id = $this->input->post('id', true);
+
 		$endpoint = 'perizinan/daftar_persyaratan';
 		$data['tblizinpermohonan_id'] = $id;
-
+		$data['tblpemohon_id'] =  $this->input->post('tblpemohon_id', true);
 		$row = $this->reg($endpoint, $data);
 
 		$this->load->view('permohonan/persyaratan', array('row' => $row['data']));

@@ -5,19 +5,23 @@
             <div class="navbar-brand-box">
                 <a href="" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="<?= base_url() ?>tmp/assets/images/logo-sm.svg" alt="" height="30">
+                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
+                            height="30">
                     </span>
-                    <span class="logo-lg">
-                        <img src="<?= base_url() ?>tmp/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Dason</span>
+                    <span class="logo-sm">
+                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
+                            height="24"> <span class="logo-txt">DPMPTSP</span>
                     </span>
                 </a>
 
                 <a href="" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="<?= base_url() ?>tmp/assets/images/logo-sm.svg" alt="" height="30">
+                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
+                            height="40">
                     </span>
                     <span class="logo-lg">
-                        <img src="<?= base_url() ?>tmp/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">DPMPTSP</span>
+                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
+                            height="24"> <span class="logo-txt">DPMPTSP</span>
                     </span>
                 </a>
             </div>
@@ -145,17 +149,24 @@
 
 
             <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item bg-soft-light border-start border-end" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user user-profile-image" src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/Desain%20tanpa%20judul%20(2).png" alt="Header Avatar" id="user_image">
-                    <span class="d-none d-xl-inline-block ms-1 fw-medium setting_user_name" id="setting_user_name"><?= $this->session->nama; ?></span>
+                <button type="button" class="btn header-item bg-soft-light border-start border-end"
+                    id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle header-profile-user user-profile-image"
+                        src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/logo%20tala.png"
+                        alt="Header Avatar" id="user_image">
+                    <span class="d-none d-xl-inline-block ms-1 fw-medium setting_user_name"
+                        id="setting_user_name"><?= $this->session->nama; ?></span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="apps-contacts-profile.php"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Profile</a>
-                    <a class="dropdown-item" href="auth-lock-screen.php"><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> Lock Screen</a>
+                    <a class="dropdown-item" href="apps-contacts-profile.php"><i
+                            class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Profile</a>
+                    <a class="dropdown-item" href="auth-lock-screen.php"><i
+                            class="mdi mdi-lock font-size-16 align-middle me-1"></i> Lock Screen</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="logout.php"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> Logout</a>
+                    <a class="dropdown-item" href="logout.php"><i
+                            class="mdi mdi-logout font-size-16 align-middle me-1"></i> Logout</a>
                 </div>
             </div>
 

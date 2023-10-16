@@ -44,24 +44,27 @@
                         <div class="card">
                             <div class="card-header">
 
-                                Pengajuan Permohonan
+                                Edit Permohonan
                             </div>
-                            <form class="needs-validation" novalidate action="<?= site_url('permohonan/pendaftaran') ?>"
-                                method="POST" enctype="multipart/form-data">
+                            <form class="needs-validation" novalidate
+                                action="<?= site_url('permohonan/update_pendaftaran') ?>" method="POST"
+                                enctype="multipart/form-data">
                                 <div class="card-body">
 
                                     <div class="row">
+                                        <input type="hidden" name="tblizinpendaftaran_id"
+                                            value="<?= $p['tblizinpendaftaran_id'] ?>">
                                         <input type="hidden" name="tblpemohon_id" id="tblpemohon_id"
-                                            value="<?= $this->session->tblpemohon_id ?>">
+                                            value="<?= $p['tblpemohon_id'] ?>">
                                         <input type="hidden" name="tblpengguna_id" id="tblpengguna_id"
-                                            value="<?= $this->session->id ?>">
+                                            value="<?= $p['tblpengguna_id'] ?>">
                                         <div class="col-md-6 col-12 mb-4">
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nomor Identitas</label>
                                                 <input type="number" class="form-control"
                                                     name="tblizinpendaftaran_idpemohon"
                                                     id="tblizinpendaftaran_idpemohon"
-                                                    value="<?= $this->session->no_identitas ?>" required>
+                                                    value="<?= $p['tblizinpendaftaran_idpemohon'] ?>" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12 mb-4">
@@ -70,7 +73,7 @@
                                                 <input type="text" class="form-control"
                                                     name="tblizinpendaftaran_namapemohon"
                                                     id="tblizinpendaftaran_namapemohon"
-                                                    value="<?= $this->session->nama ?>" required>
+                                                    value="<?= $p['tblizinpendaftaran_namapemohon'] ?>" required>
                                             </div>
                                         </div>
 
@@ -79,8 +82,8 @@
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Alamat</label>
                                                 <textarea name="tblizinpendaftaran_almtpemohon"
-                                                    id="tblizinpendaftaran_almtpemohon" class="form-control" rows="2"
-                                                    required><?= $this->session->alamat ?> </textarea>
+                                                    id="tblizinpendaftaran_almtpemohon" class="form-control"
+                                                    required><?= $p['tblizinpendaftaran_almtpemohon'] ?> </textarea>
                                             </div>
                                         </div>
 
@@ -90,7 +93,8 @@
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nomor NPWP</label>
                                                 <input type="number" class="form-control" name="tblizinpendaftaran_npwp"
-                                                    id="tblizinpendaftaran_npwp" required>
+                                                    id="tblizinpendaftaran_npwp"
+                                                    value="<?= $p['tblizinpendaftaran_npwp'] ?>" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12 mb-4">
@@ -99,7 +103,7 @@
                                                 <input type="tel" class="form-control"
                                                     name="tblizinpendaftaran_telponpemohon"
                                                     id="tblizinpendaftaran_telponpemohon" required
-                                                    value="<?= $this->session->telepon ?>">
+                                                    value="<?= $p['tblizinpendaftaran_telponpemohon'] ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12 mb-4">
@@ -109,7 +113,8 @@
                                                     class="form-control" required>
                                                     <option value="">Pilih</option>
                                                     <?php foreach ($izin as $r) : ?>
-                                                    <option value="<?= $r['tblizin_id'] ?>"><?= $r['tblizin_nama'] ?>
+                                                    <option <?= selected($r['tblizin_id'], $p['tblizin_id']) ?>
+                                                        value="<?= $r['tblizin_id'] ?>"><?= $r['tblizin_nama'] ?>
                                                     </option>
                                                     <?php endforeach ?>
                                                 </select>
@@ -131,7 +136,8 @@
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nama Usaha</label>
                                                 <input type="text" class="form-control" name="tblizinpendaftaran_usaha"
-                                                    id="tblizinpendaftaran_usaha" required>
+                                                    id="tblizinpendaftaran_usaha"
+                                                    value="<?= $p['tblizinpendaftaran_usaha'] ?>" required>
                                             </div>
                                         </div>
 
@@ -140,7 +146,8 @@
                                                 <label for="" class="mb-1">Lokasi Usaha / Bangunan</label>
                                                 <input type="text" class="form-control"
                                                     name="tblizinpendaftaran_lokasiizin"
-                                                    id="tblizinpendaftaran_lokasiizin" required>
+                                                    id="tblizinpendaftaran_lokasiizin"
+                                                    value="<?= $p['tblizinpendaftaran_lokasiizin'] ?>" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12 mb-4">
@@ -150,7 +157,9 @@
                                                     class="form-control single-select" required>
                                                     <option value="">Pilih</option>
                                                     <?php foreach ($kecamatan as $r) : ?>
-                                                    <option value="<?= $r['tblkecamatan_id'] ?>">
+                                                    <option
+                                                        <?= selected($r['tblkecamatan_id'], $p['tblkecamatan_id']) ?>
+                                                        value="<?= $r['tblkecamatan_id'] ?>">
                                                         <?= $r['tblkecamatan_nama'] ?>
                                                     </option>
                                                     <?php endforeach ?>
@@ -175,7 +184,7 @@
                                                 <label for="" class="mb-1">Keterangan</label>
                                                 <textarea name="tblizinpendaftaran_keterangan"
                                                     id="tblizinpendaftaran_keterangan" class="form-control" rows="2"
-                                                    required></textarea>
+                                                    required><?= $p['tblizinpendaftaran_keterangan'] ?></textarea>
                                             </div>
                                         </div>
 

@@ -32,7 +32,6 @@ class Registrasi extends CI_Controller
 
 	public function cek()
 	{
-
 		if ($this->input->post('jenis') == 1 && $this->input->post('tblpemohon_npwp') == '') {
 			$this->session->set_flashdata('error', 'Tolong isi NPWP');
 			redirect('registrasi');
@@ -43,18 +42,12 @@ class Registrasi extends CI_Controller
 			redirect('registrasi');
 		}
 
-
-
-
 		$token = $this->jwt->get_token();
-
-
 		if (!$token) {
 			$res = array('status' => false, 'msg' => 'Maaf, terjadi kesalahan');
 			echo json_encode($res, true);
 			die();
 		}
-
 
 		$curl = curl_init();
 
@@ -71,7 +64,7 @@ class Registrasi extends CI_Controller
 
 
 			CURLOPT_POSTFIELDS => '{
-				"jenis" : "' . $this->input->post('jenis') . '",
+			  "jenis" : "' . $this->input->post('jenis') . '",
 			   "tblpemohon_noidentitas" : "' . $this->input->post('tblpemohon_noidentitas') . '",
 			   "tblpemohon_npwp" : "' . $this->input->post('tblpemohon_npwp') . '"
 		   
@@ -124,18 +117,12 @@ class Registrasi extends CI_Controller
 
 	public function daftar()
 	{
-
-
 		$token = $this->jwt->get_token();
-
-
 		if (!$token) {
 			$res = array('status' => false, 'msg' => 'Maaf, terjadi kesalahan');
 			echo json_encode($res, true);
 			die();
 		}
-
-
 
 		$curl = curl_init();
 
@@ -148,10 +135,6 @@ class Registrasi extends CI_Controller
 			CURLOPT_FOLLOWLOCATION => true,
 			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			CURLOPT_CUSTOMREQUEST => 'POST',
-
-
-
-
 
 			CURLOPT_POSTFIELDS => '{
 				"tblpemohon_nama": "' . $this->input->post('tblpemohon_nama') . '",
@@ -179,7 +162,7 @@ class Registrasi extends CI_Controller
 		$response = json_decode($response, true);
 		if (isset($response['status'])) {
 			if ($response['status']) {
-				$this->session->sess_destroy();
+				// $this->session->sess_destroy();
 				$this->session->set_flashdata('success', 'Berhasil mendaftar, silahkan melakukan login untuk memulai sesi');
 				redirect('login');
 			} else {
