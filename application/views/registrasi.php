@@ -2,14 +2,16 @@
 
 <head>
 
-    <title> Dason - Admin & Dashboard Template</title>
+    <title>Registrasi Form</title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesdesign" name="author" />
+    <meta content="Sistem Informasi Manajemen Pelayanan Terpadu Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Kabupaten Tanah Laut" name="description" />
+    <meta content="DPMPTSP" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="<?= base_url() ?>tmp/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/logo%20tala.png">
+
+
 
     <!-- preloader css -->
     <link rel="stylesheet" href="<?= base_url() ?>tmp/assets/css/preloader.min.css" type="text/css" />
