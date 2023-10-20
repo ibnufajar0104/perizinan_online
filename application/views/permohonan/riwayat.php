@@ -36,6 +36,7 @@
                     </div>
                 </div>
                 <!-- end page title -->
+                <?php if ($riwayat) : ?>
 
 
                 <?php foreach ($riwayat as $r) : ?>
@@ -160,6 +161,25 @@
                     </div> <!-- end col -->
                 </div>
                 <?php endforeach ?>
+                <?php else : ?>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+
+                            <div class="card-body">
+
+
+                                <div class="row">
+
+                                    <div class="col-md-12 text-center">
+                                        <p>Belum ada riwayat permohonan</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+                </div>
+                <?php endif ?>
                 <!-- end row -->
 
 
