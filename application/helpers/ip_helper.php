@@ -2,8 +2,8 @@
 
 function ip()
 {
-    return 'http://172.16.36.105/ptsp/';
-    // return 'http://192.168.100.100/ptsp/';
+    // return 'http://172.16.36.105/ptsp/';
+    return 'http://192.168.100.100/ptsp/';
 }
 
 function dd($str)
@@ -21,4 +21,24 @@ function selected($x, $y)
     }
 
     return '';
+}
+
+function fail($msg = 'Maaf, terjadi kesalahan')
+{
+    $res = array('status' => false, 'msg' => $msg);
+    echo json_encode($res, true);
+    die();
+}
+
+function success($msg)
+{
+    $res = array('status' => true, 'msg' => $msg);
+    echo json_encode($res, true);
+    die();
+}
+
+function return_json($str)
+{
+    echo json_encode($str, true);
+    die();
 }

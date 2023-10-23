@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Login extends CI_Controller
 {
 
+	protected $url = 'login';
 	public function __construct()
 	{
 		parent::__construct();
@@ -14,8 +15,9 @@ class Login extends CI_Controller
 	public function index()
 	{
 
-
-		$this->load->view('login');
+		$data['title'] = 'Login';
+		$data['js'] = $this->url . '/js';
+		$this->load->view($this->url . '/view', $data);
 	}
 
 	public	function form()

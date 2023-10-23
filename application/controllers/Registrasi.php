@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Registrasi extends CI_Controller
 {
 
-
+	protected $url = 'registrasi';
 	public function __construct()
 	{
 		parent::__construct();
@@ -14,7 +14,9 @@ class Registrasi extends CI_Controller
 
 	public function index()
 	{
-		$this->load->view('registrasi');
+		$data['title'] = 'Cek Pendaftaran';
+		$data['js'] = $this->url . '/js';
+		$this->load->view($this->url . '/view', $data);
 	}
 
 
@@ -33,56 +35,20 @@ class Registrasi extends CI_Controller
 	public function cek()
 	{
 		if ($this->input->post('jenis') == 1 && $this->input->post('tblpemohon_npwp') == '') {
-			$this->session->set_flashdata('error', 'Tolong isi NPWP');
-			redirect('registrasi');
+			fail('Tolong isi NPWP');
 		}
 
 		if ($this->input->post('jenis') == 2 && $this->input->post('tblpemohon_noidentitas') == '') {
-			$this->session->set_flashdata('error', 'Tolong isi NIK');
-			redirect('registrasi');
+			fail('Tolong isi NIK');
 		}
 
 		$token = $this->jwt->get_token();
-		if (!$token) {
-			$res = array('status' => false, 'msg' => 'Maaf, terjadi kesalahan');
-			echo json_encode($res, true);
-			die();
-		}
-
-		$curl = curl_init();
-
-		curl_setopt_array($curl, array(
-			CURLOPT_URL => ip() . 'pendaftaran/pernah_daftar',
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_ENCODING => '',
-			CURLOPT_MAXREDIRS => 10,
-			CURLOPT_TIMEOUT => 0,
-			CURLOPT_FOLLOWLOCATION => true,
-			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-			CURLOPT_CUSTOMREQUEST => 'POST',
+		$d['jenis'] = $this->input->post('jenis');
+		$d['tblpemohon_noidentitas'] =  $this->input->post('tblpemohon_noidentitas');
+		$d['tblpemohon_npwp'] =  $this->input->post('tblpemohon_npwp');
 
 
-
-			CURLOPT_POSTFIELDS => '{
-			  "jenis" : "' . $this->input->post('jenis') . '",
-			   "tblpemohon_noidentitas" : "' . $this->input->post('tblpemohon_noidentitas') . '",
-			   "tblpemohon_npwp" : "' . $this->input->post('tblpemohon_npwp') . '"
-		   
-		   }',
-
-
-			CURLOPT_HTTPHEADER => array(
-				'Content-Type: application/json',
-				'Authorization: Bearer ' . $token['token']
-			),
-		));
-
-		$response = curl_exec($curl);
-
-		curl_close($curl);
-
-		$response = json_decode($response, true);
-
+		$response = $this->jwt->request(ip() . 'permohonan/cek_pernah_daftar', 'POST', json_encode($d), $token);
 
 		if (isset($response['status'])) {
 			if ($response['status']) {
@@ -92,26 +58,18 @@ class Registrasi extends CI_Controller
 				);
 
 				$this->session->set_userdata($newdata);
-				$this->session->set_flashdata('success', $response['msg']);
-				redirect('registrasi/form');
-			} else {
-				$newdata = array(
-					'cek' => false,
-				);
-
-				$this->session->set_userdata($newdata);
-				$this->session->set_flashdata('error', $response['msg']);
-				redirect('registrasi');
 			}
-		} else {
-			$newdata = array(
-				'cek' => false,
-			);
 
-			$this->session->set_userdata($newdata);
-			$this->session->set_flashdata('error', 'Terjadi kesalahan');
-			redirect('registrasi');
+			return_json($response);
 		}
+
+
+		$newdata = array(
+			'cek' => false,
+		);
+
+		$this->session->set_userdata($newdata);
+		fail();
 	}
 
 
