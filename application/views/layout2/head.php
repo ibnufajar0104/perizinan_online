@@ -33,17 +33,21 @@
         type="text/css" />
 
     <style>
-    /* Default padding for larger screens */
+    body {
+        background-color: #B6ECFF;
+    }
+
     .form-padding {
         padding: 40px;
     }
 
-    /* Apply different padding for screens with a maximum width of 767px (typical for mobile devices) */
-
-
-
     .card {
         border-radius: 10px;
+    }
+
+
+    .form-image {
+        margin-top: 40px;
     }
 
     @media only screen and (max-width: 600px) {
