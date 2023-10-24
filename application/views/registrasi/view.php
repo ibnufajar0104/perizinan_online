@@ -2,114 +2,56 @@
 
 <body data-layout="horizontal" data-topbar="dark">
 
-    <div class="auth-page">
-        <div class="container-fluid p-0">
-            <div class="row g-0">
-                <div class="col-md-6">
-                    <div class="auth-bg pt-md-5 p-4 d-flex">
-                        <div class="bg-overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center align-items-center" style="height: 100vh;">
+            <div class="col-md-12">
+                <div class="card  d-flex flex-column align-items-center mt-4">
+                    <div class="row">
+                        <div class="col-md-6 text-center d-flex justify-content-center align-items-center ">
+
+                            <img src="<?= base_url('tmp/assets/images/bg.png') ?>" alt="" width="400">
+                        </div>
+
+                        <div class="col-md-6 mt-5">
+                            <h5 class="text-center"><?= aplikasi() ?></h5>
+                            <p class="text-center mt-4">Daftar terlebih dahulu, untuk bisa melakukan login</p>
+                            <form method="post" action="<?= base_url('registrasi/cek') ?>"
+                                class="form-cek-pendaftaran p-4">
+                                <div class="form-group  mt-4">
+                                    <label for="jenis_pemohon">Status Pemohon</label>
+                                    <select name="jenis" id="jenis" class="form-control" required>
+                                        <option value="0">Pilih</option>
+                                        <option value="1">Badan Usaha</option>
+                                        <option value="2">Pribadi/Perorangan</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group mt-4 npwp">
+                                    <label for="jenis_pemohon">NPWP</label>
+                                    <input type="text" name="tblpemohon_npwp" id="tblpemohon_npwp" class="form-control">
+                                </div>
+
+                                <div class="form-group mt-4 nik">
+                                    <label for="jenis_pemohon">NIK</label>
+                                    <input type="text" name="tblpemohon_noidentitas" id="tblpemohon_noidentitas"
+                                        class="form-control">
+                                </div>
+
+                                <div class="mt-4 mb-3">
 
 
-                        <div class="row justify-content-center align-items-end">
 
+                                    <button type="submit" class="btn btn-primary w-100 waves-effect waves-light">Cek
+                                        Pernah
+                                        Mendaftar</button>
+                                </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="auth-full-page-content d-flex p-sm-5 p-4">
-                        <div class="w-100">
-                            <div class="d-flex flex-column h-100">
-                                <!-- <div class="mb-4 mb-md-5 text-center">
-                                    <a href="index.php" class="d-block auth-logo">
-                                        <img src="<?= base_url() ?>tmp/assets/images/logo-sm.svg" alt="" height="28"> <span
-                                            class="logo-txt">Dason</span>
-                                    </a>
-                                </div> -->
-                                <div class="auth-content my-auto">
-                                    <div class="text-center">
-                                        <h5 class="mb-0">Sistem Informasi Manajemen Pelayanan Terpadu
-                                            Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu
-                                            Kabupaten Tanah Laut</h5>
-                                        <p class="text-muted mt-4 mb-4">Untuk bisa login silahkan register terlebih
-                                            dahulu.
-                                        </p>
-                                    </div>
-                                    <form method="post" action="<?= base_url('registrasi/cek') ?>" class="form-cek-pendaftaran">
-                                        <div class="form-group  mt-4">
-                                            <label for="jenis_pemohon">Status Pemohon</label>
-                                            <select name="jenis" id="jenis" class="form-control" required>
-                                                <option value="">Pilih</option>
-                                                <option value="1">Badan Usaha</option>
-                                                <option value="2">Pribadi/Perorangan</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group mt-4 npwp">
-                                            <label for="jenis_pemohon">NPWP</label>
-                                            <input type="text" name="tblpemohon_npwp" id="tblpemohon_npwp" class="form-control">
-                                        </div>
-
-                                        <div class="form-group mt-4 nik">
-                                            <label for="jenis_pemohon">NIK</label>
-                                            <input type="text" name="tblpemohon_noidentitas" id="tblpemohon_noidentitas" class="form-control">
-                                        </div>
-
-                                        <div class="mt-4 mb-3">
-
-
-
-                                            <button type="submit" class="btn btn-primary w-100 waves-effect waves-light">Cek Pernah
-                                                Mendaftar</button>
-                                        </div>
-
-                                    </form>
-
-                                    <!-- <div class="mt-4 pt-2 text-center">
-                                        <div class="signin-other-title">
-                                            <h5 class="font-size-14 mb-3 text-muted fw-medium">- Sign in with -</h5>
-                                        </div>
-
-                                        <ul class="list-inline mb-0">
-                                            <li class="list-inline-item">
-                                                <a href="javascript:void()" class="social-list-item bg-primary text-white border-primary">
-                                                    <i class="mdi mdi-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="javascript:void()" class="social-list-item bg-info text-white border-info">
-                                                    <i class="mdi mdi-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="javascript:void()" class="social-list-item bg-danger text-white border-danger">
-                                                    <i class="mdi mdi-google"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div> -->
-
-                                    <!-- <div class="mt-5 text-center">
-                                        <p class="text-muted mb-0">Don't have an account ? <a href="auth-register.php" class="text-primary fw-semibold"> Signup now </a> </p>
-                                    </div> -->
-                                </div>
-                                <div class="mt-4 mt-md-5 text-center">
-                                    <!-- <p class="mb-0">© <script>
-                                            document.write(new Date().getFullYear())
-                                        </script> Dason . Crafted with <i class="mdi mdi-heart text-danger"></i> by
-                                        Themesdesign</p> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end auth full page content -->
-                </div>
-                <!-- end col -->
-
-                <!-- end col -->
             </div>
-            <!-- end row -->
         </div>
-        <!-- end container fluid -->
     </div>
 
 

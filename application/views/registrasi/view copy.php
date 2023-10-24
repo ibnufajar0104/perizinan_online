@@ -21,8 +21,8 @@
                             <div class="d-flex flex-column h-100">
                                 <!-- <div class="mb-4 mb-md-5 text-center">
                                     <a href="index.php" class="d-block auth-logo">
-                                        <img src="<?= base_url() ?>tmp/assets/images/logo-sm.svg" alt="" height="28">
-                                        <span class="logo-txt">Dason</span>
+                                        <img src="<?= base_url() ?>tmp/assets/images/logo-sm.svg" alt="" height="28"> <span
+                                            class="logo-txt">Dason</span>
                                     </a>
                                 </div> -->
                                 <div class="auth-content my-auto">
@@ -34,19 +34,27 @@
                                             dahulu.
                                         </p>
                                     </div>
-                                    <form method="post" action="<?= site_url('login/form') ?>">
-
-
-                                        <div class="form-group mt-4">
-                                            <label for="jenis_pemohon">Username</label>
-                                            <input type="text" name="username" id="username" class="form-control"
-                                                required>
+                                    <form method="post" action="<?= base_url('registrasi/cek') ?>"
+                                        class="form-cek-pendaftaran">
+                                        <div class="form-group  mt-4">
+                                            <label for="jenis_pemohon">Status Pemohon</label>
+                                            <select name="jenis" id="jenis" class="form-control" required>
+                                                <option value="0">Pilih</option>
+                                                <option value="1">Badan Usaha</option>
+                                                <option value="2">Pribadi/Perorangan</option>
+                                            </select>
                                         </div>
 
-                                        <div class="form-group mt-4">
-                                            <label for="jenis_pemohon">Password</label>
-                                            <input type="password" name="password" id="password" class="form-control"
-                                                required>
+                                        <div class="form-group mt-4 npwp">
+                                            <label for="jenis_pemohon">NPWP</label>
+                                            <input type="text" name="tblpemohon_npwp" id="tblpemohon_npwp"
+                                                class="form-control">
+                                        </div>
+
+                                        <div class="form-group mt-4 nik">
+                                            <label for="jenis_pemohon">NIK</label>
+                                            <input type="text" name="tblpemohon_noidentitas" id="tblpemohon_noidentitas"
+                                                class="form-control">
                                         </div>
 
                                         <div class="mt-4 mb-3">
@@ -54,7 +62,8 @@
 
 
                                             <button type="submit"
-                                                class="btn btn-primary w-100 waves-effect waves-light">Login</button>
+                                                class="btn btn-primary w-100 waves-effect waves-light">Cek Pernah
+                                                Mendaftar</button>
                                         </div>
 
                                     </form>
@@ -83,11 +92,9 @@
                                         </ul>
                                     </div> -->
 
-                                    <div class="mt-5 text-center">
-                                        <p class="text-muted mb-0">Belum punya akun ? <a
-                                                href="<?= site_url('registrasi') ?>" class="text-primary fw-semibold">
-                                                Registrasi Sekarang </a> </p>
-                                    </div>
+                                    <!-- <div class="mt-5 text-center">
+                                        <p class="text-muted mb-0">Don't have an account ? <a href="auth-register.php" class="text-primary fw-semibold"> Signup now </a> </p>
+                                    </div> -->
                                 </div>
                                 <div class="mt-4 mt-md-5 text-center">
                                     <!-- <p class="mb-0">© <script>

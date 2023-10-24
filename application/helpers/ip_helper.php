@@ -2,14 +2,19 @@
 
 function ip()
 {
-    // return 'http://172.16.36.105/ptsp/';
-    return 'http://192.168.100.100/ptsp/';
+    return 'http://172.16.36.105/ptsp/';
+    // return 'http://192.168.100.100/ptsp/';
 }
 
 function dd($str)
 {
     echo json_encode($str, true);
     die();
+}
+
+function aplikasi()
+{
+    return 'Pelayanan Terpadu Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Kabupaten Tanah Laut';
 }
 
 

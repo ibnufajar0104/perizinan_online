@@ -5,6 +5,7 @@ class Registrasi extends CI_Controller
 {
 
 	protected $url = 'registrasi';
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -29,7 +30,9 @@ class Registrasi extends CI_Controller
 			redirect('registrasi');
 		}
 
-		$this->load->view('registrasi_form');
+		$data['title'] = 'Registrasi';
+		$data['js'] =  'registrasi_form/js';
+		$this->load->view('registrasi_form/view', $data);
 	}
 
 	public function cek()
@@ -75,62 +78,16 @@ class Registrasi extends CI_Controller
 
 	public function daftar()
 	{
+
+		$arr = ['tblpemohon_nama', 'tblpemohon_alamat', 'tblpemohon_npwp', 'tblpemohon_telpon', 'tblpemohon_email', 'tblpemohon_noidentitas', 'username', 'tblpengguna_password'];
 		$token = $this->jwt->get_token();
-		if (!$token) {
-			$res = array('status' => false, 'msg' => 'Maaf, terjadi kesalahan');
-			echo json_encode($res, true);
-			die();
+
+		foreach ($arr as $r) {
+			$d[$r] = $this->input->post($r, true);
 		}
 
-		$curl = curl_init();
 
-		curl_setopt_array($curl, array(
-			CURLOPT_URL => ip() . 'pendaftaran/daftar_akun',
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_ENCODING => '',
-			CURLOPT_MAXREDIRS => 10,
-			CURLOPT_TIMEOUT => 0,
-			CURLOPT_FOLLOWLOCATION => true,
-			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-			CURLOPT_CUSTOMREQUEST => 'POST',
-
-			CURLOPT_POSTFIELDS => '{
-				"tblpemohon_nama": "' . $this->input->post('tblpemohon_nama') . '",
-				 "tblpemohon_alamat": "' . $this->input->post('tblpemohon_alamat') . '",
-				 "tblpemohon_npwp": "",
-				 "tblpemohon_telpon": "' . $this->input->post('tblpemohon_telpon') . '",
-				 "tblpemohon_email": "' . $this->input->post('tblpemohon_email') . '",
-				 "tblpemohon_noidentitas" : "' . $this->input->post('tblpemohon_noidentitas') . '",
-				 "username" : "' . $this->input->post('username') . '",
-				 "tblpengguna_password" : "' . $this->input->post('tblpengguna_password') . '"
-
-			 }',
-
-
-			CURLOPT_HTTPHEADER => array(
-				'Content-Type: application/json',
-				'Authorization: Bearer ' . $token['token']
-			),
-		));
-
-		$response = curl_exec($curl);
-
-		curl_close($curl);
-
-		$response = json_decode($response, true);
-		if (isset($response['status'])) {
-			if ($response['status']) {
-				// $this->session->sess_destroy();
-				$this->session->set_flashdata('success', 'Berhasil mendaftar, silahkan melakukan login untuk memulai sesi');
-				redirect('login');
-			} else {
-
-				$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
-				redirect('registrasi/form');
-			}
-		} else {
-			$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
-			redirect('registrasi/form');
-		}
+		$response = $this->jwt->request(ip() . 'permohonan/daftar_akun', 'POST', json_encode($d), $token);
+		return_json($response);
 	}
 }
