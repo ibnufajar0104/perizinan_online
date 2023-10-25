@@ -6,7 +6,7 @@
                 <a href="" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
-                            height="30">
+                            height="24">
                     </span>
                     <span class="logo-sm">
                         <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
@@ -15,16 +15,19 @@
                 </a>
 
                 <a href="" class="logo logo-light">
-                    <span class="logo-sm">
-                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
-                            height="40">
-                    </span>
+
                     <span class="logo-lg">
                         <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
-                            height="24"> <span class="logo-txt">DPMPTSP</span>
+                            height="40"> <span class="logo-txt"></span>
                     </span>
                 </a>
             </div>
+
+            <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
+                data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+                <i class="fa fa-fw fa-bars"></i>
+            </button>
+
 
         </div>
 

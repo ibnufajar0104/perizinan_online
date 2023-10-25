@@ -88,6 +88,11 @@ class Registrasi extends CI_Controller
 
 
 		$response = $this->jwt->request(ip() . 'permohonan/daftar_akun', 'POST', json_encode($d), $token);
-		return_json($response);
+		if (isset($response['status'])) {
+			$this->session->unset_userdata('cek');
+			return_json($response);
+		}
+
+		fail();
 	}
 }

@@ -48,14 +48,14 @@ class Permohonan extends CI_Controller
 	{
 
 		$id = $this->session->tblpemohon_id;
-		$endpoint = 'pendaftaran/riwayat_permohonan';
 		$d['tblpemohon_id'] = $id;
 
-		$row = $this->reg($endpoint, $d);
+		$token = $this->jwt->get_token();
+		$response = $this->jwt->request(ip() . 'permohonan/riwayat_permohonan', 'POST', $d, $token);
 
 		$r = [];
-		if ($row['data']) {
-			$r = $row['data'];
+		if (isset($response['data'])) {
+			$r = $response['data'];
 		}
 		$data['riwayat'] = $r;
 		$data['title'] = 'Riwayat Permohonan';
@@ -216,96 +216,114 @@ class Permohonan extends CI_Controller
 		echo json_encode($row);
 	}
 
-	public function pendaftaran()
+	// public function pendaftaran()
+	// {
+	// 	$token = $this->jwt->get_token();
+	// 	if (!$token) {
+	// 		$res = array('status' => false, 'msg' => 'Maaf, terjadi kesalahan');
+	// 		echo json_encode($res, true);
+	// 		die();
+	// 	}
+
+	// 	$endpoint = ip() . 'pendaftaran/permohonan';
+	// 	$data = array();
+	// 	foreach ($this->allowedFields as $r) {
+	// 		$data[$r] = $this->input->post($r, true);
+	// 	}
+
+	// 	$data['tblpengguna_id'] = $this->input->post('tblpengguna_id');
+	// 	$data['status_online'] = 1;
+
+	// 	$per = $this->get_persyaratan($data['tblizinpermohonan_id']);
+
+	// 	foreach ($per as $r) {
+	// 		$file = $this->upload($r['tblpersyaratan_id']);
+	// 		if ($file) {
+	// 			$data[$r['tblpersyaratan_id']] = new CURLFILE('tmp/' . $file);
+	// 		}
+	// 	}
+
+	// 	$response = $this->sendPostRequest($endpoint, $data, $token['token']);
+
+	// 	if (isset($response['status'])) {
+	// 		if ($response['status']) {
+
+	// 			$this->session->set_flashdata('success', 'Permohonan berhasil diajukan');
+	// 			redirect('permohonan');
+	// 		} else {
+
+	// 			$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
+	// 			redirect('permohonan');
+	// 		}
+	// 	} else {
+	// 		$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
+	// 		redirect('permohonan');
+	// 	}
+	// }
+
+	// public function update_pendaftaran()
+	// {
+	// 	$token = $this->jwt->get_token();
+	// 	if (!$token) {
+	// 		$res = array('status' => false, 'msg' => 'Maaf, terjadi kesalahan');
+	// 		echo json_encode($res, true);
+	// 		die();
+	// 	}
+
+	// 	$endpoint = ip() . 'pendaftaran/update_permohonan';
+	// 	$data = array();
+	// 	foreach ($this->allowedFields as $r) {
+	// 		$data[$r] = $this->input->post($r, true);
+	// 	}
+
+
+	// 	$data['tblizinpendaftaran_id'] = $this->input->post('tblizinpendaftaran_id');
+	// 	$data['tblpengguna_id'] = $this->input->post('tblpengguna_id');
+	// 	$data['status_online'] = 1;
+
+	// 	$per = $this->get_persyaratan($data['tblizinpermohonan_id']);
+
+	// 	foreach ($per as $r) {
+	// 		$file = $this->upload($r['tblpersyaratan_id']);
+	// 		if ($file) {
+	// 			$data[$r['tblpersyaratan_id']] = new CURLFILE('tmp/' . $file);
+	// 		}
+	// 	}
+
+	// 	$response = $this->sendPostRequest($endpoint, $data, $token['token']);
+
+	// 	if (isset($response['status'])) {
+	// 		if ($response['status']) {
+
+	// 			$this->session->set_flashdata('success', 'Permohonan berhasil diajukan kembali');
+	// 			redirect('permohonan');
+	// 		} else {
+
+	// 			$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
+	// 			redirect('permohonan');
+	// 		}
+	// 	} else {
+	// 		$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
+	// 		redirect('permohonan');
+	// 	}
+	// }
+
+	public function get_persyaratan()
 	{
+
+
+		$id = $this->input->post('id', true);
+		$d['id_permohonan'] = $id;
+		$d['id_pemohon'] = $this->session->tblpemohon_id;
+
 		$token = $this->jwt->get_token();
-		if (!$token) {
-			$res = array('status' => false, 'msg' => 'Maaf, terjadi kesalahan');
-			echo json_encode($res, true);
-			die();
-		}
+		$response = $this->jwt->request(ip() . 'permohonan/get_persyaratan', 'POST', json_encode($d), $token);
 
-		$endpoint = ip() . 'pendaftaran/permohonan';
-		$data = array();
-		foreach ($this->allowedFields as $r) {
-			$data[$r] = $this->input->post($r, true);
-		}
-
-		$data['tblpengguna_id'] = $this->input->post('tblpengguna_id');
-		$data['status_online'] = 1;
-
-		$per = $this->get_persyaratan($data['tblizinpermohonan_id']);
-
-		foreach ($per as $r) {
-			$file = $this->upload($r['tblpersyaratan_id']);
-			if ($file) {
-				$data[$r['tblpersyaratan_id']] = new CURLFILE('tmp/' . $file);
-			}
-		}
-
-		$response = $this->sendPostRequest($endpoint, $data, $token['token']);
-
-		if (isset($response['status'])) {
-			if ($response['status']) {
-
-				$this->session->set_flashdata('success', 'Permohonan berhasil diajukan');
-				redirect('permohonan');
-			} else {
-
-				$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
-				redirect('permohonan');
-			}
-		} else {
-			$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
-			redirect('permohonan');
-		}
+		$this->load->view('permohonan/persyaratan', array('row' => $response['data']));
 	}
 
-	public function update_pendaftaran()
+	public function get_persyaratan_by_id_permohonan()
 	{
-		$token = $this->jwt->get_token();
-		if (!$token) {
-			$res = array('status' => false, 'msg' => 'Maaf, terjadi kesalahan');
-			echo json_encode($res, true);
-			die();
-		}
-
-		$endpoint = ip() . 'pendaftaran/update_permohonan';
-		$data = array();
-		foreach ($this->allowedFields as $r) {
-			$data[$r] = $this->input->post($r, true);
-		}
-
-
-		$data['tblizinpendaftaran_id'] = $this->input->post('tblizinpendaftaran_id');
-		$data['tblpengguna_id'] = $this->input->post('tblpengguna_id');
-		$data['status_online'] = 1;
-
-		$per = $this->get_persyaratan($data['tblizinpermohonan_id']);
-
-		foreach ($per as $r) {
-			$file = $this->upload($r['tblpersyaratan_id']);
-			if ($file) {
-				$data[$r['tblpersyaratan_id']] = new CURLFILE('tmp/' . $file);
-			}
-		}
-
-		$response = $this->sendPostRequest($endpoint, $data, $token['token']);
-
-		if (isset($response['status'])) {
-			if ($response['status']) {
-
-				$this->session->set_flashdata('success', 'Permohonan berhasil diajukan kembali');
-				redirect('permohonan');
-			} else {
-
-				$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
-				redirect('permohonan');
-			}
-		} else {
-			$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
-			redirect('permohonan');
-		}
 	}
 
 	private function upload($str)
@@ -347,18 +365,12 @@ class Permohonan extends CI_Controller
 	public function permohonan_by_id_pemohon()
 	{
 
-		$endpoint = 'pendaftaran/get_by_pemohon';
-		$data = array();
+		$d['tblpemohon_id'] = $this->session->tblpemohon_id;
+		$token = $this->jwt->get_token();
+		$response = $this->jwt->request(ip() . 'permohonan/get_by_id_pemohon', 'POST', $d, $token);
 
-
-		$data['tblpemohon_id'] = $this->session->tblpemohon_id;
-
-
-
-		$row = $this->reg($endpoint, $data);
-
-		if (isset($row['data'])) {
-			return $row['data'];
+		if (isset($response['data'])) {
+			return $response['data'];
 		}
 
 		return [];
@@ -376,136 +388,4 @@ class Permohonan extends CI_Controller
 		$row = $this->reg($endpoint, $data);
 		return $row['data'];
 	}
-
-	public function daftar_persyaratan()
-	{
-
-
-		$id = $this->input->post('id', true);
-
-		$endpoint = 'perizinan/daftar_persyaratan';
-		$data['tblizinpermohonan_id'] = $id;
-		$data['tblpemohon_id'] =  $this->input->post('tblpemohon_id', true);
-		$row = $this->reg($endpoint, $data);
-
-		$this->load->view('permohonan/persyaratan', array('row' => $row['data']));
-	}
-
-	public function get_persyaratan($id)
-	{
-
-
-
-		$endpoint = 'perizinan/daftar_persyaratan';
-		$data['tblizinpermohonan_id'] = $id;
-
-		$row = $this->reg($endpoint, $data);
-
-		return $row['data'];
-	}
-
-	private function reg($apiEndpoint, $postData)
-	{
-		$token = $this->jwt->get_token();
-		if (!$token) {
-			$res = array('status' => false, 'msg' => 'Maaf, terjadi kesalahan');
-			echo json_encode($res, true);
-			die();
-		}
-
-		$curl = curl_init();
-
-		$url = ip() . $apiEndpoint;
-
-		curl_setopt_array($curl, array(
-			CURLOPT_URL => $url,
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_ENCODING => '',
-			CURLOPT_MAXREDIRS => 10,
-			CURLOPT_TIMEOUT => 0,
-			CURLOPT_FOLLOWLOCATION => true,
-			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-			CURLOPT_CUSTOMREQUEST => 'POST',
-			CURLOPT_POSTFIELDS => json_encode($postData), // Convert the data to JSON
-
-			CURLOPT_HTTPHEADER => array(
-				'Content-Type: application/json',
-				'Authorization: Bearer ' . $token['token']
-			),
-		));
-
-		$response = curl_exec($curl);
-
-		curl_close($curl);
-
-		$row = json_decode($response, true);
-		return $row;
-	}
-
-	public function sendPostRequest($url, $postData, $token)
-	{
-		$curl = curl_init();
-		$headers = array(
-			'Authorization: Bearer ' . $token, // Use the dynamic token here
-		);
-		curl_setopt_array($curl, array(
-			CURLOPT_URL => $url,
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_ENCODING => '',
-			CURLOPT_MAXREDIRS => 10,
-			CURLOPT_TIMEOUT => 0,
-			CURLOPT_FOLLOWLOCATION => true,
-			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-			CURLOPT_CUSTOMREQUEST => 'POST',
-			CURLOPT_POSTFIELDS => $postData,
-			CURLOPT_HTTPHEADER => $headers,
-		));
-
-		$response = curl_exec($curl);
-
-		curl_close($curl);
-
-
-		$row = json_decode($response, true);
-		return $row;
-	}
-
-	// private function reg2($apiEndpoint, $postData)
-	// {
-	// 	$token = $this->jwt->get_token();
-	// 	if (!$token) {
-	// 		$res = array('status' => false, 'msg' => 'Maaf, terjadi kesalahan');
-	// 		echo json_encode($res, true);
-	// 		die();
-	// 	}
-
-	// 	$curl = curl_init();
-
-	// 	$url = ip() . $apiEndpoint;
-
-	// 	curl_setopt_array($curl, array(
-
-	// 		CURLOPT_URL => $url,
-	// 		CURLOPT_RETURNTRANSFER => true,
-	// 		CURLOPT_ENCODING => '',
-	// 		CURLOPT_MAXREDIRS => 10,
-	// 		CURLOPT_TIMEOUT => 0,
-	// 		CURLOPT_FOLLOWLOCATION => true,
-	// 		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-	// 		CURLOPT_CUSTOMREQUEST => 'POST',
-	// 		CURLOPT_POSTFIELDS => $postData,
-
-	// 		CURLOPT_HTTPHEADER => array(
-	// 			'Content-Type: application/json',
-	// 			'Authorization: Bearer ' . $token['token']
-	// 		),
-	// 	));
-
-	// 	$response = curl_exec($curl);
-
-	// 	curl_close($curl);
-
-	// 	$row = json_decode($response, true);
-	// 	return $row;
-	// }
 }

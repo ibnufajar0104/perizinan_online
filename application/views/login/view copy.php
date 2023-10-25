@@ -34,7 +34,7 @@
                                             dahulu.
                                         </p>
                                     </div>
-                                    <form method="post" action="<?= site_url('login/form') ?>">
+                                    <form method="post" class="login-form">
 
 
                                         <div class="form-group mt-4">

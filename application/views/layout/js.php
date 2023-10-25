@@ -142,8 +142,7 @@
 <script src="<?= base_url() ?>tmp/assets/libs/pace-js/pace.min.js"></script>
 
 <script src="<?= base_url() ?>tmp/assets/js/app.js"></script>
-<!-- pristine js -->
-<script src="<?= base_url() ?>tmp/assets/libs/pristinejs/pristine.min.js"></script>
+
 <!-- form validation -->
 <script src="<?= base_url() ?>tmp/assets/js/pages/form-validation.init.js"></script>
 
@@ -154,10 +153,6 @@
 
 <!-- Responsive examples -->
 <script src="<?= base_url() ?>tmp/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-
-
-<!-- Datatable init js -->
-<script src="<?= base_url() ?>tmp/assets/js/pages/datatables.init.js"></script>
 
 <!-- alertifyjs js -->
 <script src="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/alertify.min.js"></script>
@@ -198,7 +193,7 @@ $(document).ready(function() {
 
     setTimeout(function() {
         $('.persyaratan_upload').prop('required', false);
-    }, 2000); // 2000 milidetik = 2 detik
+    }, 2000);
     <?php endif ?>
 });
 
@@ -210,12 +205,16 @@ $('#tblizin_id').change(function() {
 $('#tblkecamatan_id').change(function() {
     kelurahan_dinamis($(this).val(), '#tblkelurahan_id');
 });
+$('#tblizinpermohonan_id').change(function() {
+
+    persyaratan_dinamis($(this).val());
+});
 
 function permohonan_dinamis(id, el, select = null) {
 
     $(el).find('option').not(':first').remove();
     $.ajax({
-        url: "<?php echo site_url('permohonan/daftar_permohonan') ?>", // Ganti dengan URL yang sesuai
+        url: "<?php echo site_url('permohonan/daftar_permohonan') ?>",
         type: 'POST',
         data: {
             tblizin_id: id,
@@ -243,11 +242,11 @@ function permohonan_dinamis(id, el, select = null) {
     });
 }
 
-function kelurahan_dinamis(id, el, select) {
+function kelurahan_dinamis(id, el, select = null) {
 
     $(el).find('option').not(':first').remove();
     $.ajax({
-        url: "<?php echo site_url('permohonan/daftar_kelurahan') ?>", // Ganti dengan URL yang sesuai
+        url: "<?php echo site_url('permohonan/daftar_kelurahan') ?>",
         type: 'POST',
         data: {
             id_kecamatan: id,
@@ -276,22 +275,13 @@ function kelurahan_dinamis(id, el, select) {
     });
 }
 
-
-$('#tblizinpermohonan_id').change(function() {
-
-    persyaratan_dinamis($(this).val());
-});
-
-
-function persyaratan_dinamis(id, tblpemohon_id = null) {
+function persyaratan_dinamis(id) {
 
     $.ajax({
-        url: "<?php echo site_url('permohonan/daftar_persyaratan') ?>", // Ganti dengan URL yang sesuai
+        url: "<?php echo site_url('permohonan/get_persyaratan') ?>",
         type: 'POST',
         data: {
             id: id,
-            tblpemohon_id: tblpemohon_id
-
         },
         dataType: 'html',
         success: function(response) {

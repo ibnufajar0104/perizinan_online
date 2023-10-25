@@ -34,7 +34,7 @@
 
     <style>
     body {
-        background-color: #B6ECFF;
+        background-color: #f5f5dc;
     }
 
     .form-padding {

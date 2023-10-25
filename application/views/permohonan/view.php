@@ -44,15 +44,16 @@
 
                                 <?php if ($permohonan) : ?>
                                 Selalu periksa perkembangan permohonan anda dengan mengklik "opsi" kemudian klik
-                                "detail"
+                                "Detail"
                                 <?php else : ?>
-                                Mulai permohonan anda dengan menekan tombol "Ajukan Permohonan".
+                                Mulai permohonan anda dengan menekan tombol "Ajukan Permohonan"
                                 <?php endif ?>
 
 
 
 
-                                <a href="<?= site_url('permohonan/form') ?>" class="btn btn-primary float-sm-end">Ajukan
+                                <a href="<?= site_url('permohonan/form') ?>"
+                                    class="btn btn-primary float-sm-end mt-md-0 mt-4">Ajukan
                                     Permohonan</a>
 
                             </div>

@@ -36,13 +36,13 @@ $('.form-daftar').submit(function(e) {
         } else {
 
 
-            // if (response.status) {
+            if (response.status) {
 
-            //     success(response.msg);
-            //     new_location(global_url + 'form');
-            // } else {
-            //     fail(response.msg);
-            // }
+                success(response.msg);
+                new_location('<?= site_url('login') ?>');
+            } else {
+                fail(response.msg);
+            }
 
 
         }

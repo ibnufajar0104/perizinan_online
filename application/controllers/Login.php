@@ -28,78 +28,37 @@ class Login extends CI_Controller
 
 		if ($this->form_validation->run() == FALSE) {
 
-			$this->session->set_flashdata('error', 'Form tidak lengkap');
-			redirect('login');
+			fail('Form tidak lengkap');
 		}
 
 		$token = $this->jwt->get_token();
+		$d['username'] = $this->input->post('username');
+		$d['password'] =  $this->input->post('password');
 
 
-		if (!$token) {
-			$res = array('status' => false, 'msg' => 'Maaf, terjadi kesalahan');
-			echo json_encode($res, true);
-			die();
-		}
+		$response = $this->jwt->request(ip() . 'permohonan/login', 'POST', json_encode($d), $token);
 
-
-		$curl = curl_init();
-
-		curl_setopt_array($curl, array(
-			CURLOPT_URL => ip() . 'perizinan/login_publik',
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_ENCODING => '',
-			CURLOPT_MAXREDIRS => 10,
-			CURLOPT_TIMEOUT => 0,
-			CURLOPT_FOLLOWLOCATION => true,
-			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-			CURLOPT_CUSTOMREQUEST => 'POST',
-
-
-
-			CURLOPT_POSTFIELDS => '{
-			
-			   "username" : "' . $this->input->post('username', true) . '",
-			   "password" : "' . $this->input->post('password', true) . '"
-		   
-	    	 }',
-
-
-			CURLOPT_HTTPHEADER => array(
-				'Content-Type: application/json',
-				'Authorization: Bearer ' . $token['token']
-			),
-		));
-
-		$response = curl_exec($curl);
-
-		curl_close($curl);
-
-		$response = json_decode($response, true);
 		if (isset($response['status'])) {
 			if ($response['status']) {
+
 				$newdata = array(
-					'status' => $response['username'],
-					'id'  => $response['id'],
-					'tblpemohon_id'  => $response['tblpemohon_id'],
-					'no_identitas'  => $response['no_identitas'],
-					'nama'  => $response['nama'],
-					'telepon'  => $response['telepon'],
-					'alamat'  => $response['alamat']
-
-
+					'login' => true,
+					'id' =>  $response['id'],
+					'nama' =>  $response['nama'],
+					'tblpemohon_id' => $response['tblpemohon_id'],
+					'no_identitas' => $response['no_identitas'],
+					'alamat' => $response['alamat'],
+					'telepon' => $response['telepon'],
+					'email' => $response['email'],
+					'npwp' => $response['npwp'],
 				);
 
 				$this->session->set_userdata($newdata);
-				$this->session->set_flashdata('success', 'Akun ditemukan');
-				redirect('permohonan');
-			} else {
-
-				$this->session->set_flashdata('error', 'Password atau username salah');
-				redirect('login');
 			}
-		} else {
-			$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
-			redirect('registrasi/form');
+
+			return_json($response);
 		}
+
+		fail();
 	}
 }
