@@ -9,16 +9,17 @@
                     <div class="row">
                         <div class="col-md-6 text-center">
 
-                            <img class="form-image" src="<?= base_url('tmp/assets/images/bg.png') ?>" alt=""
-                                width="400">
+                            <img class="form-image"
+                                src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/fotopns123-1.png"
+                                alt="" width="400">
                         </div>
 
                         <div class="col-md-6 form-padding">
                             <div class="logo text-center">
                                 <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/e635f48923a6082f99ca78be2b100163.png"
                                     alt="" width="50">
-                                <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/e635f48923a6082f99ca78be2b100163.png"
-                                    alt="" width="50">
+                                <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/b9b6479351238932e3e02b0e165f8d0a-removebg-preview.png"
+                                    alt="" width="110">
                             </div>
                             <h5 class="text-center mt-4"><?= aplikasi() ?></h5>
                             <p class="text-center mt-4">Daftar terlebih dahulu, untuk bisa melakukan login</p>
