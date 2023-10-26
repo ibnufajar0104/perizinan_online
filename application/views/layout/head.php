@@ -58,7 +58,7 @@
         width: 100%;
     }
 
-    .form-control {
+    .form-control-2 {
         height: 45px;
     }
 

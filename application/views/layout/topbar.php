@@ -2,7 +2,7 @@
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
-            <div class="navbar-brand-box">
+            <!-- <div class="navbar-brand-box">
                 <a href="" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
@@ -15,10 +15,37 @@
                 </a>
 
                 <a href="" class="logo logo-light">
-
                     <span class="logo-lg">
                         <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
-                            height="40"> <span class="logo-txt"></span>
+                            height="40"> <span class="logo-txt">DPMPTSP</span>
+                    </span>
+                    <span class="logo-lg">
+                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
+                            height="40"> <span class="logo-txt">DPMPTSP</span>
+                    </span>
+                </a>
+            </div> -->
+
+            <div class="navbar-brand-box">
+                <a href="index.html" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
+                            height="30">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
+                            height="24">
+                    </span>
+                </a>
+
+                <a href="index.html" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
+                            height="30">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
+                            height="24">
                     </span>
                 </a>
             </div>
