@@ -46,8 +46,7 @@
 
                                 Pengajuan Permohonan
                             </div>
-                            <form class="needs-validation" novalidate action="<?= site_url('permohonan/pendaftaran') ?>"
-                                method="POST" enctype="multipart/form-data">
+                            <form class="needs-validation form" novalidate method="POST" enctype="multipart/form-data">
                                 <div class="card-body">
 
                                     <div class="row">
@@ -70,15 +69,10 @@
                                             value="<?= $this->session->telepon ?>">
 
                                         <input type="hidden" class="form-control form-control-2"
-                                            name="tblizinpendaftaran_npwp" id="tblizinpendaftaran_npwp" value="-"
-                                            required>
+                                            name="tblizinpendaftaran_npwp" id="tblizinpendaftaran_npwp"
+                                            value="<?= $this->session->npwp ?>" required>
 
-                                        <!-- <div class="col-md-6 col-12 mb-4">
-                                            <div class="form-group">
-                                                <label for="" class="mb-1">Nomor NPWP</label>
-                                                
-                                            </div>
-                                        </div> -->
+
 
                                         <div class="col-md-6 col-12 mb-4">
                                             <div class="form-group">
@@ -172,8 +166,8 @@
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Keterangan</label>
                                                 <textarea name="tblizinpendaftaran_keterangan"
-                                                    id="tblizinpendaftaran_keterangan" class="form-control" rows="2"
-                                                    required></textarea>
+                                                    id="tblizinpendaftaran_keterangan" class="form-control"
+                                                    rows="4"></textarea>
                                                 <div class="invalid-feedback">
                                                     Harus diisi.
                                                 </div>
@@ -185,9 +179,7 @@
 
                                     </div>
 
-                                    <div class="float-sm-end">
 
-                                    </div>
 
 
                                 </div>
@@ -211,6 +203,7 @@
 
 
             </div> <!-- container-fluid -->
+            <?php include(APPPATH . 'views/permohonan/modal.php'); ?>
         </div>
         <!-- End Page-content -->
 

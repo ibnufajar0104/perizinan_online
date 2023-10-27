@@ -37,6 +37,7 @@ class Permohonan extends CI_Controller
 	{
 
 		$data['title'] = 'Form Permohonan';
+		$data['js'] =  'permohonan/js';
 		$data['izin'] = $this->daftar_izin();
 		$data['kecamatan'] = $this->daftar_kecamatan();
 
@@ -163,12 +164,13 @@ class Permohonan extends CI_Controller
 
 	public function daftar_kelurahan()
 	{
-		$id = $this->input->post('id_kecamatan', true);
-		$endpoint = 'perizinan/daftar_kelurahan';
-		$data['id_kecamatan'] = $id;
 
-		$row = $this->reg($endpoint, $data);
-		echo json_encode($row, true);
+		$data['id_kecamatan'] = $this->input->post('id_kecamatan', true);
+
+		$token = $this->jwt->get_token();
+		$response = $this->jwt->request(ip() . 'perizinan/daftar_kelurahan', 'POST', json_encode($data), $token);
+
+		return_json($response);
 	}
 
 	public function daftar_permohonan()
@@ -216,50 +218,43 @@ class Permohonan extends CI_Controller
 		echo json_encode($row);
 	}
 
-	// public function pendaftaran()
-	// {
-	// 	$token = $this->jwt->get_token();
-	// 	if (!$token) {
-	// 		$res = array('status' => false, 'msg' => 'Maaf, terjadi kesalahan');
-	// 		echo json_encode($res, true);
-	// 		die();
-	// 	}
+	public function pengajuan()
+	{
 
-	// 	$endpoint = ip() . 'pendaftaran/permohonan';
-	// 	$data = array();
-	// 	foreach ($this->allowedFields as $r) {
-	// 		$data[$r] = $this->input->post($r, true);
-	// 	}
+		$data = array();
+		foreach ($this->allowedFields as $r) {
+			$data[$r] = $this->input->post($r, true);
+		}
 
-	// 	$data['tblpengguna_id'] = $this->input->post('tblpengguna_id');
-	// 	$data['status_online'] = 1;
+		$data['tblpengguna_id'] = $this->input->post('tblpengguna_id');
+		$data['status_online'] = 1;
 
-	// 	$per = $this->get_persyaratan($data['tblizinpermohonan_id']);
+		$persyaratan = $this->get_persyaratan_by_id_permohonan($data['tblizinpermohonan_id']);
+		if (!$persyaratan) {
+			die();
+		}
 
-	// 	foreach ($per as $r) {
-	// 		$file = $this->upload($r['tblpersyaratan_id']);
-	// 		if ($file) {
-	// 			$data[$r['tblpersyaratan_id']] = new CURLFILE('tmp/' . $file);
-	// 		}
-	// 	}
+		foreach ($persyaratan as $r) {
+			$file = $this->upload($r['tblpersyaratan_id']);
+			if ($file) {
+				$data[$r['tblpersyaratan_id']] = new CURLFILE('tmp/' . $file);
+			}
+		}
 
-	// 	$response = $this->sendPostRequest($endpoint, $data, $token['token']);
+		$token = $this->jwt->get_token();
+		$response = $this->jwt->pos_request(ip() . 'permohonan/pengajuan', $data, $token);
 
-	// 	if (isset($response['status'])) {
-	// 		if ($response['status']) {
+		if (isset($response['status'])) {
 
-	// 			$this->session->set_flashdata('success', 'Permohonan berhasil diajukan');
-	// 			redirect('permohonan');
-	// 		} else {
+			if ($response['status']) {
+				success('Permohonan berhasil diajukan');
+			} else {
+				return_json($response);
+			}
+		}
 
-	// 			$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
-	// 			redirect('permohonan');
-	// 		}
-	// 	} else {
-	// 		$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
-	// 		redirect('permohonan');
-	// 	}
-	// }
+		fail('Maaf, terjadi kesalahan');
+	}
 
 	// public function update_pendaftaran()
 	// {
@@ -311,9 +306,7 @@ class Permohonan extends CI_Controller
 	public function get_persyaratan()
 	{
 
-
-		$id = $this->input->post('id', true);
-		$d['id_permohonan'] = $id;
+		$d['id_permohonan'] = $this->input->post('id', true);
 		$d['id_pemohon'] = $this->session->tblpemohon_id;
 
 		$token = $this->jwt->get_token();
@@ -322,8 +315,17 @@ class Permohonan extends CI_Controller
 		$this->load->view('permohonan/persyaratan', array('row' => $response['data']));
 	}
 
-	public function get_persyaratan_by_id_permohonan()
+	private function get_persyaratan_by_id_permohonan($id)
 	{
+		$d['id_permohonan'] = $id;
+		$token = $this->jwt->get_token();
+		$response = $this->jwt->request(ip() . 'permohonan/get_persyaratan', 'POST', json_encode($d), $token);
+
+		if ($response['status']) {
+			return $response['data'];
+		}
+
+		return false;
 	}
 
 	private function upload($str)
@@ -367,7 +369,7 @@ class Permohonan extends CI_Controller
 
 		$d['tblpemohon_id'] = $this->session->tblpemohon_id;
 		$token = $this->jwt->get_token();
-		$response = $this->jwt->request(ip() . 'permohonan/get_by_id_pemohon', 'POST', $d, $token);
+		$response = $this->jwt->request(ip() . 'permohonan/get_by_id_pemohon', 'POST', json_encode($d), $token);
 
 		if (isset($response['data'])) {
 			return $response['data'];

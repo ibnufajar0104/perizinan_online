@@ -60,7 +60,7 @@
                             <div class="card-body">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped w-100">
+                                    <table class="table table-borderless w-100">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -91,7 +91,7 @@
 
                                                     <div class="btn-group" role="group">
                                                         <button id="btnGroupDrop1" type="button"
-                                                            class="btn btn-secondary dropdown-toggle btn-sm"
+                                                            class="btn btn-outline-primary dropdown-toggle btn-sm"
                                                             data-bs-toggle="dropdown" aria-expanded="false">
                                                             Opsi <i class="mdi mdi-chevron-down"></i>
                                                         </button>
