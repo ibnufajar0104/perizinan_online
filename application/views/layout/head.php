@@ -52,8 +52,9 @@
             height: 45px;
         }
 
-        .table-persyaratan td {
-            vertical-align: bottom;
+        th,
+        td {
+            vertical-align: middle;
         }
 
         .select2-container--default .select2-selection--single {

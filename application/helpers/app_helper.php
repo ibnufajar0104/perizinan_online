@@ -1,5 +1,13 @@
 <?php
 
+function login_required()
+{
+    $ci = &get_instance();
+
+    if (!$ci->session->login) {
+        redirect('login');
+    }
+}
 
 function dd($str)
 {
@@ -41,4 +49,17 @@ function return_json($str)
 {
     echo json_encode($str, true);
     die();
+}
+
+function status($str)
+{
+    if ($str == 2) {
+        return  '<button class="btn btn-sm btn-outline-danger">Ditolak</button>';
+    }
+
+    if ($str == 4) {
+        return  '<button class="btn btn-sm btn-outline-success">Selesai</button>';
+    }
+
+    return  '<button class="btn btn-sm btn-outline-warning">Diproses</button>';
 }

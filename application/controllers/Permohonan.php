@@ -23,7 +23,7 @@ class Permohonan extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-
+		login_required();
 		$this->load->model('M_jwt', 'jwt');
 	}
 	public function index()
@@ -69,20 +69,33 @@ class Permohonan extends CI_Controller
 	public function edit($id)
 	{
 		$row =  $this->permohonan_by_id($id);
+		$r = [];
+
+		if ($row) {
+			$r = $row['pendaftaran'];
+		}
 		$data['title'] = 'Form Permohonan';
 		$data['izin'] = $this->daftar_izin();
 		$data['kecamatan'] = $this->daftar_kecamatan();
-		$data['p'] = $row['pendaftaran'];
+		$data['p'] = $r;
 		$this->load->view('permohonan/form_edit', $data);
 	}
 
 	public function detail($id)
 	{
 		$row = $this->permohonan_by_id($id);
+		$r = [];
+		$log = [];
+
+		if ($row) {
+			$r = $row['pendaftaran'];
+			$log = $row['log'];
+		}
+
 		$data['title'] = 'Detail Permohonan';
 
-		$data['r'] = $row['pendaftaran'];
-		$data['log'] = $row['log'];
+		$data['r'] = $r;
+		$data['log'] = $log;
 
 		$this->load->view('permohonan/detail', $data);
 	}
@@ -173,6 +186,7 @@ class Permohonan extends CI_Controller
 		return_json($response);
 	}
 
+	// daftar jenis permohonan
 	public function daftar_permohonan()
 	{
 
@@ -380,14 +394,15 @@ class Permohonan extends CI_Controller
 
 	public function permohonan_by_id($id)
 	{
-
-		$endpoint = 'pendaftaran/get_by_id';
 		$data = array();
-
-
 		$data['tblizinpendaftaran_id'] = $id;
+		$token = $this->jwt->get_token();
+		$response = $this->jwt->request(ip() . 'permohonan/get_by_id_pendaftaran', 'POST', json_encode($data), $token);
 
-		$row = $this->reg($endpoint, $data);
-		return $row['data'];
+		if (isset($response['data'])) {
+			return $response['data'];
+		}
+
+		return [];
 	}
 }

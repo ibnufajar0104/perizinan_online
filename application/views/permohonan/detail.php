@@ -37,6 +37,9 @@
                 </div>
                 <!-- end page title -->
 
+
+
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -50,45 +53,47 @@
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>Dari</th>
-                                                <th>Proses</th>
-                                                <th>Tanggal Mulai</th>
-                                                <th>Tanggal Selesai</th>
-                                                <th>Dikirim Ke</th>
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless">
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Dari</th>
+                                                    <th>Proses</th>
 
-                                                <th>Catatan</th>
-                                                <th>Status</th>
-                                                <th></th>
-                                            </tr>
-                                            <?php $no = 1 ?>
-                                            <?php foreach ($log as $key =>  $r) : ?>
+                                                    <th>Tanggal</th>
+                                                    <th>Dikirim Ke</th>
 
-                                            <tr>
-                                                <td><?= $no ?>.</td>
-                                                <td><?= $r['nama_asal'] ?></td>
-                                                <td><?= $r['tblkendalibloksistemtugas_nama'] ?></td>
-                                                <td><?= $r['tgl_mulai'] ?></td>
-                                                <td><?= $r['tgl_selesai'] ?></td>
-                                                <td><?= $r['nama_tujuan'] ?></td>
+                                                    <th>Catatan</th>
+                                                    <th>Status</th>
+                                                    <th></th>
+                                                </tr>
+                                                <?php $no = 1 ?>
+                                                <?php foreach ($log as $key =>  $row) : ?>
 
-                                                <td><?= $r['tblkendaliproses_catatan'] ?></td>
-                                                <td><?= $r['status'] ?></td>
-                                                <td>
+                                                <tr>
+                                                    <td><?= $no ?>.</td>
+                                                    <td><?= $row['nama_asal'] ?></td>
+                                                    <td><?= $row['tblkendalibloksistemtugas_nama'] ?></td>
 
-                                                    <?php if ($r['tblkendaliproses_status'] == 10 && $key == 0) : ?>
-                                                    <a class="btn btn-success btn-sm"
-                                                        href="<?= site_url('permohonan/edit/' . $r['tblizinpendaftaran_id']) ?>">Perbaiki</a>
+                                                    <td><?= $row['tgl_selesai'] ?></td>
+                                                    <td><?= $row['nama_tujuan'] ?></td>
 
-                                                    <?php endif ?>
+                                                    <td><?= $row['tblkendaliproses_catatan'] ?></td>
+                                                    <td><?= $row['status'] ?></td>
+                                                    <td>
 
-                                                </td>
-                                            </tr>
-                                            <?php $no++; ?>
-                                            <?php endforeach ?>
-                                        </table>
+                                                        <?php if ($row['tblkendaliproses_status'] == 10 && $key == 0) : ?>
+                                                        <a class="btn btn-success btn-sm"
+                                                            href="<?= site_url('permohonan/edit/' . $row['tblizinpendaftaran_id']) ?>">Perbaiki</a>
+
+                                                        <?php endif ?>
+
+                                                    </td>
+                                                </tr>
+                                                <?php $no++; ?>
+                                                <?php endforeach ?>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -120,6 +125,11 @@
                                                 <td><?= $r['tblizinpendaftaran_idpemohon'] ?></td>
                                             </tr>
                                             <tr>
+                                                <td>Nomor NPWP</td>
+                                                <td>:</td>
+                                                <td><?= $r['tblizinpendaftaran_npwp'] ?></td>
+                                            </tr>
+                                            <tr>
                                                 <td>Nama Pemohon</td>
                                                 <td>:</td>
                                                 <td><?= $r['tblizinpendaftaran_namapemohon'] ?></td>
@@ -134,11 +144,7 @@
                                                 <td>:</td>
                                                 <td><?= $r['tblizinpendaftaran_telponpemohon'] ?></td>
                                             </tr>
-                                            <tr>
-                                                <td>Kecamatan</td>
-                                                <td>:</td>
-                                                <td><?= $r['tblkecamatan_nama'] ?></td>
-                                            </tr>
+
                                             <tr>
                                                 <td>Keterangan</td>
                                                 <td>:</td>
@@ -164,17 +170,21 @@
                                             </tr>
 
                                             <tr>
-                                                <td>Nama Usaha</td>
+                                                <td>Nama Usaha / Tempat Berkerja</td>
                                                 <td>:</td>
                                                 <td><?= $r['tblizinpendaftaran_usaha'] ?></td>
                                             </tr>
                                             <tr>
-                                                <td>Lokasi Usaha / Bangunan</td>
+                                                <td>Alamat Usaha / Alamat Tempat Berkerja</td>
                                                 <td>:</td>
 
                                                 <td><?= $r['tblizinpendaftaran_lokasiizin'] ?></td>
                                             </tr>
-
+                                            <tr>
+                                                <td>Kecamatan</td>
+                                                <td>:</td>
+                                                <td><?= $r['tblkecamatan_nama'] ?></td>
+                                            </tr>
                                             <tr>
                                                 <td>Kelurahan</td>
                                                 <td>:</td>
@@ -191,9 +201,6 @@
                         </div>
                     </div> <!-- end col -->
                 </div> <!-- end row -->
-
-
-
 
             </div> <!-- container-fluid -->
         </div>

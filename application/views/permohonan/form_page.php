@@ -74,7 +74,7 @@
 
 
 
-                                        <div class="col-md-6 col-12 mb-4">
+                                        <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nama Izin</label>
                                                 <select name="tblizin_id" id="tblizin_id"
@@ -91,7 +91,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="col-md-6 col-12 mb-4">
+                                        <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nama Permohonan</label>
                                                 <select name="tblizinpermohonan_id" id="tblizinpermohonan_id"
@@ -105,7 +105,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="col-md-6 col-12 mb-4">
+                                        <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nama Usaha</label>
                                                 <input type="text" class="form-control form-control-2"
@@ -117,7 +117,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6 col-12 mb-4">
+                                        <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Lokasi Usaha / Bangunan</label>
                                                 <input type="text" class="form-control form-control-2"
@@ -128,7 +128,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12 mb-4">
+                                        <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nama Kecamatan </label>
                                                 <select name="tblkecamatan_id" id="tblkecamatan_id"
@@ -148,7 +148,7 @@
 
                                         </div>
 
-                                        <div class="col-md-6 col-12 mb-4">
+                                        <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nama Kelurahan / Desa</label>
                                                 <select name="tblkelurahan_id" id="tblkelurahan_id"
@@ -162,7 +162,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="col-md-6 col-12 mb-4">
+                                        <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Keterangan</label>
                                                 <textarea name="tblizinpendaftaran_keterangan"

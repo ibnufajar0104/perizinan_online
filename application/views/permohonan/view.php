@@ -41,20 +41,17 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
+                                <div class="d-md-flex justify-content-between align-items-center">
+                                    <?php if ($permohonan) : ?>
+                                    <p> Selalu periksa perkembangan permohonan anda dengan mengklik "opsi" kemudian klik
+                                        "Detail"</p>
+                                    <?php else : ?>
+                                    <p> Mulai permohonan anda dengan menekan tombol "Ajukan Permohonan</p>
+                                    <?php endif ?>
 
-                                <?php if ($permohonan) : ?>
-                                Selalu periksa perkembangan permohonan anda dengan mengklik "opsi" kemudian klik
-                                "Detail"
-                                <?php else : ?>
-                                Mulai permohonan anda dengan menekan tombol "Ajukan Permohonan"
-                                <?php endif ?>
-
-
-
-
-                                <a href="<?= site_url('permohonan/form') ?>"
-                                    class="btn btn-primary float-sm-end mt-md-0 mt-4">Ajukan
-                                    Permohonan</a>
+                                    <a href="<?= site_url('permohonan/form') ?>" class="btn btn-primary">Ajukan
+                                        Permohonan</a>
+                                </div>
 
                             </div>
                             <div class="card-body">
@@ -86,12 +83,12 @@
                                                 <td><?= $r['tblizinpendaftaran_usaha'] ?></td>
 
                                                 <td><?= $r['tgl_daftar'] ?></td>
-                                                <td><?= $r['status'] ?></td>
+                                                <td><?= status($r['status']) ?></td>
                                                 <td>
 
                                                     <div class="btn-group" role="group">
                                                         <button id="btnGroupDrop1" type="button"
-                                                            class="btn btn-outline-primary dropdown-toggle btn-sm"
+                                                            class="btn btn-primary dropdown-toggle btn-sm"
                                                             data-bs-toggle="dropdown" aria-expanded="false">
                                                             Opsi <i class="mdi mdi-chevron-down"></i>
                                                         </button>
@@ -122,10 +119,6 @@
                         </div>
                     </div> <!-- end col -->
                 </div> <!-- end row -->
-
-
-
-
 
 
             </div> <!-- container-fluid -->
