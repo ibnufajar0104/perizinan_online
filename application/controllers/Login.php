@@ -42,7 +42,7 @@ class Login extends CI_Controller
 			if ($response['status']) {
 
 				$newdata = array(
-					'login' => true,
+					'logged' => true,
 					'id' =>  $response['id'],
 					'nama' =>  $response['nama'],
 					'tblpemohon_id' => $response['tblpemohon_id'],

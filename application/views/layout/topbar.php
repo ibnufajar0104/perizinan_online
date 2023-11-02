@@ -29,24 +29,29 @@
             <div class="navbar-brand-box">
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt="" height="30">
+                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
+                            height="30">
                     </span>
                     <span class="logo-lg">
-                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt="" height="24">
+                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
+                            height="24">
                     </span>
                 </a>
 
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt="" height="30">
+                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
+                            height="30">
                     </span>
                     <span class="logo-lg">
-                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt="" height="24">
+                        <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/ptsp.PNG" alt=""
+                            height="24">
                     </span>
                 </a>
             </div>
 
-            <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+            <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
+                data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
                 <i class="fa fa-fw fa-bars"></i>
             </button>
 
@@ -174,17 +179,23 @@
 
 
             <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item bg-soft-light border-start border-end" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user user-profile-image" src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/logo%20tala.png" alt="Header Avatar" id="user_image">
-                    <span class="d-none d-xl-inline-block ms-1 fw-medium setting_user_name" id="setting_user_name"><?= $this->session->nama; ?></span>
+                <button type="button" class="btn header-item bg-soft-light border-start border-end"
+                    id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle header-profile-user user-profile-image"
+                        src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/logo%20tala.png"
+                        alt="Header Avatar" id="user_image">
+                    <span class="d-none d-xl-inline-block ms-1 fw-medium setting_user_name"
+                        id="setting_user_name"><?= $this->session->nama; ?></span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="apps-contacts-profile.php"><i class="mdi mdi-account font-size-16 align-middle me-1"></i> Profil</a>
+                    <a class="dropdown-item" href="<?= site_url('profil') ?>"><i
+                            class="mdi mdi-account font-size-16 align-middle me-1"></i> Profil</a>
 
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="logout.php"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> Logout</a>
+                    <a class="dropdown-item" href="<?= site_url('profil/logout') ?>"><i
+                            class="mdi mdi-logout font-size-16 align-middle me-1"></i> Logout</a>
                 </div>
             </div>
 

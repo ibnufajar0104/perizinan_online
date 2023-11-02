@@ -54,23 +54,21 @@
                                             value="<?= $this->session->tblpemohon_id ?>">
                                         <input type="hidden" name="tblpengguna_id" id="tblpengguna_id"
                                             value="<?= $this->session->id ?>">
-                                        <input type="hidden" class="form-control form-control-2"
-                                            name="tblizinpendaftaran_idpemohon" id="tblizinpendaftaran_idpemohon"
-                                            value="<?= $this->session->no_identitas ?>" required>
-                                        <input type="hidden" class="form-control form-control-2"
-                                            name="tblizinpendaftaran_namapemohon" id="tblizinpendaftaran_namapemohon"
-                                            value="<?= $this->session->nama ?>" required>
+                                        <input type="hidden" name="tblizinpendaftaran_idpemohon"
+                                            id="tblizinpendaftaran_idpemohon"
+                                            value="<?= $row['tblpemohon_noidentitas'] ?>" required>
+                                        <input type="hidden" name="tblizinpendaftaran_namapemohon"
+                                            id="tblizinpendaftaran_namapemohon" value="<?= $row['tblpemohon_nama'] ?>"
+                                            required>
                                         <input name="tblizinpendaftaran_almtpemohon" type="hidden"
-                                            id="tblizinpendaftaran_almtpemohon" class="form-control form-control-2"
-                                            required value="<?= $this->session->alamat ?>">
-                                        <input type="hidden" class="form-control form-control-2"
-                                            name="tblizinpendaftaran_telponpemohon"
+                                            id="tblizinpendaftaran_almtpemohon" required
+                                            value="<?= $row['tblpemohon_alamat'] ?>">
+                                        <input type="hidden" name="tblizinpendaftaran_telponpemohon"
                                             id="tblizinpendaftaran_telponpemohon" required
-                                            value="<?= $this->session->telepon ?>">
+                                            value="<?= $row['tblpemohon_telpon'] ?>">
 
-                                        <input type="hidden" class="form-control form-control-2"
-                                            name="tblizinpendaftaran_npwp" id="tblizinpendaftaran_npwp"
-                                            value="<?= $this->session->npwp ?>" required>
+                                        <input type="hidden" name="tblizinpendaftaran_npwp" id="tblizinpendaftaran_npwp"
+                                            value="<?= $row['tblpemohon_npwp'] ?>" required>
 
 
 
@@ -107,7 +105,7 @@
                                         </div>
                                         <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
-                                                <label for="" class="mb-1">Nama Usaha</label>
+                                                <label for="" class="mb-1">Nama Usaha / Tempat Berkerja</label>
                                                 <input type="text" class="form-control form-control-2"
                                                     name="tblizinpendaftaran_usaha" id="tblizinpendaftaran_usaha"
                                                     required>
@@ -119,7 +117,7 @@
 
                                         <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
-                                                <label for="" class="mb-1">Lokasi Usaha / Bangunan</label>
+                                                <label for="" class="mb-1">Alamat Usaha / Alamat Tempat Berkerja</label>
                                                 <input type="text" class="form-control form-control-2"
                                                     name="tblizinpendaftaran_lokasiizin"
                                                     id="tblizinpendaftaran_lokasiizin" required>

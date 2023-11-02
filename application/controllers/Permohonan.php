@@ -35,9 +35,20 @@ class Permohonan extends CI_Controller
 
 	public function form()
 	{
+		$d['tblpengguna_id'] = $this->session->id;
+		$token = $this->jwt->get_token();
+		$response = $this->jwt->request(ip() . 'permohonan/get_pemohon', 'POST', json_encode($d), $token);
+
+		$r = [];
+		if (isset($response)) {
+			if ($response['data']) {
+				$r = $response['data'];
+			}
+		}
 
 		$data['title'] = 'Form Permohonan';
 		$data['js'] =  'permohonan/js';
+		$data['row'] = $r;
 		$data['izin'] = $this->daftar_izin();
 		$data['kecamatan'] = $this->daftar_kecamatan();
 
@@ -48,11 +59,13 @@ class Permohonan extends CI_Controller
 	public function riwayat()
 	{
 
-		$id = $this->session->tblpemohon_id;
-		$d['tblpemohon_id'] = $id;
+
+		$d['tblpemohon_id'] = $this->session->tblpemohon_id;
 
 		$token = $this->jwt->get_token();
-		$response = $this->jwt->request(ip() . 'permohonan/riwayat_permohonan', 'POST', $d, $token);
+		$response = $this->jwt->request(ip() . 'permohonan/riwayat', 'POST', json_encode($d), $token);
+
+
 
 		$r = [];
 		if (isset($response['data'])) {
@@ -60,6 +73,7 @@ class Permohonan extends CI_Controller
 		}
 		$data['riwayat'] = $r;
 		$data['title'] = 'Riwayat Permohonan';
+		$data['js'] =  'permohonan/js';
 		$this->load->view('permohonan/riwayat', $data);
 	}
 
@@ -77,6 +91,7 @@ class Permohonan extends CI_Controller
 		$data['title'] = 'Form Permohonan';
 		$data['izin'] = $this->daftar_izin();
 		$data['kecamatan'] = $this->daftar_kecamatan();
+		$data['js'] =  'permohonan/js';
 		$data['p'] = $r;
 		$this->load->view('permohonan/form_edit', $data);
 	}
@@ -93,7 +108,7 @@ class Permohonan extends CI_Controller
 		}
 
 		$data['title'] = 'Detail Permohonan';
-
+		$data['js'] =  'permohonan/js';
 		$data['r'] = $r;
 		$data['log'] = $log;
 
@@ -270,52 +285,44 @@ class Permohonan extends CI_Controller
 		fail('Maaf, terjadi kesalahan');
 	}
 
-	// public function update_pendaftaran()
-	// {
-	// 	$token = $this->jwt->get_token();
-	// 	if (!$token) {
-	// 		$res = array('status' => false, 'msg' => 'Maaf, terjadi kesalahan');
-	// 		echo json_encode($res, true);
-	// 		die();
-	// 	}
+	public function update_pengajuan()
+	{
 
-	// 	$endpoint = ip() . 'pendaftaran/update_permohonan';
-	// 	$data = array();
-	// 	foreach ($this->allowedFields as $r) {
-	// 		$data[$r] = $this->input->post($r, true);
-	// 	}
+		$data = array();
+		foreach ($this->allowedFields as $r) {
+			$data[$r] = $this->input->post($r, true);
+		}
 
+		$data['tblizinpendaftaran_id'] = $this->input->post('tblizinpendaftaran_id');
+		$data['tblpengguna_id'] = $this->input->post('tblpengguna_id');
+		$data['status_online'] = 1;
 
-	// 	$data['tblizinpendaftaran_id'] = $this->input->post('tblizinpendaftaran_id');
-	// 	$data['tblpengguna_id'] = $this->input->post('tblpengguna_id');
-	// 	$data['status_online'] = 1;
+		$persyaratan = $this->get_persyaratan_by_id_permohonan($data['tblizinpermohonan_id']);
+		if (!$persyaratan) {
+			die();
+		}
 
-	// 	$per = $this->get_persyaratan($data['tblizinpermohonan_id']);
+		foreach ($persyaratan as $r) {
+			$file = $this->upload($r['tblpersyaratan_id']);
+			if ($file) {
+				$data[$r['tblpersyaratan_id']] = new CURLFILE('tmp/' . $file);
+			}
+		}
 
-	// 	foreach ($per as $r) {
-	// 		$file = $this->upload($r['tblpersyaratan_id']);
-	// 		if ($file) {
-	// 			$data[$r['tblpersyaratan_id']] = new CURLFILE('tmp/' . $file);
-	// 		}
-	// 	}
+		$token = $this->jwt->get_token();
+		$response = $this->jwt->pos_request(ip() . 'permohonan/pengajuan_update', $data, $token);
 
-	// 	$response = $this->sendPostRequest($endpoint, $data, $token['token']);
+		if (isset($response['status'])) {
 
-	// 	if (isset($response['status'])) {
-	// 		if ($response['status']) {
+			if ($response['status']) {
+				success('Permohonan berhasil diajukan kembali');
+			} else {
+				return_json($response);
+			}
+		}
 
-	// 			$this->session->set_flashdata('success', 'Permohonan berhasil diajukan kembali');
-	// 			redirect('permohonan');
-	// 		} else {
-
-	// 			$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
-	// 			redirect('permohonan');
-	// 		}
-	// 	} else {
-	// 		$this->session->set_flashdata('error', 'Maaf terjadi kesalahan');
-	// 		redirect('permohonan');
-	// 	}
-	// }
+		fail('Maaf, terjadi kesalahan');
+	}
 
 	public function get_persyaratan()
 	{

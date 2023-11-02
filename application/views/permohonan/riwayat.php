@@ -74,13 +74,41 @@
                                                 <td>:</td>
                                                 <td><?= $r['tblizinpermohonan_nama'] ?></td>
                                             </tr>
+                                            <tr>
+                                                <td width="180">Tanggal Penetapan</td>
+                                                <td width="20">:</td>
+                                                <td>
+                                                    <?php if ($r['tgl_penetapan']) : ?>
+                                                    <?= $r['tgl_penetapan'] ?>
+                                                    <?php else : ?>
+                                                    -
+                                                    <?php endif ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Berlaku Sampai</td>
+                                                <td>:</td>
+                                                <td>
 
+                                                    <?php if ($r['berlaku_sampai']) : ?>
+                                                    <?= $r['berlaku_sampai'] ?>
+                                                    <?php else : ?>
+                                                    -
+                                                    <?php endif ?>
+                                                </td>
+                                            </tr>
 
                                             <tr>
-                                                <td>Keterangan</td>
+                                                <td>Dokumen Perizinan</td>
                                                 <td>:</td>
-                                                <td><?= $r['tblizinpendaftaran_keterangan'] ?></td>
+                                                <td>
+
+                                                    <a class="btn btn-outline-primary" target="_blank"
+                                                        href="<?= $r['dokumen'] ?>">Download</a>
+                                                </td>
                                             </tr>
+
+
                                         </table>
                                     </div>
 
@@ -88,12 +116,12 @@
                                         <table class="table table-borderless">
 
                                             <tr>
-                                                <td width="200">Nama Usaha</td>
+                                                <td width="200">Nama Usaha / Tempat Berkerja</td>
                                                 <td>:</td>
                                                 <td><?= $r['tblizinpendaftaran_usaha'] ?></td>
                                             </tr>
                                             <tr>
-                                                <td>Lokasi Usaha / Bangunan</td>
+                                                <td>Alamat Usaha / Alamat Tempat Berkerja</td>
                                                 <td>:</td>
 
                                                 <td><?= $r['tblizinpendaftaran_lokasiizin'] ?></td>
@@ -108,52 +136,16 @@
                                                 <td>:</td>
                                                 <td><?= $r['tblkelurahan_nama'] ?></td>
                                             </tr>
-
+                                            <tr>
+                                                <td>Keterangan</td>
+                                                <td>:</td>
+                                                <td><?= $r['tblizinpendaftaran_keterangan'] ?></td>
+                                            </tr>
 
                                         </table>
                                     </div>
-                                    <div class="col-md-12 mt-2">
-                                        <div class="table-responsive">
-                                            <table class="table table-borderless">
-                                                <tr>
-                                                    <td width="180">Tanggal Penetapan</td>
-                                                    <td width="20">:</td>
-                                                    <td>
-                                                        <?php if ($r['tgl_penetapan']) : ?>
-                                                        <?= $r['tgl_penetapan'] ?>
-                                                        <?php else : ?>
-                                                        -
-                                                        <?php endif ?>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Berlaku Sampai</td>
-                                                    <td>:</td>
-                                                    <td>
 
-                                                        <?php if ($r['berlaku_sampai']) : ?>
-                                                        <?= $r['berlaku_sampai'] ?>
-                                                        <?php else : ?>
-                                                        -
-                                                        <?php endif ?>
-                                                    </td>
-                                                </tr>
 
-                                                <tr>
-                                                    <td>Dokumen Perizinan</td>
-                                                    <td>:</td>
-                                                    <td>
-
-                                                        <?php if ($r['sesudah_tte']) : ?>
-                                                        <a href="<?= $r['sesudah_tte'] ?>" target="_blank">Download</a>
-                                                        <?php else : ?>
-                                                        -
-                                                        <?php endif ?>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
 
                                 </div>
                             </div>
