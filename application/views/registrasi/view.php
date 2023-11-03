@@ -37,12 +37,13 @@
                                 <div class="form-group mt-4 npwp">
                                     <label for="jenis_pemohon">NPWP</label>
                                     <input type="text" name="tblpemohon_npwp" id="tblpemohon_npwp" class="form-control">
+
                                 </div>
 
                                 <div class="form-group mt-4 nik">
                                     <label for="jenis_pemohon">NIK</label>
-                                    <input type="text" name="tblpemohon_noidentitas" id="tblpemohon_noidentitas"
-                                        class="form-control">
+                                    <input type="text" name="tblpemohon_noidentitas" maxlength="16" minlength="16"
+                                        id="tblpemohon_noidentitas" class="form-control">
                                 </div>
 
                                 <div class="mt-4 mb-3">

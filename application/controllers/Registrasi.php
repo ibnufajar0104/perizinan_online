@@ -48,7 +48,7 @@ class Registrasi extends CI_Controller
 		$token = $this->jwt->get_token();
 		$d['jenis'] = $this->input->post('jenis');
 		$d['tblpemohon_noidentitas'] =  $this->input->post('tblpemohon_noidentitas');
-		$d['tblpemohon_npwp'] =  $this->input->post('tblpemohon_npwp');
+		$d['tblpemohon_npwp'] = str_replace(['.', '-'], '', $this->input->post('tblpemohon_npwp'));
 
 
 		$response = $this->jwt->request(ip() . 'permohonan/cek_pernah_daftar', 'POST', json_encode($d), $token);
@@ -57,6 +57,7 @@ class Registrasi extends CI_Controller
 			if ($response['status']) {
 				$newdata = array(
 					'cek' => true,
+					'jenis' => $d['jenis'],
 					'username'  => $response['username']
 				);
 

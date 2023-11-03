@@ -26,8 +26,12 @@
                             <h5 class="text-center mt-4"><?= aplikasi() ?></h5>
                             <p class="text-center mt-4">Daftar terlebih dahulu, untuk bisa melakukan login</p>
                             <form method="post" class="form-daftar">
+                                <?php if ($this->session->jenis == 1) : ?>
+                                <input type="hidden" name="tblpemohon_npwp" value="<?= $this->session->username ?>">
+                                <?php else : ?>
                                 <input type="hidden" name="tblpemohon_noidentitas"
                                     value="<?= $this->session->username ?>">
+                                <?php endif ?>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mt-4">
@@ -47,6 +51,15 @@
                                 </div>
 
                                 <div class="row">
+                                    <?php if ($this->session->jenis == 1) : ?>
+                                    <div class="col-md-6">
+                                        <div class="form-group mt-4">
+                                            <label for="jenis_pemohon">NIK Pemilik Usaha</label>
+                                            <input type="text" name="tblpemohon_noidentitas" id="tblpemohon_noidentitas"
+                                                class="form-control" required maxlength="16" minlength="16">
+                                        </div>
+                                    </div>
+                                    <?php else : ?>
                                     <div class="col-md-6">
                                         <div class="form-group mt-4">
                                             <label for="jenis_pemohon">NPWP </label>
@@ -54,6 +67,7 @@
                                                 class="form-control" required>
                                         </div>
                                     </div>
+                                    <?php endif ?>
                                     <div class="col-md-6">
                                         <div class="form-group mt-4">
                                             <label for="jenis_pemohon"> Email Aktif</label>
