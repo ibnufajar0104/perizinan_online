@@ -105,7 +105,7 @@
                                         </div>
                                         <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
-                                                <label for="" class="mb-1">Nama Usaha / Tempat Berkerja</label>
+                                                <label for="" class="mb-1 nama_usaha">Nama Usaha/Tempat Berkerja</label>
                                                 <input type="text" class="form-control form-control-2"
                                                     name="tblizinpendaftaran_usaha" id="tblizinpendaftaran_usaha"
                                                     value="<?= $p['tblizinpendaftaran_usaha'] ?>" required>
@@ -114,7 +114,8 @@
 
                                         <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
-                                                <label for="" class="mb-1">Alamat Usaha / Alamat Tempat Berkerja</label>
+                                                <label for="" class="mb-1 alamat_usaha">Alamat Usaha/Tempat
+                                                    Berkerja</label>
                                                 <input type="text" class="form-control form-control-2"
                                                     name="tblizinpendaftaran_lokasiizin"
                                                     id="tblizinpendaftaran_lokasiizin"

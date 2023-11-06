@@ -181,8 +181,18 @@
 
 
     $('#tblizin_id').change(function() {
+
         permohonan_dinamis($(this).val(), '#tblizinpermohonan_id');
+
     });
+
+    function update_label(id) {
+        if (id == 79) {
+            $('.nama_usaha').text('Nama Universitas/Organisasi');
+            $('.alamat_usaha').text('Alamat Universitas/Organisasi');
+        }
+
+    }
 
     $('#tblkecamatan_id').change(function() {
         kelurahan_dinamis($(this).val(), '#tblkelurahan_id');
@@ -193,7 +203,7 @@
     });
 
     function permohonan_dinamis(id, el, select = null) {
-
+        update_label(id);
         $(el).find('option').not(':first').remove();
         $.ajax({
             url: "<?php echo site_url('permohonan/daftar_permohonan') ?>",

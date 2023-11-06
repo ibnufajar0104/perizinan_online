@@ -28,15 +28,25 @@ $('.form-daftar').submit(function(e) {
 
     event.preventDefault(); // Menghentikan perilaku bawaan formulir (misalnya, mengirimkan permintaan GET)
 
-    var password = $('#tblpengguna_password');
-    var konfirmasi = $('#password');
+    var password = $('#tblpengguna_password').val();
+    var konfirmasi = $('#konfirmasi').val();
 
-
+    alert(password);
     if (!validatePassword(password)) {
-        alert(
+        $('.validasi').text(
             'Password paling sedikit 6 karakter yang mengandung 1 angka, 1 huruf kapital dan 1 karakter')
         return false;
     }
+
+    alert(konfirmasi);
+
+    if (password != konfirmasi) {
+        $('.validasi').text('konfirmasi password tidak sama');
+        return false;
+    }
+
+
+    $('.validasi').text('');
 
     var url = global_url + 'daftar'
     var formData = $(this).serialize();
@@ -85,34 +95,34 @@ function validatePassword(password) {
 }
 
 
-$("#tblpemohon_npwp").on('input', function() {
-    var npwpValue = $(this).val().replace(/\D/g, ''); // Hapus karakter non-angka
-    var formattedValue = '';
+// $("#tblpemohon_npwp").on('input', function() {
+//     var npwpValue = $(this).val().replace(/\D/g, ''); 
+//     var formattedValue = '';
 
-    if (npwpValue.length > 0) {
-        formattedValue += npwpValue.substring(0, 2);
-    }
+//     if (npwpValue.length > 0) {
+//         formattedValue += npwpValue.substring(0, 2);
+//     }
 
-    if (npwpValue.length > 2) {
-        formattedValue += '.' + npwpValue.substring(2, 5);
-    }
+//     if (npwpValue.length > 2) {
+//         formattedValue += '.' + npwpValue.substring(2, 5);
+//     }
 
-    if (npwpValue.length > 5) {
-        formattedValue += '.' + npwpValue.substring(5, 8);
-    }
+//     if (npwpValue.length > 5) {
+//         formattedValue += '.' + npwpValue.substring(5, 8);
+//     }
 
-    if (npwpValue.length > 8) {
-        formattedValue += '.' + npwpValue.substring(8, 9) + '-';
-    }
+//     if (npwpValue.length > 8) {
+//         formattedValue += '.' + npwpValue.substring(8, 9) + '-';
+//     }
 
-    if (npwpValue.length > 9) {
-        formattedValue += npwpValue.substring(9, 12);
-    }
+//     if (npwpValue.length > 9) {
+//         formattedValue += npwpValue.substring(9, 12);
+//     }
 
-    if (npwpValue.length > 12) {
-        formattedValue += '.' + npwpValue.substring(12, 15);
-    }
+//     if (npwpValue.length > 12) {
+//         formattedValue += '.' + npwpValue.substring(12, 15);
+//     }
 
-    $(this).val(formattedValue);
-});
+//     $(this).val(formattedValue);
+// });
 </script>

@@ -33,12 +33,37 @@
                                     value="<?= $this->session->username ?>">
                                 <?php endif ?>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group mt-4">
-                                            <label for="jenis_pemohon">Nama</label>
+                                            <label
+                                                for="jenis_pemohon"><?= $this->session->jenis == 2 ? 'Nama' : 'Nama Penanggung Jawab/Pemilik Badan Usaha' ?></label>
                                             <input type="text" name="tblpemohon_nama" id="tblpemohon_nama"
                                                 class="form-control" required>
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <?php if ($this->session->jenis == 1) : ?>
+                                        <div class="col-md-12">
+                                            <div class="form-group mt-4">
+                                                <label for="jenis_pemohon">NIK Pemilik Usaha</label>
+                                                <input type="text" name="tblpemohon_noidentitas"
+                                                    id="tblpemohon_noidentitas" class="form-control" required
+                                                    maxlength="16" minlength="16">
+                                            </div>
+                                        </div>
+                                        <?php else : ?>
+                                        <div class="col-md-12">
+                                            <div class="form-group mt-4">
+                                                <label for="jenis_pemohon">NPWP </label>
+                                                <input type="text" name="tblpemohon_npwp" id="tblpemohon_npwp"
+                                                    class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <?php endif ?>
+
+
+
+
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mt-4">
@@ -47,27 +72,6 @@
                                                 class="form-control" required>
                                         </div>
                                     </div>
-
-                                </div>
-
-                                <div class="row">
-                                    <?php if ($this->session->jenis == 1) : ?>
-                                    <div class="col-md-6">
-                                        <div class="form-group mt-4">
-                                            <label for="jenis_pemohon">NIK Pemilik Usaha</label>
-                                            <input type="text" name="tblpemohon_noidentitas" id="tblpemohon_noidentitas"
-                                                class="form-control" required maxlength="16" minlength="16">
-                                        </div>
-                                    </div>
-                                    <?php else : ?>
-                                    <div class="col-md-6">
-                                        <div class="form-group mt-4">
-                                            <label for="jenis_pemohon">NPWP </label>
-                                            <input type="text" name="tblpemohon_npwp" id="tblpemohon_npwp"
-                                                class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <?php endif ?>
                                     <div class="col-md-6">
                                         <div class="form-group mt-4">
                                             <label for="jenis_pemohon"> Email Aktif</label>
@@ -75,9 +79,6 @@
                                                 class="form-control" required>
                                         </div>
                                     </div>
-
-
-
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -92,9 +93,11 @@
 
 
                                 </div>
+
+
                                 <div class="row">
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group mt-4">
                                             <label for="jenis_pemohon">Username</label>
                                             <input type="text" name="username" id="username" class="form-control"
@@ -130,7 +133,11 @@
                                 </div>
 
 
-
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="validasi text-danger"></div>
+                                    </div>
+                                </div>
 
                                 <div class="mt-4 mb-3">
 

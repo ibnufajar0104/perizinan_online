@@ -122,15 +122,16 @@
                                     <div class="table-responsive">
                                         <table class="table table-borderless">
                                             <tr>
-                                                <td>Tanggal Permohonan</td>
-                                                <td>:</td>
-                                                <td><?= $r['tgl_daftar'] ?></td>
-                                            </tr>
-                                            <tr>
                                                 <td>Nomor Pendaftaran</td>
                                                 <td>:</td>
                                                 <td><?= $r['tblizinpendaftaran_nomor'] ?></td>
                                             </tr>
+                                            <tr>
+                                                <td>Tanggal Permohonan</td>
+                                                <td>:</td>
+                                                <td><?= $r['tgl_daftar'] ?></td>
+                                            </tr>
+
                                             <tr>
                                                 <td>Nomor Identitas</td>
                                                 <td>:</td>
@@ -180,12 +181,12 @@
                                             </tr>
 
                                             <tr>
-                                                <td>Nama Usaha / Tempat Berkerja</td>
+                                                <td>Nama Usaha/Tempat Berkerja</td>
                                                 <td>:</td>
                                                 <td><?= $r['tblizinpendaftaran_usaha'] ?></td>
                                             </tr>
                                             <tr>
-                                                <td>Alamat Usaha / Alamat Tempat Berkerja</td>
+                                                <td>Alamat Usaha/Tempat Berkerja</td>
                                                 <td>:</td>
 
                                                 <td><?= $r['tblizinpendaftaran_lokasiizin'] ?></td>

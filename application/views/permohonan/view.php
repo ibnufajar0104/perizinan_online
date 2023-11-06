@@ -27,7 +27,8 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo $maintitle; ?></a></li>
+                                    <li class="breadcrumb-item"><a
+                                            href="javascript: void(0);"><?php echo $maintitle; ?></a></li>
                                     <li class="breadcrumb-item active"><?php echo $title; ?></li>
                                 </ol>
                             </div>
@@ -42,10 +43,10 @@
                             <div class="card-header">
                                 <div class="d-md-flex justify-content-between align-items-center">
                                     <?php if ($permohonan) : ?>
-                                        <p> Selalu periksa perkembangan permohonan anda dengan mengklik "opsi" kemudian klik
-                                            "Detail"</p>
+                                    <p> Selalu periksa perkembangan permohonan anda dengan mengklik "opsi" kemudian klik
+                                        "Detail"</p>
                                     <?php else : ?>
-                                        <p> Mulai permohonan anda dengan menekan tombol "Ajukan Permohonan</p>
+                                    <p> Mulai permohonan anda dengan menekan tombol "Ajukan Permohonan</p>
                                     <?php endif ?>
 
                                     <a href="<?= site_url('permohonan/form') ?>" class="btn btn-primary">Ajukan
@@ -73,19 +74,21 @@
                                         <tbody>
                                             <?php $no = 1 ?>
                                             <?php if ($permohonan) : ?>
-                                                <?php foreach ($permohonan as $r) : ?>
-                                                    <tr>
-                                                        <td><?= $no ?>.</td>
+                                            <?php foreach ($permohonan as $r) : ?>
+                                            <tr>
+                                                <td><?= $no ?>.</td>
 
-                                                        <td><?= $r['tblizin_nama'] ?></td>
-                                                        <td><?= $r['tblizinpermohonan_nama'] ?></td>
-                                                        <td><?= $r['tblizinpendaftaran_usaha'] ?></td>
+                                                <td><?= $r['tblizin_nama'] ?></td>
+                                                <td><?= $r['tblizinpermohonan_nama'] ?></td>
+                                                <td><?= $r['tblizinpendaftaran_usaha'] ?></td>
 
-                                                        <td><?= $r['tgl_daftar'] ?></td>
-                                                        <td><?= status($r['status']) ?></td>
-                                                        <td>
-                                                            <?php if ($r['status'] == 2) : ?>
-                                                                <div class="btn-group" role="group">
+                                                <td><?= $r['tgl_daftar'] ?></td>
+                                                <td><?= status($r['status']) ?></td>
+                                                <td>
+                                                    <?php if ($r['status'] == 2) : ?>
+                                                    <a href="<?= site_url('permohonan/detail/' . $r['tblizinpendaftaran_id']) ?>"
+                                                        class="btn btn-primary btn-sm">Detail</a>
+                                                    <!-- <div class="btn-group" role="group">
                                                                     <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
                                                                         Opsi <i class="mdi mdi-chevron-down"></i>
                                                                     </button>
@@ -96,18 +99,19 @@
                                                                         </li>
 
                                                                     </ul>
-                                                                </div>
-                                                            <?php else : ?>
-                                                                <a href="<?= site_url('permohonan/detail/' . $r['tblizinpendaftaran_id']) ?>" class="btn btn-primary btn-sm">Detail</a>
-                                                            <?php endif ?>
-                                                        </td>
-                                                    </tr>
-                                                    <?php $no++ ?>
-                                                <?php endforeach ?>
+                                                                </div> -->
+                                                    <?php else : ?>
+                                                    <a href="<?= site_url('permohonan/detail/' . $r['tblizinpendaftaran_id']) ?>"
+                                                        class="btn btn-primary btn-sm">Detail</a>
+                                                    <?php endif ?>
+                                                </td>
+                                            </tr>
+                                            <?php $no++ ?>
+                                            <?php endforeach ?>
                                             <?php else : ?>
-                                                <tr>
-                                                    <td colspan="7" class="text-center">Belum ada permohonan</td>
-                                                </tr>
+                                            <tr>
+                                                <td colspan="7" class="text-center">Belum ada permohonan</td>
+                                            </tr>
                                             <?php endif ?>
                                         </tbody>
                                     </table>
