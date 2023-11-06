@@ -8,7 +8,7 @@ class Profil extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-
+        login_required();
         $this->load->model('M_jwt', 'jwt');
     }
 

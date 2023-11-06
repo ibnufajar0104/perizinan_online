@@ -31,14 +31,14 @@ $('.form-daftar').submit(function(e) {
     var password = $('#tblpengguna_password').val();
     var konfirmasi = $('#konfirmasi').val();
 
-    alert(password);
+
     if (!validatePassword(password)) {
         $('.validasi').text(
             'Password paling sedikit 6 karakter yang mengandung 1 angka, 1 huruf kapital dan 1 karakter')
         return false;
     }
 
-    alert(konfirmasi);
+
 
     if (password != konfirmasi) {
         $('.validasi').text('konfirmasi password tidak sama');

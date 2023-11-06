@@ -36,7 +36,8 @@
 
                                 <div class="form-group mt-4 npwp">
                                     <label for="jenis_pemohon">NPWP</label>
-                                    <input type="text" name="tblpemohon_npwp" id="tblpemohon_npwp" class="form-control">
+                                    <input type="text" name="tblpemohon_npwp" id="tblpemohon_npwp" class="form-control"
+                                        maxlength="16" minlength="15">
 
                                 </div>
 

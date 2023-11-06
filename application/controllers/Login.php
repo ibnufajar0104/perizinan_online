@@ -15,6 +15,10 @@ class Login extends CI_Controller
 	public function index()
 	{
 
+		if ($this->session->logged) {
+			redirect('permohonan');
+		}
+
 		$data['title'] = 'Login';
 		$data['js'] = $this->url . '/js';
 		$this->load->view($this->url . '/view', $data);
