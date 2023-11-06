@@ -63,7 +63,7 @@ $('.form-cek-pendaftaran').submit(function(e) {
 
 });
 
-$('#tblpemohon_noidentitas').keypress(function(e) {
+$('#tblpemohon_noidentitas, #tblpemohon_npwp').keypress(function(e) {
     var key = e.which;
 
     if (key < 48 || key > 57) {

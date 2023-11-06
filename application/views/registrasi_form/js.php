@@ -95,34 +95,11 @@ function validatePassword(password) {
 }
 
 
-// $("#tblpemohon_npwp").on('input', function() {
-//     var npwpValue = $(this).val().replace(/\D/g, ''); 
-//     var formattedValue = '';
+$('#tblpemohon_noidentitas, #tblpemohon_npwp').keypress(function(e) {
+    var key = e.which;
 
-//     if (npwpValue.length > 0) {
-//         formattedValue += npwpValue.substring(0, 2);
-//     }
-
-//     if (npwpValue.length > 2) {
-//         formattedValue += '.' + npwpValue.substring(2, 5);
-//     }
-
-//     if (npwpValue.length > 5) {
-//         formattedValue += '.' + npwpValue.substring(5, 8);
-//     }
-
-//     if (npwpValue.length > 8) {
-//         formattedValue += '.' + npwpValue.substring(8, 9) + '-';
-//     }
-
-//     if (npwpValue.length > 9) {
-//         formattedValue += npwpValue.substring(9, 12);
-//     }
-
-//     if (npwpValue.length > 12) {
-//         formattedValue += '.' + npwpValue.substring(12, 15);
-//     }
-
-//     $(this).val(formattedValue);
-// });
+    if (key < 48 || key > 57) {
+        e.preventDefault();
+    }
+});
 </script>
