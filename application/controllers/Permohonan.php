@@ -352,14 +352,15 @@ class Permohonan extends CI_Controller
 	private function upload($str)
 	{
 
-		$targetDirectory = "tmp/"; // Direktori penyimpanan file
+		$uploadDir = "tmp/"; // Direktori penyimpanan file
 		$file_name = $_FILES[$str]['name'];
 		$file_tmp = $_FILES[$str]['tmp_name'];
+		$uploadedFileName = date('YmdHis') . '_' . $_FILES[$str]['name'];
 		$file_size = $_FILES[$str]['size'];
 
 		// Periksa apakah file ada
 		if (is_uploaded_file($file_tmp)) {
-			$targetFile = $targetDirectory . basename($file_name);
+			$uploadedFile = $uploadDir . $uploadedFileName;
 
 			// // Batasi jenis file yang diizinkan
 			// $allowedExtensions = array("jpg", "jpeg", "png", "gif");
@@ -375,8 +376,8 @@ class Permohonan extends CI_Controller
 			// }
 
 			// Jika tidak ada kesalahan, lakukan pengunggahan file
-			if (move_uploaded_file($file_tmp, $targetFile)) {
-				return $file_name;
+			if (move_uploaded_file($file_tmp, $uploadedFile)) {
+				return  $uploadedFileName;
 			} else {
 				return null;
 			}
