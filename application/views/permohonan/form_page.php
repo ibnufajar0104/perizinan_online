@@ -45,7 +45,7 @@
 
                                 Pengajuan Permohonan
                             </div>
-                            <form class="needs-validation form" novalidate method="POST" enctype="multipart/form-data">
+                            <form class="form" method="POST" enctype="multipart/form-data">
                                 <div class="card-body">
 
                                     <div class="row">
@@ -155,9 +155,6 @@
                                     <div class="row persyaratan">
 
                                     </div>
-
-
-
 
                                 </div>
                                 <div class="modal-footer">

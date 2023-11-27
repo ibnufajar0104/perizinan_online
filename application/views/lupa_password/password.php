@@ -22,47 +22,39 @@
                                     alt="" width="110">
                             </div> -->
                             <h5 class="text-center mt-4"><?= aplikasi() ?></h5>
-                            <p class="text-center mt-4">Daftar terlebih dahulu, untuk bisa melakukan login</p>
-                            <form method="post" action="<?= base_url('registrasi/cek') ?>"
-                                class="form-cek-pendaftaran p-4">
-                                <div class="form-group  mt-4">
-                                    <label for="jenis_pemohon">Status Pemohon</label>
-                                    <select name="jenis" id="jenis" class="form-control" required>
-                                        <option value="0">Pilih</option>
-                                        <option value="1">Badan Usaha</option>
-                                        <option value="2">Pribadi/Perorangan</option>
-                                    </select>
+                            <!-- <p class="text-center mt-4">Form Lupa Password</p> -->
+                            <form method="post" class="form-ganti-password p-4">
+
+                                <div class="form-group mt-4">
+                                    <label for="jenis_pemohon">Password</label>
+                                    <input type="password" name="password" id="tblpengguna_password"
+                                        class="form-control" required>
                                 </div>
 
-                                <div class="form-group mt-4 npwp">
-                                    <label for="jenis_pemohon">NPWP</label>
-                                    <input type="text" name="tblpemohon_npwp" id="tblpemohon_npwp" class="form-control"
-                                        maxlength="16" minlength="15">
-
+                                <div class="form-group mt-4">
+                                    <label for="jenis_pemohon">Konfirmasi Password</label>
+                                    <input type="password" name="konfirmasi" id="konfirmasi" class="form-control"
+                                        required>
                                 </div>
 
-                                <div class="form-group mt-4 nik">
-                                    <label for="jenis_pemohon">NIK</label>
-                                    <input type="text" name="tblpemohon_noidentitas" maxlength="16" minlength="16"
-                                        id="tblpemohon_noidentitas" class="form-control">
-                                </div>
-
+                                <div class="validasi text-danger mt-2"></div>
                                 <div class="mt-4 mb-3">
 
 
-
-                                    <button type="submit" class="btn btn-primary w-100 waves-effect waves-light">Cek
-                                        Pernah
-                                        Mendaftar</button>
+                                    <input type="hidden" name="tblpengguna_id" id="tblpengguna_id"
+                                        value="<?= $this->session->tblpengguna_id ?>">
+                                    <button type="submit"
+                                        class="btn btn-primary w-100 waves-effect waves-light">Simpan</button>
                                 </div>
-
                             </form>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 
     <?php include(APPPATH . 'views/layout2/footer.php'); ?>
