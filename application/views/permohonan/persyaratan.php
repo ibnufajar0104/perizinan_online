@@ -20,8 +20,7 @@
 
 
                         <input type="file" name="<?= $r['tblpersyaratan_id'] ?>" id="<?= $r['tblpersyaratan_id'] ?>"
-                            class="form-control form-control mb-2" <?= isset($r['file']) ? '' : 'required' ?>
-                            style="display: none;">
+                            <?= isset($r['file']) ? '' : 'required' ?> style="display: none;">
                         <div class="invalid-feedback">
                             Harus di upload
                         </div>
