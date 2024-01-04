@@ -102,4 +102,21 @@ $('#tblpemohon_noidentitas, #tblpemohon_npwp').keypress(function(e) {
         e.preventDefault();
     }
 });
+
+
+
+$('.toggle-password').on('click', function() {
+    const targetId = $(this).data('target');
+    const passwordField = $('#' + targetId);
+    const passwordFieldType = passwordField.attr('type');
+
+    // Toggle the password field type
+    passwordField.attr('type', passwordFieldType === 'password' ? 'text' : 'password');
+
+    // Toggle the eye icon
+    const eyeIcon = $(this).find('i');
+
+
+    eyeIcon.toggleClass('fa-eye-slash fa-eye');
+});
 </script>

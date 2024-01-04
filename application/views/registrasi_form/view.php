@@ -116,18 +116,34 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="form-group mt-4">
-                                            <label for="jenis_pemohon">Password</label>
-                                            <input type="password" name="tblpengguna_password" id="tblpengguna_password"
-                                                class="form-control" required>
+                                        <div class="form-group">
+                                            <label for="tblpengguna_password">Password</label>
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" id="tblpengguna_password"
+                                                    name="tblpengguna_password" required>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary toggle-password"
+                                                        type="button" data-target="tblpengguna_password">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <div class="form-group mt-4">
-                                            <label for="jenis_pemohon">Konfirmasi Password</label>
-                                            <input type="password" name="konfirmasi" id="konfirmasi"
-                                                class="form-control" required>
+                                        <div class="form-group">
+                                            <label for="konfirmasi">Konfirmasi Password</label>
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" id="konfirmasi"
+                                                    name="konfirmasi" required>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary toggle-password"
+                                                        type="button" data-target="konfirmasi">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
