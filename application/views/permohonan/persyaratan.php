@@ -38,7 +38,7 @@
 
                                 <?php if (isset($r['file'])) : ?>
 
-                                    <button type="button" style="width: 160px;" onclick="review('<?= ip() . 'doc/persyaratan/' . $r['file'] ?>')" class="btn  btn-success btn-sm mb-2 review"><i class="fadeIn animated bx bx-file"></i>
+                                    <button type="button" style="width: 160px;" onclick="review('<?= ip_embed() . 'doc/persyaratan/' . $r['file'] ?>')" class="btn  btn-success btn-sm mb-2 review"><i class="fadeIn animated bx bx-file"></i>
                                         File
                                         anda
                                         sebelumnya</button>

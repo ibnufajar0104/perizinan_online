@@ -52,7 +52,7 @@
 
                                     <div class="row">
                                         <input type="hidden" name="tblizinpendaftaran_id"
-                                            value="<?= $p['tblizinpendaftaran_id'] ?>">
+                                            value="<?= $p['tblizinpendaftaran_id'] ?>" id="tblizinpendaftaran_id">
                                         <input type="hidden" name="tblpemohon_id" id="tblpemohon_id"
                                             value="<?= $p['tblpemohon_id'] ?>">
                                         <input type="hidden" name="tblpengguna_id" id="tblpengguna_id"

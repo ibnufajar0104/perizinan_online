@@ -329,10 +329,11 @@ class Permohonan extends CI_Controller
 
 		$d['id_permohonan'] = $this->input->post('id', true);
 		$d['id_pemohon'] = $this->session->tblpemohon_id;
+		$d['id_pendaftaran'] = $this->input->post('id_pendaftaran', true);
 
 		$token = $this->jwt->get_token();
 		$response = $this->jwt->request(ip() . 'permohonan/get_persyaratan', 'POST', json_encode($d), $token);
-
+		dd($response);
 		$this->load->view('permohonan/persyaratan', array('row' => $response['data']));
 	}
 

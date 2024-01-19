@@ -158,6 +158,11 @@
                                                 <td><?= $r['tblizinpendaftaran_telponpemohon'] ?></td>
                                             </tr>
 
+                                            <tr>
+                                                <td>Keterangan</td>
+                                                <td>:</td>
+                                                <td><?= $r['tblizinpendaftaran_keterangan'] ?></td>
+                                            </tr>
 
 
                                         </table>
@@ -202,11 +207,6 @@
                                                 <td><?= $r['tblkelurahan_nama'] ?></td>
                                             </tr>
 
-                                            <tr>
-                                                <td>Keterangan</td>
-                                                <td>:</td>
-                                                <td><?= $r['tblizinpendaftaran_keterangan'] ?></td>
-                                            </tr>
 
                                         </table>
                                     </div>

@@ -61,10 +61,11 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-
+                                                <td>No. Pendaftaran</td>
                                                 <th>Izin</th>
                                                 <th>Permohonan</th>
-                                                <th>Nama Usaha</th>
+
+                                                <th>Usaha/Tempat Berkerja</th>
                                                 <th>Tanggal</th>
                                                 <th>Status</th>
                                                 <th>Opsi</th>
@@ -77,7 +78,7 @@
                                             <?php foreach ($permohonan as $r) : ?>
                                             <tr>
                                                 <td><?= $no ?>.</td>
-
+                                                <td><?= $r['tblizinpendaftaran_nomor'] ?></td>
                                                 <td><?= $r['tblizin_nama'] ?></td>
                                                 <td><?= $r['tblizinpermohonan_nama'] ?></td>
                                                 <td><?= $r['tblizinpendaftaran_usaha'] ?></td>
