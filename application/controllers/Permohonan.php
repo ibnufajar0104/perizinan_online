@@ -333,7 +333,7 @@ class Permohonan extends CI_Controller
 
 		$token = $this->jwt->get_token();
 		$response = $this->jwt->request(ip() . 'permohonan/get_persyaratan', 'POST', json_encode($d), $token);
-		dd($response);
+
 		$this->load->view('permohonan/persyaratan', array('row' => $response['data']));
 	}
 
