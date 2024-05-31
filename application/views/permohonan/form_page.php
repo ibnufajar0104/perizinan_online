@@ -128,7 +128,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12 px-4 pb-4">
+<!--                                         <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nama Kecamatan </label>
                                                 <select name="tblkecamatan_id" id="tblkecamatan_id"
@@ -146,8 +146,26 @@
                                                 </div>
                                             </div>
 
-                                        </div>
+                                        </div> -->
+   										<div class="col-md-6 col-12 px-4 pb-4">
+                                            <div class="form-group">
+                                                <label for="" class="mb-1">Nama Kecamatan </label>
+                                                <select name="tblkecamatan_id" id="tblkecamatan_id"
+                                                    class="form-control form-control-2" required
+                                                    >
+                                                    <option value="">Pilih</option>
+                                                    <?php foreach ($kecamatan as $r) : ?>
+                                                    <option value="<?= $r['tblkecamatan_id'] ?>">
+                                                        <?= $r['tblkecamatan_nama'] ?>
+                                                    </option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Harus diisi.
+                                                </div>
+                                            </div>
 
+                                        </div>
                                         <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
                                                 <label for="" class="mb-1">Nama Kelurahan / Desa</label>

@@ -85,7 +85,26 @@
 
                                                 <td><?= $r['tgl_daftar'] ?></td>
                                                 <td><?= status($r['status']) ?></td>
+
                                                 <td>
+                                                    <div class="btn-group" role="group">
+                                                        <button id="btnGroupDrop1" type="button"
+                                                            class="btn btn-primary dropdown-toggle btn-sm"
+                                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                                            Opsi <i class="mdi mdi-chevron-down"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                            <li><a class="dropdown-item"
+                                                                    href="<?= site_url('permohonan/detail/' . $r['tblizinpendaftaran_id']) ?>">Detail</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    href="<?= site_url('permohonan/edit/' . $r['tblizinpendaftaran_id']) ?>">Edit</a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <!-- <td>
                                                     <?php if ($r['status'] == 1) : ?>
 
                                                     <div class="btn-group" role="group">
@@ -108,7 +127,7 @@
                                                     <a href="<?= site_url('permohonan/detail/' . $r['tblizinpendaftaran_id']) ?>"
                                                         class="btn btn-primary btn-sm">Detail</a>
                                                     <?php endif ?>
-                                                </td>
+                                                </td> -->
                                             </tr>
                                             <?php $no++ ?>
                                             <?php endforeach ?>

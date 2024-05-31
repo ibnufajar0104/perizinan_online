@@ -65,7 +65,6 @@ function status($str)
     return  '<button class="btn btn-sm btn-outline-warning">Diproses</button>';
 }
 
-
 function path_persyaratan($file)
 {
     $path = ip_embed() . 'doc/persyaratan/' . $file;
