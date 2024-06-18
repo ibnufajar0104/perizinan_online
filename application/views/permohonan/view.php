@@ -85,8 +85,7 @@
 
                                                 <td><?= $r['tgl_daftar'] ?></td>
                                                 <td><?= status($r['status']) ?></td>
-
-                                                <td>
+                                                 <td>
                                                     <div class="btn-group" role="group">
                                                         <button id="btnGroupDrop1" type="button"
                                                             class="btn btn-primary dropdown-toggle btn-sm"

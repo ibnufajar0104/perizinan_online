@@ -42,7 +42,6 @@ class Login extends CI_Controller
 
 		$response = $this->jwt->request(ip() . 'permohonan/login', 'POST', json_encode($d), $token);
 
-
 		if (isset($response['status'])) {
 			if ($response['status']) {
 

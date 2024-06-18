@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>tmp/assets/css/preloader.min.css" type="text/css" />
 
     <!-- Bootstrap Css -->
-    <link href="<?= base_url() ?>tmp/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>tmp/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet"
+        type="text/css" />
     <!-- Icons Css -->
     <link href="<?= base_url() ?>tmp/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
@@ -23,44 +24,66 @@
 
 
     <!-- DataTables -->
-    <link href="<?= base_url() ?>tmp/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-    <link href="<?= base_url() ?>tmp/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>tmp/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+        type="text/css" />
+    <link href="<?= base_url() ?>tmp/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css"
+        rel="stylesheet" type="text/css" />
 
     <!-- Responsive datatable examples -->
-    <link href="<?= base_url() ?>tmp/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>tmp/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"
+        rel="stylesheet" type="text/css" />
 
     <!-- alertifyjs Css -->
-    <link href="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/css/alertify.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/css/alertify.min.css" rel="stylesheet"
+        type="text/css" />
 
     <!-- alertifyjs default themes  Css -->
-    <link href="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/css/themes/default.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/css/themes/default.min.css" rel="stylesheet"
+        type="text/css" />
 
     <!-- choices css -->
-    <link href="<?= base_url() ?>tmp/assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>tmp/assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet"
+        type="text/css" />
 
-<!--     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
+
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
+
 
 
 
     <style>
-        body {
-            font-size: 14px;
-        }
+    body {
+        font-size: 14px;
+    }
 
 
-        .form-control-2 {
-            height: 45px;
-        }
+    .form-control-2 {
+        height: 45px;
+    }
 
-        th,
-        td {
-            vertical-align: middle;
-        }
+    th,
+    td {
+        vertical-align: middle;
+    }
 
-/*         .select2-container--default .select2-selection--single {
-            height: 45px;
-        
-        } */
+    /* Mengatur tinggi elemen Select2 */
+    .select2-container .select2-selection--single {
+        height: 45px;
+        /* Atur tinggi yang diinginkan */
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height: 45px;
+        /* Sesuaikan dengan tinggi elemen */
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 48px;
+        /* Sesuaikan dengan tinggi elemen */
+    }
     </style>
 </head>
 
