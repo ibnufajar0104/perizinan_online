@@ -33,29 +33,37 @@
         type="text/css" />
 
     <style>
-    body {
-        background-color: #f5f5dc;
-    }
+        body {
+            background-color: #e6f2ff;
+        }
 
-    .form-padding {
-        padding: 40px;
-    }
+        .form-padding {
+            padding: 40px;
+        }
 
-    .card {
-        border-radius: 10px;
-    }
-
-
-    .form-image {
-        margin-top: 40px;
-    }
-
-    @media only screen and (max-width: 600px) {
-        .form-image {
-            display: none;
+        .card {
+            background-color: #FAFDFE;
+            /* Warna latar belakang yang lebih terang untuk kontras */
+            border: none;
+            /* Menghapus border default card */
+            border-radius: 10px;
+            /* Membulatkan sudut card */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Memberikan bayangan ringan */
+            margin-bottom: 15px;
         }
 
 
-    }
+        .form-image {
+            margin-top: 40px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .form-image {
+                display: none;
+            }
+
+
+        }
     </style>
 </head>

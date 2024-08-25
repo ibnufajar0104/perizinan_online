@@ -1,113 +1,121 @@
 <?php include(APPPATH . 'views/layout2/head.php'); ?>
 
 <body data-layout="horizontal" data-topbar="dark">
-
-    <div class="auth-page">
-        <div class="container-fluid p-0">
-            <div class="row g-0">
-                <div class="col-md-6">
-                    <div class="auth-bg pt-md-5 p-4 d-flex">
-                        <div class="overlay"></div>
-
-
-                        <div class="row justify-content-center align-items-end">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="auth-full-page-content d-flex p-sm-5 p-4">
-                        <div class="w-100">
-                            <div class="d-flex flex-column h-100">
-                                <!-- <div class="mb-4 mb-md-5 text-center">
-                                    <a href="index.php" class="d-block auth-logo">
-                                        <img src="<?= base_url() ?>tmp/assets/images/logo-sm.svg" alt="" height="28">
-                                        <span class="logo-txt">Dason</span>
-                                    </a>
-                                </div> -->
-                                <div class="auth-content my-auto">
-                                    <div class="text-center">
-                                        <h5 class="mb-0">Sistem Informasi Manajemen Pelayanan Terpadu
-                                            Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu
-                                            Kabupaten Tanah Laut</h5>
-                                        <p class="text-muted mt-4 mb-4">Untuk bisa login silahkan register terlebih
-                                            dahulu.
-                                        </p>
-                                    </div>
-                                    <form method="post" class="login-form">
-
-
-                                        <div class="form-group mt-4">
-                                            <label for="jenis_pemohon">Username</label>
-                                            <input type="text" name="username" id="username" class="form-control"
-                                                required>
-                                        </div>
-
-                                        <div class="form-group mt-4">
-                                            <label for="jenis_pemohon">Password</label>
-                                            <input type="password" name="password" id="password" class="form-control"
-                                                required>
-                                        </div>
-
-                                        <div class="mt-4 mb-3">
-
-
-
-                                            <button type="submit"
-                                                class="btn btn-primary w-100 waves-effect waves-light">Login</button>
-                                        </div>
-
-                                    </form>
-
-                                    <!-- <div class="mt-4 pt-2 text-center">
-                                        <div class="signin-other-title">
-                                            <h5 class="font-size-14 mb-3 text-muted fw-medium">- Sign in with -</h5>
-                                        </div>
-
-                                        <ul class="list-inline mb-0">
-                                            <li class="list-inline-item">
-                                                <a href="javascript:void()" class="social-list-item bg-primary text-white border-primary">
-                                                    <i class="mdi mdi-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="javascript:void()" class="social-list-item bg-info text-white border-info">
-                                                    <i class="mdi mdi-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="javascript:void()" class="social-list-item bg-danger text-white border-danger">
-                                                    <i class="mdi mdi-google"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div> -->
-
-                                    <div class="mt-5 text-center">
-                                        <p class="text-muted mb-0">Belum punya akun ? <a
-                                                href="<?= site_url('registrasi') ?>" class="text-primary fw-semibold">
-                                                Registrasi Sekarang </a> </p>
-                                    </div>
-                                </div>
-                                <div class="mt-4 mt-md-5 text-center">
-                                    <!-- <p class="mb-0">© <script>
-                                            document.write(new Date().getFullYear())
-                                        </script> Dason . Crafted with <i class="mdi mdi-heart text-danger"></i> by
-                                        Themesdesign</p> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end auth full page content -->
-                </div>
-                <!-- end col -->
-
-                <!-- end col -->
-            </div>
-            <!-- end row -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Nama Aplikasi</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#beranda">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#alur">Alur</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#faq">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#info-persyaratan">Info Persyaratan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#registrasi">Registrasi</a>
+                </li>
+            </ul>
         </div>
-        <!-- end container fluid -->
+    </nav>
+
+    <section id="beranda" class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 d-flex align-items-center">
+                    <div>
+                        <h1 class="display-4">Selamat Datang di Nama Aplikasi</h1>
+                        <p class="lead">Ini adalah aplikasi yang dirancang untuk membantu Anda dalam [deskripsi
+                            aplikasi].</p>
+                    </div>
+                </div>
+                <div class="col-md-6 d-none d-md-block">
+                    <img src="https://via.placeholder.com/600x400" alt="Gambar Aplikasi" class="hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row justify-content-center align-items-center" style="height: 100vh;">
+            <div class="col-md-12">
+                <div class="card  d-flex flex-column align-items-center mt-4">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+
+                            <img class="form-image"
+                                src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/fotopns123-1.png"
+                                alt="" width="400">
+                        </div>
+
+                        <div class="col-md-6 form-padding">
+                            <!-- <div class="logo text-center">
+                                <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/e635f48923a6082f99ca78be2b100163.png"
+                                    alt="" width="50">
+                                <img src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/b9b6479351238932e3e02b0e165f8d0a-removebg-preview.png"
+                                    alt="" width="110">
+                            </div> -->
+                            <h5 class="text-center mt-4"><?= aplikasi() ?></h5>
+                            <p class="text-center mt-4">Login untuk memulai sesi</p>
+                            <form method="post" class="form-login p-4">
+
+
+                                <div class="form-group mt-4">
+                                    <label for="jenis_pemohon">Username</label>
+                                    <input type="text" name="username" id="username" class="form-control"
+                                        value="<?= $this->session->username ?>" required>
+                                </div>
+
+                                <div class="form-group mt-4">
+                                    <label>Password</label>
+                                    <div class="input-group">
+                                        <input type="password" name="password" id="password" class="form-control"
+                                            required>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 mb-3">
+
+
+
+                                    <button type="submit"
+                                        class="btn btn-primary w-100 waves-effect waves-light">Login</button>
+
+
+                                </div>
+                                <div class="mt-2 ">
+                                    <p class="text-muted mb-0">Belum punya akun ? </p>
+                                </div>
+
+                                <a href="<?= site_url('registrasi') ?>"
+                                    class="btn btn-outline-primary w-100 waves-effect waves-light  mb-3">Registrasi
+                                    Sekarang</a>
+                                <a href="<?= site_url('lupa_password') ?>"
+                                    class="btn btn-outline-primary w-100 waves-effect waves-light">Lupa
+                                    Password</a>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 
 
     <?php include(APPPATH . 'views/layout2/footer.php'); ?>

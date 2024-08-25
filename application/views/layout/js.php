@@ -38,74 +38,88 @@
             <h6 class="mt-4 mb-3 pt-2">Layout Width</h6>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="layout-width" id="layout-width-fuild" value="fuild" onchange="document.body.setAttribute('data-layout-size', 'fluid')">
+                <input class="form-check-input" type="radio" name="layout-width" id="layout-width-fuild" value="fuild"
+                    onchange="document.body.setAttribute('data-layout-size', 'fluid')">
                 <label class="form-check-label" for="layout-width-fuild">Fluid</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="layout-width" id="layout-width-boxed" value="boxed" onchange="document.body.setAttribute('data-layout-size', 'boxed'),document.body.setAttribute('data-sidebar-size', 'sm')">
+                <input class="form-check-input" type="radio" name="layout-width" id="layout-width-boxed" value="boxed"
+                    onchange="document.body.setAttribute('data-layout-size', 'boxed'),document.body.setAttribute('data-sidebar-size', 'sm')">
                 <label class="form-check-label" for="layout-width-boxed">Boxed</label>
             </div>
 
             <h6 class="mt-4 mb-3 pt-2">Layout Position</h6>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="layout-position" id="layout-position-fixed" value="fixed" onchange="document.body.setAttribute('data-layout-scrollable', 'false')">
+                <input class="form-check-input" type="radio" name="layout-position" id="layout-position-fixed"
+                    value="fixed" onchange="document.body.setAttribute('data-layout-scrollable', 'false')">
                 <label class="form-check-label" for="layout-position-fixed">Fixed</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="layout-position" id="layout-position-scrollable" value="scrollable" onchange="document.body.setAttribute('data-layout-scrollable', 'true')">
+                <input class="form-check-input" type="radio" name="layout-position" id="layout-position-scrollable"
+                    value="scrollable" onchange="document.body.setAttribute('data-layout-scrollable', 'true')">
                 <label class="form-check-label" for="layout-position-scrollable">Scrollable</label>
             </div>
 
             <h6 class="mt-4 mb-3 pt-2">Topbar Color</h6>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="topbar-color" id="topbar-color-light" value="light" onchange="document.body.setAttribute('data-topbar', 'light')">
+                <input class="form-check-input" type="radio" name="topbar-color" id="topbar-color-light" value="light"
+                    onchange="document.body.setAttribute('data-topbar', 'light')">
                 <label class="form-check-label" for="topbar-color-light">Light</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="topbar-color" id="topbar-color-dark" value="dark" onchange="document.body.setAttribute('data-topbar', 'dark')">
+                <input class="form-check-input" type="radio" name="topbar-color" id="topbar-color-dark" value="dark"
+                    onchange="document.body.setAttribute('data-topbar', 'dark')">
                 <label class="form-check-label" for="topbar-color-dark">Dark</label>
             </div>
 
             <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Size</h6>
 
             <div class="form-check sidebar-setting">
-                <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-default" value="default" onchange="document.body.setAttribute('data-sidebar-size', 'lg')">
+                <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-default"
+                    value="default" onchange="document.body.setAttribute('data-sidebar-size', 'lg')">
                 <label class="form-check-label" for="sidebar-size-default">Default</label>
             </div>
             <div class="form-check sidebar-setting">
-                <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-compact" value="compact" onchange="document.body.setAttribute('data-sidebar-size', 'md')">
+                <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-compact"
+                    value="compact" onchange="document.body.setAttribute('data-sidebar-size', 'md')">
                 <label class="form-check-label" for="sidebar-size-compact">Compact</label>
             </div>
             <div class="form-check sidebar-setting">
-                <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-small" value="small" onchange="document.body.setAttribute('data-sidebar-size', 'sm')">
+                <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-small" value="small"
+                    onchange="document.body.setAttribute('data-sidebar-size', 'sm')">
                 <label class="form-check-label" for="sidebar-size-small">Small (Icon View)</label>
             </div>
 
             <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Color</h6>
 
             <div class="form-check sidebar-setting">
-                <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-light" value="light" onchange="document.body.setAttribute('data-sidebar', 'light')">
+                <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-light" value="light"
+                    onchange="document.body.setAttribute('data-sidebar', 'light')">
                 <label class="form-check-label" for="sidebar-color-light">Light</label>
             </div>
             <div class="form-check sidebar-setting">
-                <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-dark" value="dark" onchange="document.body.setAttribute('data-sidebar', 'dark')">
+                <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-dark" value="dark"
+                    onchange="document.body.setAttribute('data-sidebar', 'dark')">
                 <label class="form-check-label" for="sidebar-color-dark">Dark</label>
             </div>
             <div class="form-check sidebar-setting">
-                <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-brand" value="brand" onchange="document.body.setAttribute('data-sidebar', 'brand')">
+                <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-brand" value="brand"
+                    onchange="document.body.setAttribute('data-sidebar', 'brand')">
                 <label class="form-check-label" for="sidebar-color-brand">Brand</label>
             </div>
 
             <h6 class="mt-4 mb-3 pt-2">Direction</h6>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="layout-direction" id="layout-direction-ltr" value="ltr">
+                <input class="form-check-input" type="radio" name="layout-direction" id="layout-direction-ltr"
+                    value="ltr">
                 <label class="form-check-label" for="layout-direction-ltr">LTR</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="layout-direction" id="layout-direction-rtl" value="rtl">
+                <input class="form-check-input" type="radio" name="layout-direction" id="layout-direction-rtl"
+                    value="rtl">
                 <label class="form-check-label" for="layout-direction-rtl">RTL</label>
             </div>
 
@@ -150,204 +164,204 @@
 
 
 <script>
-    <?php if ($this->session->userdata('error')) : ?>
-        alertify.error('<?= $this->session->userdata('error') ?>');
-    <?php endif ?>
+<?php if ($this->session->userdata('error')) : ?>
+alertify.error('<?= $this->session->userdata('error') ?>');
+<?php endif ?>
 
 
-    <?php if ($this->session->userdata('success')) : ?>
-        alertify.success('<?= $this->session->userdata('success') ?>');
-    <?php endif ?>
+<?php if ($this->session->userdata('success')) : ?>
+alertify.success('<?= $this->session->userdata('success') ?>');
+<?php endif ?>
 </script>
 
 <script>
-    $(document).ready(function() {
-        $('.select2').select2();
-        <?php if ($this->uri->segment(3)) : ?>
-            permohonan_dinamis(<?= $p['tblizin_id'] ?>, '#tblizinpermohonan_id', <?= $p['tblizinpermohonan_id'] ?>);
-            kelurahan_dinamis(<?= $p['tblkecamatan_id'] ?>, '#tblkelurahan_id', <?= $p['tblkelurahan_id'] ?>);
-            persyaratan_dinamis(<?= $p['tblizinpermohonan_id'] ?>);
-        <?php endif ?>
-    });
+$(document).ready(function() {
+    $('.select2').select2();
+    <?php if (isset( $p)) : ?>
+    permohonan_dinamis(<?= $p['tblizin_id'] ?>, '#tblizinpermohonan_id', <?= $p['tblizinpermohonan_id'] ?>);
+    kelurahan_dinamis(<?= $p['tblkecamatan_id'] ?>, '#tblkelurahan_id', <?= $p['tblkelurahan_id'] ?>);
+    persyaratan_dinamis(<?= $p['tblizinpermohonan_id'] ?>);
+    <?php endif ?>
+});
 
 
-    $('#tblizin_id').change(function() {
+$('#tblizin_id').change(function() {
 
-        permohonan_dinamis($(this).val(), '#tblizinpermohonan_id');
+    permohonan_dinamis($(this).val(), '#tblizinpermohonan_id');
 
-    });
+});
 
-    function update_label(id) {
-        if (id == 79) {
-            $('.nama_usaha').text('Nama Universitas/Organisasi');
-            $('.alamat_usaha').text('Alamat Universitas/Organisasi');
+function update_label(id) {
+    if (id == 79) {
+        $('.nama_usaha').text('Nama Universitas/Organisasi');
+        $('.alamat_usaha').text('Alamat Universitas/Organisasi');
+    }
+
+}
+
+$('#tblkecamatan_id').change(function() {
+    kelurahan_dinamis($(this).val(), '#tblkelurahan_id');
+});
+$('#tblizinpermohonan_id').change(function() {
+
+    persyaratan_dinamis($(this).val());
+});
+
+function permohonan_dinamis(id, el, select = null) {
+    update_label(id);
+    $(el).find('option').not(':first').remove();
+    $.ajax({
+        url: "<?php echo site_url('permohonan/get_permohonan') ?>",
+        type: 'POST',
+        data: {
+            tblizin_id: id,
+        },
+        dataType: 'json',
+        success: function(response) {
+            // console.log(response);
+            if (response.status) {
+                // Tambahkan opsi subkategori berdasarkan respons dari server
+                $.each(response.data, function(key, value) {
+
+                    $(el).append('<option value="' + value
+                        .tblizinpermohonan_id + '">' + value.tblizinpermohonan_nama +
+                        '</option>');
+                });
+
+                if (select) {
+                    $(el).val(select);
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText);
         }
-
-    }
-
-    $('#tblkecamatan_id').change(function() {
-        kelurahan_dinamis($(this).val(), '#tblkelurahan_id');
     });
-    $('#tblizinpermohonan_id').change(function() {
+}
 
-        persyaratan_dinamis($(this).val());
+function kelurahan_dinamis(id, el, select = null) {
+
+    $(el).find('option').not(':first').remove();
+    $.ajax({
+        url: "<?php echo site_url('permohonan/get_kelurahan') ?>",
+        type: 'POST',
+        data: {
+            id_kecamatan: id,
+
+        },
+        dataType: 'json',
+        success: function(response) {
+            // console.log(response);
+            if (response.status) {
+
+                $.each(response.data, function(key, value) {
+
+                    $(el).append('<option value="' + value
+                        .tblkelurahan_id + '">' + value.tblkelurahan_nama +
+                        '</option>');
+                });
+
+                if (select) {
+                    $(el).val(select);
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            // console.log(xhr.responseText);
+        }
     });
+}
 
-    function permohonan_dinamis(id, el, select = null) {
-        update_label(id);
-        $(el).find('option').not(':first').remove();
-        $.ajax({
-            url: "<?php echo site_url('permohonan/daftar_permohonan') ?>",
-            type: 'POST',
-            data: {
-                tblizin_id: id,
-            },
-            dataType: 'json',
-            success: function(response) {
-                // console.log(response);
-                if (response.status) {
-                    // Tambahkan opsi subkategori berdasarkan respons dari server
-                    $.each(response.data, function(key, value) {
+function persyaratan_dinamis(id) {
 
-                        $(el).append('<option value="' + value
-                            .tblizinpermohonan_id + '">' + value.tblizinpermohonan_nama +
-                            '</option>');
-                    });
+    var id_pendaftaran = $('#tblizinpendaftaran_id').val();
 
-                    if (select) {
-                        $(el).val(select);
-                    }
-                }
-            },
-            error: function(xhr, status, error) {
-                console.log(xhr.responseText);
+    $.ajax({
+        url: "<?php echo site_url('permohonan/get_persyaratan') ?>",
+        type: 'POST',
+        data: {
+            id: id,
+            id_pendaftaran: id_pendaftaran
+        },
+        dataType: 'html',
+        success: function(response) {
+
+            $('.persyaratan').html(response);
+
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText);
+        }
+    });
+}
+
+function success(msg) {
+    alertify.success(msg);
+}
+
+function fail(msg) {
+    alertify.error(msg);
+}
+
+function postWithAjax(url, data, callback) {
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: data,
+        dataType: 'json',
+        beforeSend: function() {
+            $("button[type='submit']").attr('disabled', 'disabled').text('Loading...');
+        },
+        success: function(response) {
+            if (callback) {
+                callback(response, null);
             }
-        });
-    }
-
-    function kelurahan_dinamis(id, el, select = null) {
-
-        $(el).find('option').not(':first').remove();
-        $.ajax({
-            url: "<?php echo site_url('permohonan/daftar_kelurahan') ?>",
-            type: 'POST',
-            data: {
-                id_kecamatan: id,
-
-            },
-            dataType: 'json',
-            success: function(response) {
-                // console.log(response);
-                if (response.status) {
-
-                    $.each(response.data, function(key, value) {
-
-                        $(el).append('<option value="' + value
-                            .tblkelurahan_id + '">' + value.tblkelurahan_nama +
-                            '</option>');
-                    });
-
-                    if (select) {
-                        $(el).val(select);
-                    }
-                }
-            },
-            error: function(xhr, status, error) {
-                // console.log(xhr.responseText);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            if (callback) {
+                callback(null, 'Error: ' + errorThrown);
             }
-        });
-    }
+        }
+    });
+}
 
-    function persyaratan_dinamis(id) {
+function postFileWithAjax(url, data, callback) {
+    $.ajax({
+        url: url, // Ganti dengan URL endpoint pengunggahan file dan data POST di server Anda
+        type: 'POST',
+        data: data,
+        contentType: false,
+        processData: false,
+        dataType: 'json',
+        beforeSend: function() {
+            // Menampilkan elemen loading
+            $("button[type='submit']").attr('disabled', 'disabled').text('Loading...');
+        },
+        success: function(response) {
 
-        var id_pendaftaran = $('#tblizinpendaftaran_id').val();
 
-        $.ajax({
-            url: "<?php echo site_url('permohonan/get_persyaratan') ?>",
-            type: 'POST',
-            data: {
-                id: id,
-                id_pendaftaran: id_pendaftaran
-            },
-            dataType: 'html',
-            success: function(response) {
-
-                $('.persyaratan').html(response);
-
-            },
-            error: function(xhr, status, error) {
-                console.log(xhr.responseText);
+            if (callback) {
+                callback(response, null);
             }
-        });
-    }
 
-    function success(msg) {
-        alertify.success(msg);
-    }
-
-    function fail(msg) {
-        alertify.error(msg);
-    }
-
-    function postWithAjax(url, data, callback) {
-        $.ajax({
-            type: 'POST',
-            url: url,
-            data: data,
-            dataType: 'json',
-            beforeSend: function() {
-                $("button[type='submit']").attr('disabled', 'disabled').text('Loading...');
-            },
-            success: function(response) {
-                if (callback) {
-                    callback(response, null);
-                }
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                if (callback) {
-                    callback(null, 'Error: ' + errorThrown);
-                }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            if (callback) {
+                callback(null, 'Error: ' + errorThrown);
             }
-        });
-    }
+        }
+    });
+}
 
-    function postFileWithAjax(url, data, callback) {
-        $.ajax({
-            url: url, // Ganti dengan URL endpoint pengunggahan file dan data POST di server Anda
-            type: 'POST',
-            data: data,
-            contentType: false,
-            processData: false,
-            dataType: 'json',
-            beforeSend: function() {
-                // Menampilkan elemen loading
-                $("button[type='submit']").attr('disabled', 'disabled').text('Loading...');
-            },
-            success: function(response) {
+function after_load(val) {
+    $("button[type='submit']").removeAttr('disabled').text(val);
+}
 
-
-                if (callback) {
-                    callback(response, null);
-                }
-
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                if (callback) {
-                    callback(null, 'Error: ' + errorThrown);
-                }
-            }
-        });
-    }
-
-    function after_load(val) {
-        $("button[type='submit']").removeAttr('disabled').text(val);
-    }
-
-    function new_location(url) {
-        setTimeout(function() {
-            window.location.href = url
-        }, 1000);
-    }
+function new_location(url) {
+    setTimeout(function() {
+        window.location.href = url
+    }, 1000);
+}
 </script>
 
 <?php if (isset($js)) {

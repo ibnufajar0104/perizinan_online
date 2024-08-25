@@ -36,7 +36,85 @@
                     </div>
                 </div>
                 <!-- end page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row gy-4">
+                                    <!-- Menambahkan gy-4 untuk memberi jarak antar elemen vertikal -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <!-- Kolom 1 dari 3 -->
+                                        <div class="mb-3">
+                                            <p class="title">Nomor Pendaftaran</p>
+                                            <p class="value"><?= $r['tblizinpendaftaran_nomor'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Tanggal Permohonan</p>
+                                            <p class="value"><?= $r['tgl_daftar'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Nomor Identitas</p>
+                                            <p class="value"><?= $r['tblizinpendaftaran_idpemohon'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Nomor NPWP</p>
+                                            <p class="value"><?= $r['tblizinpendaftaran_npwp'] ?></p>
+                                        </div>
+                                    </div>
 
+                                    <div class="col-md-6 col-lg-4">
+                                        <!-- Kolom 2 dari 3 -->
+                                        <div class="mb-3">
+                                            <p class="title">Nama Pemohon</p>
+                                            <p class="value"><?= $r['tblizinpendaftaran_namapemohon'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Alamat</p>
+                                            <p class="value"><?= $r['tblizinpendaftaran_almtpemohon'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">No. Telepon</p>
+                                            <p class="value"><?= $r['tblizinpendaftaran_telponpemohon'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Keterangan</p>
+                                            <p class="value"><?= $r['tblizinpendaftaran_keterangan'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Kecamatan</p>
+                                            <p class="value"><?= $r['tblkecamatan_nama'] ?></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-4">
+                                        <!-- Kolom 3 dari 3 -->
+                                        <div class="mb-3">
+                                            <p class="title">Nama Izin</p>
+                                            <p class="value"><?= $r['tblizin_nama'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Nama Permohonan</p>
+                                            <p class="value"><?= $r['tblizinpermohonan_nama'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Nama Usaha/Tempat Berkerja</p>
+                                            <p class="value"><?= $r['tblizinpendaftaran_usaha'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Alamat Usaha/Tempat Berkerja</p>
+                                            <p class="value"><?= $r['tblizinpendaftaran_lokasiizin'] ?></p>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <p class="title">Kelurahan</p>
+                                            <p class="value"><?= $r['tblkelurahan_nama'] ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
 
@@ -45,9 +123,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="d-md-flex justify-content-between align-items-center">
-                                    <p> Progres Permohonan</p>
-                                    <a href="#" class="btn btn-primary" onclick="detail()">Detail
-                                        Permohonan </a>
+                                    <p> Timeline Berkas Permohonan</p>
+                                    <!-- <a href="#" class="btn btn-primary" onclick="detail()">Detail
+                                        Permohonan </a> -->
                                 </div>
 
 
@@ -117,105 +195,13 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="table-responsive">
-                                        <table class="table table-borderless">
-                                            <tr>
-                                                <td>Nomor Pendaftaran</td>
-                                                <td>:</td>
-                                                <td><?= $r['tblizinpendaftaran_nomor'] ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tanggal Permohonan</td>
-                                                <td>:</td>
-                                                <td><?= $r['tgl_daftar'] ?></td>
-                                            </tr>
 
-                                            <tr>
-                                                <td>Nomor Identitas</td>
-                                                <td>:</td>
-                                                <td><?= $r['tblizinpendaftaran_idpemohon'] ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Nomor NPWP</td>
-                                                <td>:</td>
-                                                <td><?= $r['tblizinpendaftaran_npwp'] ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Nama Pemohon</td>
-                                                <td>:</td>
-                                                <td><?= $r['tblizinpendaftaran_namapemohon'] ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Alamat</td>
-                                                <td>:</td>
-                                                <td><?= $r['tblizinpendaftaran_almtpemohon'] ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>No. Telepon</td>
-                                                <td>:</td>
-                                                <td><?= $r['tblizinpendaftaran_telponpemohon'] ?></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>Keterangan</td>
-                                                <td>:</td>
-                                                <td><?= $r['tblizinpendaftaran_keterangan'] ?></td>
-                                            </tr>
-
-
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="table-responsive">
-                                        <table class="table table-borderless">
-
-
-                                            <tr>
-                                                <td>Nama Izin</td>
-                                                <td>:</td>
-                                                <td><?= $r['tblizin_nama'] ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Nama Permohonan</td>
-                                                <td>:</td>
-                                                <td><?= $r['tblizinpermohonan_nama'] ?></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>Nama Usaha/Tempat Berkerja</td>
-                                                <td>:</td>
-                                                <td><?= $r['tblizinpendaftaran_usaha'] ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Alamat Usaha/Tempat Berkerja</td>
-                                                <td>:</td>
-
-                                                <td><?= $r['tblizinpendaftaran_lokasiizin'] ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Kecamatan</td>
-                                                <td>:</td>
-                                                <td><?= $r['tblkecamatan_nama'] ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Kelurahan</td>
-                                                <td>:</td>
-                                                <td><?= $r['tblkelurahan_nama'] ?></td>
-                                            </tr>
-
-
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
         <!-- End Page-content -->
 
