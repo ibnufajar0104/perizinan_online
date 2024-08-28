@@ -56,71 +56,74 @@
 
 
     <style>
-    body {
-        font-family: 'Roboto', sans-serif;
-    }
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
 
 
-    body,
-    p {
-        font-family: 'Roboto', sans-serif;
-    }
+        body,
+        p {
+            font-family: 'Roboto', sans-serif;
+        }
 
 
 
-    /* body {
+        /* body {
         font-size: 14px;
     } */
 
 
-    .form-control-2 {
-        height: 45px;
-    }
+        .form-control-2 {
+            height: 45px;
+        }
 
-    /* th,
+        /* th,
     td {
         vertical-align: middle;
     } */
 
-    /* Mengatur tinggi elemen Select2 */
-    .select2-container .select2-selection--single {
-        height: 45px;
-        /* Atur tinggi yang diinginkan */
-    }
+        /* Mengatur tinggi elemen Select2 */
+        .select2-container .select2-selection--single {
+            height: 45px;
+            /* Atur tinggi yang diinginkan */
+        }
 
-    .select2-container--default .select2-selection--single .select2-selection__rendered {
-        line-height: 45px;
-        /* Sesuaikan dengan tinggi elemen */
-    }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 45px;
+            /* Sesuaikan dengan tinggi elemen */
+        }
 
-    .select2-container--default .select2-selection--single .select2-selection__arrow {
-        height: 48px;
-        /* Sesuaikan dengan tinggi elemen */
-    }
-
-
-    .title {
-        font-weight: bold;
-        color: #333;
-        margin-bottom: 0.2rem;
-    }
-
-    .value {
-        color: #555;
-
-    }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 48px;
+            /* Sesuaikan dengan tinggi elemen */
+        }
 
 
+        .title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.2rem;
+        }
 
-    .card {
-        border: 1px solid #e0e0e0;
-        /* Warna border card */
-    }
+        .value {
+            color: #555;
 
-    .shadow-sm {
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        /* Menambahkan efek bayangan */
-    }
+        }
+
+        label {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .card {
+            border: 1px solid #e0e0e0;
+            /* Warna border card */
+        }
+
+        .shadow-sm {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            /* Menambahkan efek bayangan */
+        }
     </style>
 </head>
 

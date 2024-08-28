@@ -23,6 +23,9 @@
                     <td>
 
 
+
+
+
                         <input type="file" name="<?= $r['tblpersyaratan_id'] ?>" id="<?= $r['tblpersyaratan_id'] ?>"
                             <?= isset($r['file']) ? '' : 'required' ?> style="display: none;">
                         <div class="invalid-feedback">

@@ -174,132 +174,51 @@ alertify.success('<?= $this->session->userdata('success') ?>');
 <?php endif ?>
 </script>
 
+
+
+<?php if (isset($js)) {
+    $this->load->view($js);
+} ?>
+
 <script>
-$(document).ready(function() {
-    $('.select2').select2();
-    <?php if (isset( $p)) : ?>
-    permohonan_dinamis(<?= $p['tblizin_id'] ?>, '#tblizinpermohonan_id', <?= $p['tblizinpermohonan_id'] ?>);
-    kelurahan_dinamis(<?= $p['tblkecamatan_id'] ?>, '#tblkelurahan_id', <?= $p['tblkelurahan_id'] ?>);
-    persyaratan_dinamis(<?= $p['tblizinpermohonan_id'] ?>);
-    <?php endif ?>
-});
+// $('#tblizinpermohonan_id').change(function() {
+//     persyaratanDinamis($(this).val());
+// });
+
+// function updateLabel(id) {
+//     if (id === 79) {
+//         $('.nama_usaha').text('Nama Universitas/Organisasi');
+//         $('.alamat_usaha').text('Alamat Universitas/Organisasi');
+//     }
+// }
 
 
-$('#tblizin_id').change(function() {
 
-    permohonan_dinamis($(this).val(), '#tblizinpermohonan_id');
+// function persyaratanDinamis(id) {
+//     const idPendaftaran = $('#tblizinpendaftaran_id').val();
 
-});
+//     $.ajax({
+//         url: "<?php echo site_url('permohonan/get_persyaratan') ?>",
+//         type: 'POST',
+//         data: {
+//             id: id,
+//             id_pendaftaran: idPendaftaran
+//         },
+//         dataType: 'html',
+//         success: function(response) {
+//             $('.persyaratan').html(response);
+//         },
+//         error: function(xhr) {
+//             console.error(xhr.responseText);
+//         }
+//     });
+// }
 
-function update_label(id) {
-    if (id == 79) {
-        $('.nama_usaha').text('Nama Universitas/Organisasi');
-        $('.alamat_usaha').text('Alamat Universitas/Organisasi');
-    }
-
-}
-
-$('#tblkecamatan_id').change(function() {
-    kelurahan_dinamis($(this).val(), '#tblkelurahan_id');
-});
-$('#tblizinpermohonan_id').change(function() {
-
-    persyaratan_dinamis($(this).val());
-});
-
-function permohonan_dinamis(id, el, select = null) {
-    update_label(id);
-    $(el).find('option').not(':first').remove();
-    $.ajax({
-        url: "<?php echo site_url('permohonan/get_permohonan') ?>",
-        type: 'POST',
-        data: {
-            tblizin_id: id,
-        },
-        dataType: 'json',
-        success: function(response) {
-            // console.log(response);
-            if (response.status) {
-                // Tambahkan opsi subkategori berdasarkan respons dari server
-                $.each(response.data, function(key, value) {
-
-                    $(el).append('<option value="' + value
-                        .tblizinpermohonan_id + '">' + value.tblizinpermohonan_nama +
-                        '</option>');
-                });
-
-                if (select) {
-                    $(el).val(select);
-                }
-            }
-        },
-        error: function(xhr, status, error) {
-            console.log(xhr.responseText);
-        }
-    });
-}
-
-function kelurahan_dinamis(id, el, select = null) {
-
-    $(el).find('option').not(':first').remove();
-    $.ajax({
-        url: "<?php echo site_url('permohonan/get_kelurahan') ?>",
-        type: 'POST',
-        data: {
-            id_kecamatan: id,
-
-        },
-        dataType: 'json',
-        success: function(response) {
-            // console.log(response);
-            if (response.status) {
-
-                $.each(response.data, function(key, value) {
-
-                    $(el).append('<option value="' + value
-                        .tblkelurahan_id + '">' + value.tblkelurahan_nama +
-                        '</option>');
-                });
-
-                if (select) {
-                    $(el).val(select);
-                }
-            }
-        },
-        error: function(xhr, status, error) {
-            // console.log(xhr.responseText);
-        }
-    });
-}
-
-function persyaratan_dinamis(id) {
-
-    var id_pendaftaran = $('#tblizinpendaftaran_id').val();
-
-    $.ajax({
-        url: "<?php echo site_url('permohonan/get_persyaratan') ?>",
-        type: 'POST',
-        data: {
-            id: id,
-            id_pendaftaran: id_pendaftaran
-        },
-        dataType: 'html',
-        success: function(response) {
-
-            $('.persyaratan').html(response);
-
-        },
-        error: function(xhr, status, error) {
-            console.log(xhr.responseText);
-        }
-    });
-}
-
-function success(msg) {
+function showSuccessMessage(msg) {
     alertify.success(msg);
 }
 
-function fail(msg) {
+function showErrorMessage(msg) {
     alertify.error(msg);
 }
 
@@ -313,60 +232,46 @@ function postWithAjax(url, data, callback) {
             $("button[type='submit']").attr('disabled', 'disabled').text('Loading...');
         },
         success: function(response) {
-            if (callback) {
-                callback(response, null);
-            }
+            if (callback) callback(response, null);
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            if (callback) {
-                callback(null, 'Error: ' + errorThrown);
-            }
+            if (callback) callback(null, 'Error: ' + errorThrown);
         }
     });
 }
 
 function postFileWithAjax(url, data, callback) {
     $.ajax({
-        url: url, // Ganti dengan URL endpoint pengunggahan file dan data POST di server Anda
+        url: url,
         type: 'POST',
         data: data,
         contentType: false,
         processData: false,
         dataType: 'json',
         beforeSend: function() {
-            // Menampilkan elemen loading
             $("button[type='submit']").attr('disabled', 'disabled').text('Loading...');
         },
         success: function(response) {
-
-
-            if (callback) {
-                callback(response, null);
-            }
-
+            if (callback) callback(response, null);
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            if (callback) {
-                callback(null, 'Error: ' + errorThrown);
-            }
+            if (callback) callback(null, 'Error: ' + errorThrown);
         }
     });
 }
 
-function after_load(val) {
+function afterLoad(val) {
     $("button[type='submit']").removeAttr('disabled').text(val);
 }
 
-function new_location(url) {
+function redirectTo(url) {
     setTimeout(function() {
-        window.location.href = url
+        window.location.href = url;
     }, 1000);
 }
 </script>
 
-<?php if (isset($js)) {
-    $this->load->view($js);
-} ?>
+
 </body>
 
 </html>

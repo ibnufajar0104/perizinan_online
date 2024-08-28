@@ -35,12 +35,14 @@ class Login extends CI_Controller
 			fail('Form tidak lengkap');
 		}
 
+
+		$data = [
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password')
+		];
+
 		$token = $this->jwt->get_token();
-		$d['username'] = $this->input->post('username');
-		$d['password'] =  $this->input->post('password');
-
-
-		$response = $this->jwt->request(ip() . 'permohonan/login', 'POST', json_encode($d), $token);
+		$response = $this->jwt->request(ip() . 'permohonan/login', 'POST', json_encode($data), $token);
 
 		if (isset($response['status'])) {
 			if ($response['status']) {

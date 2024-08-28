@@ -41,15 +41,17 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <div class="d-md-flex justify-content-between align-items-center">
+                                <div class="d-md-flex justify-content-between align-items-center"
+                                    style="font-weight: bold;">
                                     <?php if ($permohonan) : ?>
-                                        <p> Selalu periksa perkembangan permohonan anda dengan mengklik tombol
-                                            "Detail"</p>
+                                    <p> Selalu periksa perkembangan permohonan anda dengan mengklik tombol
+                                        "Detail"</p>
                                     <?php else : ?>
-                                        <p> Ajukan permohonan anda dengan menekan tombol "Ajukan Permohonan</p>
+                                    <p> Ajukan permohonan anda dengan menekan tombol "Ajukan Permohonan"</p>
                                     <?php endif ?>
 
-                                    <a href="<?= site_url('permohonan/form') ?>" class="btn btn-sm btn-primary">Ajukan
+                                    <a href="<?= site_url('permohonan/informasiUmum') ?>"
+                                        class="btn btn-sm btn-primary">Ajukan
                                         Permohonan</a>
                                 </div>
 
@@ -75,54 +77,34 @@
                                         <tbody>
                                             <?php $no = 1 ?>
                                             <?php if ($permohonan) : ?>
-                                                <?php foreach ($permohonan as $r) : ?>
-                                                    <tr>
-                                                        <td><?= $no ?>.</td>
-                                                        <td><?= $r['tblizinpendaftaran_nomor'] ?></td>
-                                                        <td><?= $r['tblizin_nama'] ?></td>
-                                                        <td><?= $r['tblizinpermohonan_nama'] ?></td>
-                                                        <td><?= $r['tblizinpendaftaran_usaha'] ?></td>
+                                            <?php foreach ($permohonan as $r) : ?>
+                                            <tr>
+                                                <td><?= $no ?>.</td>
+                                                <td><?= $r['tblizinpendaftaran_nomor'] ?></td>
+                                                <td><?= $r['tblizin_nama'] ?></td>
+                                                <td><?= $r['tblizinpermohonan_nama'] ?></td>
+                                                <td><?= $r['tblizinpendaftaran_usaha'] ?></td>
 
-                                                        <td><?= $r['tgl_daftar'] ?></td>
-                                                        <td><?= status($r['status']) ?></td>
-                                                        <td>
-                                                            <a href="<?= site_url('permohonan/detail/' . $r['tblizinpendaftaran_id']) ?>"
-                                                                class="btn btn-outline-secondary btn-sm">Detail</a>
-                                                            <a href="<?= site_url('permohonan/edit/' . $r['tblizinpendaftaran_id']) ?>"
-                                                                class="btn btn-outline-secondary btn-sm">Edit</a>
-                                                        </td>
-
-                                                        <!-- <td>
-                                                    <?php if ($r['status'] == 1) : ?>
-
-                                                    <div class="btn-group" role="group">
-                                                        <button id="btnGroupDrop1" type="button"
-                                                            class="btn btn-primary dropdown-toggle btn-sm"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                                            Opsi <i class="mdi mdi-chevron-down"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                            <li><a class="dropdown-item"
-                                                                    href="<?= site_url('permohonan/detail/' . $r['tblizinpendaftaran_id']) ?>">Detail</a>
-                                                            </li>
-                                                            <li><a class="dropdown-item"
-                                                                    href="<?= site_url('permohonan/edit/' . $r['tblizinpendaftaran_id']) ?>">Edit</a>
-                                                            </li>
-
-                                                        </ul>
-                                                    </div>
-                                                    <?php else : ?>
+                                                <td><?= $r['tgl_daftar'] ?></td>
+                                                <td><?= status($r['status']) ?></td>
+                                                <td>
                                                     <a href="<?= site_url('permohonan/detail/' . $r['tblizinpendaftaran_id']) ?>"
-                                                        class="btn btn-primary btn-sm">Detail</a>
+                                                        class="btn btn-outline-secondary btn-sm">Detail</a>
+
+                                                    <?php if ($r['status'] == 1) : ?>
+                                                    <a href="<?= site_url('permohonan/edit/' . $r['tblizinpendaftaran_id']) ?>"
+                                                        class="btn btn-outline-secondary btn-sm">Edit</a>
                                                     <?php endif ?>
-                                                </td> -->
-                                                    </tr>
-                                                    <?php $no++ ?>
-                                                <?php endforeach ?>
+                                                </td>
+
+
+                                            </tr>
+                                            <?php $no++ ?>
+                                            <?php endforeach ?>
                                             <?php else : ?>
-                                                <tr>
-                                                    <td colspan="7" class="text-center">Belum ada permohonan</td>
-                                                </tr>
+                                            <tr>
+                                                <td colspan="7" class="text-center">Belum ada permohonan</td>
+                                            </tr>
                                             <?php endif ?>
                                         </tbody>
                                     </table>

@@ -107,8 +107,8 @@ table {
                 <div class="row">
                     <div class="form-group col-lg-6">
                         <label class="form-label">Nomor Pendaftaran</label>
-                        <input type="text" placeholder="Masukkan Nomor Pendaftaran contoh : 123/08/2023"
-                            class="form-control text-3 h-auto py-2" required />
+                        <input type="text" placeholder="contoh : 123/08/2023" class="form-control text-3 h-auto py-2"
+                            required />
                     </div>
                 </div>
                 <div class="row">
@@ -118,7 +118,7 @@ table {
                         </button>
                     </div>
                 </div>
-                <div class="row mb-4">
+                <div class="row mt-4 d-none">
                     <div class="col-12">
                         <div class="card detail-permohonan">
                             <div class="card-body">
@@ -198,21 +198,13 @@ table {
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row mt-4 d-none">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <div class="d-md-flex justify-content-between align-items-center">
-                                    <p> Timeline Berkas Permohonan</p>
-                                    <!-- <a href="#" class="btn btn-primary" onclick="detail()">Detail
-                                        Permohonan </a> -->
-                                </div>
 
-
-                            </div>
                             <div class="card-body">
 
-
+                                <p> Timeline Berkas Permohonan</p>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="table-responsive">

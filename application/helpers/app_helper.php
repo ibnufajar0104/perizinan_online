@@ -62,12 +62,23 @@ function status($str)
         return  '<button class="btn btn-sm btn-outline-success">Selesai</button>';
     }
 
+    if ($str == 5) {
+        return  '<button class="btn btn-sm btn-outline-primary">Draf</button>';
+    }
+
+
     return  '<button class="btn btn-sm btn-outline-warning">Diproses</button>';
 }
 
 function path_persyaratan($file)
 {
-    $path = ip_embed() . 'doc/persyaratan/' . $file;
+    $path = ip() . 'handle-file/persyaratan/' . $file;
 
     return  $path;
+}
+
+
+function value(array $array, $key)
+{
+    return isset($array[$key]) ? $array[$key] : null;
 }
