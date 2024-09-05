@@ -3,32 +3,23 @@
 
 
     $('.form-profil').submit(function(event) {
-
-
         event.preventDefault();
-
         if (!this.checkValidity()) {
-
             return false;
         }
-
-        var formData = new FormData(this);
+        var formData = $(this).serialize();
         var url = global_url + 'update';
-        postFileWithAjax(url, formData, function(response, error) {
+        postWithAjax(url, formData, function(response, error) {
             if (error) {
                 console.error(error);
             } else {
-
                 if (response.status) {
-
-                    success(response.msg);
-                    new_location(global_url);
+                    showSuccessMessage(response.msg);
                 } else {
-                    fail(response.msg);
+                    showErrorMessage(response.msg);
                 }
             }
-
-            after_load('Simpan');
+            afterLoad('Simpan');
         });
     });
 </script>

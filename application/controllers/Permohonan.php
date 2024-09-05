@@ -193,6 +193,7 @@ class Permohonan extends CI_Controller
 		}
 
 		// Menambahkan data tambahan
+		// 5 adalah draf
 		$data['status_online'] = 5;
 		$data['tblizinpendaftaran_id'] = $idPendaftaran;
 
@@ -200,7 +201,7 @@ class Permohonan extends CI_Controller
 		$actionUrl = $idPendaftaran ? 'updateInformasiUmum' : 'insertInformasiUmum';
 
 		$response = $this->jwt->request(ip() . 'permohonan/' . $actionUrl, 'POST', json_encode($data), $token);
-		return_json($response);
+
 		if (isset($response['status'])) {
 			return_json($response);
 		} else {
@@ -223,28 +224,271 @@ class Permohonan extends CI_Controller
 			fail('Data tidak ditemukan');
 		}
 
+		$idPermohonan = $response['data']['pendaftaran']['tblizinpermohonan_id'];
+		$idPemohon = $response['data']['pendaftaran']['tblpemohon_id'];
+
 		$data = [
-			'id_permohonan' => $response['data']['pendaftaran']['tblizinpermohonan_id'],
-			'id_pemohon' => $response['data']['pendaftaran']['tblpemohon_id'],
+			'id_permohonan' => $idPermohonan,
+			'id_pemohon' => $idPemohon,
 			'id_pendaftaran' => $idPendaftaran
 		];
 
 		$response = $this->jwt->request(ip() . 'permohonan/get_persyaratan', 'POST', json_encode($data), $token);
 
+		if (!isset($response)) {
+			fail('Data tidak ditemukan');
+		}
+
 		if (!$response['status']) {
 			fail('Data tidak ditemukan');
 		}
 
-
+		$data = array();
 		$data = [
 			'title' => 'Form Permohonan',
 			'js' => 'permohonan/BerkasPersyaratan/js',
 			'row' => $response['data'],
-			'idPendaftaran' => $idPendaftaran
+			'idPendaftaran' => $idPendaftaran,
+			'idPermohonan' =>  $idPermohonan,
+			'idPemohon' => $idPemohon
 		];
 
 		$this->load->view('permohonan/berkasPersyaratan/view', $data);
 	}
+
+
+	public function resume($idPendaftaran)
+	{
+		$d = [
+			'tblizinpendaftaran_id' => $idPendaftaran
+		];
+
+		// Mengambil token dan data dari API
+		$token = $this->jwt->get_token();
+		$response = $this->jwt->request(ip() . '/permohonan/get_by_id_pendaftaran', 'POST', json_encode($d), $token);
+
+		if (!$response['status']) {
+			fail('Data tidak ditemukan');
+		}
+
+		$idPermohonan = $response['data']['pendaftaran']['tblizinpermohonan_id'];
+		$idPemohon = $response['data']['pendaftaran']['tblpemohon_id'];
+		$dataPermohonan =  $response['data']['pendaftaran'];
+		$data = [
+			'id_permohonan' => $idPermohonan,
+			'id_pemohon' => $idPemohon,
+			'id_pendaftaran' => $idPendaftaran
+		];
+
+		$response = $this->jwt->request(ip() . 'permohonan/get_persyaratan', 'POST', json_encode($data), $token);
+
+		if (!isset($response)) {
+			fail('Data tidak ditemukan');
+		}
+
+		if (!$response['status']) {
+			fail('Data tidak ditemukan');
+		}
+
+		$data = array();
+		$data = [
+			'title' => 'Form Permohonan',
+			'js' => 'permohonan/BerkasPersyaratan/js',
+			'r' => $dataPermohonan,
+			'idPendaftaran' => $idPendaftaran,
+			'idPermohonan' =>  $idPermohonan,
+			'idPemohon' => $idPemohon
+		];
+
+		$this->load->view('permohonan/resume/view', $data);
+	}
+
+	public function uploadPersyaratan()
+	{
+		// Ambil token JWT
+		$token = $this->jwt->get_token();
+
+		// Data yang akan dikirimkan
+		$data = [
+			'tblpemohon_id' => isset($this->session->tblpemohon_id) ? $this->session->tblpemohon_id : '',
+			'tblizinpendaftaran_id' => $this->input->post('idPendaftaran', true),
+			'tblpersyaratan_id' => $this->input->post('tblpersyaratan_id', true),
+		];
+
+		// Lakukan upload dan ambil hasilnya
+		$response = $this->do_upload();
+		$filePath = '';
+		// Tambahkan nama file ke data jika upload berhasil
+		if ($response['status']) {
+			$data['file'] = $response['file'];
+
+			// Eksekusi cURL jika upload berhasil
+			$curl = curl_init();
+
+			// Pastikan path file benar
+			$filePath = 'tmp/fileUpload/' . $data['file'];
+			if (!file_exists($filePath)) {
+				return_json([
+					'status' => false,
+					'msg' => 'File tidak ditemukan.'
+				]);
+				return;
+			}
+
+			curl_setopt_array($curl, array(
+				CURLOPT_URL => ip() . '/permohonan/uploadPersyaratan',
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_ENCODING => '',
+				CURLOPT_MAXREDIRS => 10,
+				CURLOPT_TIMEOUT => 0,
+				CURLOPT_FOLLOWLOCATION => true,
+				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+				CURLOPT_CUSTOMREQUEST => 'POST',
+				CURLOPT_POSTFIELDS => array(
+					'tblizinpendaftaran_id' => $data['tblizinpendaftaran_id'],
+					'tblpemohon_id' => $data['tblpemohon_id'],
+					'tblpersyaratan_id' => $data['tblpersyaratan_id'],
+					'file' => new CURLFILE($filePath) // Gantilah dengan path file yang sesuai
+				),
+				CURLOPT_HTTPHEADER => array(
+					'Authorization: Bearer ' . $token['token']
+				),
+			));
+
+			$curlResponse = curl_exec($curl);
+			$curlError = curl_error($curl); // Tangkap error cURL
+			curl_close($curl);
+
+			// Proses respons dari cURL jika diperlukan
+			if ($curlError) {
+				$response = [
+					'status' => false,
+					'msg' => 'cURL Error: ' . $curlError
+				];
+			} else {
+				// Menguraikan JSON dari respons cURL
+				$decodedResponse = json_decode($curlResponse, true);
+
+				if (json_last_error() === JSON_ERROR_NONE) {
+					// Respons berhasil di-decode
+					$response = $decodedResponse;
+				} else {
+					// Terjadi kesalahan saat mendecode JSON
+					$response = [
+						'status' => false,
+						'msg' => 'Gagal mendecode respons JSON dari server'
+					];
+				}
+			}
+		}
+
+		// Hapus file sementara setelah pemrosesan selesai
+		if (file_exists($filePath)) {
+			unlink($filePath);
+		}
+
+		// Kembalikan respons dalam format JSON
+		return_json($response);
+	}
+
+
+	public function afterUploadPersyaratan()
+	{
+
+		$token = $this->jwt->get_token();
+		$idPendaftaran = $this->input->post('idPendaftaran', true);
+		$data = [
+			'id_permohonan' => $this->input->post('idPermohonan', true),
+			'id_pemohon' => $this->input->post('idPemohon', true),
+			'id_pendaftaran' => $idPendaftaran
+		];
+
+		$response = $this->jwt->request(ip() . 'permohonan/get_persyaratan', 'POST', json_encode($data), $token);
+
+		foreach ($response['data'] as $item) {
+			if (is_null($item['file'])) {
+				$res = [
+					'status' => false,
+					'msg' => $item['tblpersyaratan_nama'] . ' belum diupload'
+				];
+
+
+				return_json($res);
+				break;
+			}
+		}
+
+		$res = [
+			'status' => true,
+			'msg' => 'Berkas persyaratan disimpan',
+			'id' => $idPendaftaran,
+		];
+
+		return_json($res);
+	}
+
+
+
+	public function do_upload()
+	{
+		// Ambil nama field file upload dari request, misalnya 'file'
+		$field = 'file'; // Nama field di FormData
+
+		// Pastikan ada file yang diunggah
+		if (isset($_FILES[$field])) {
+			$uploadDir = "tmp/fileUpload/"; // Direktori penyimpanan file
+			$fileName = $_FILES[$field]['name'];
+			$fileTmp = $_FILES[$field]['tmp_name'];
+			$fileType = $_FILES[$field]['type']; // Tipe MIME file
+			$fileSize = $_FILES[$field]['size']; // Ukuran file dalam byte
+			$uploadedFileName = date('YmdHis') . '_' . $fileName;
+			$uploadedFile = $uploadDir . $uploadedFileName;
+
+			// Daftar tipe MIME yang diperbolehkan
+			$allowedMimeTypes = ['application/pdf', 'image/jpeg', 'image/png', 'image/gif'];
+			// Daftar ekstensi yang diperbolehkan
+			$allowedExtensions = ['pdf', 'jpg', 'jpeg', 'png', 'gif'];
+			// Ukuran maksimum file dalam byte (800 KB)
+			$maxFileSize = 800 * 1024;
+
+			// Ambil ekstensi file
+			$fileExt = pathinfo($fileName, PATHINFO_EXTENSION);
+			$fileExt = strtolower($fileExt); // pastikan dalam huruf kecil
+
+			// Validasi tipe MIME dan ekstensi
+			if (in_array($fileType, $allowedMimeTypes) && in_array($fileExt, $allowedExtensions)) {
+				// Validasi ukuran file
+				if ($fileSize <= $maxFileSize) {
+					// Periksa apakah file ada dan berhasil diunggah
+					if (is_uploaded_file($fileTmp)) {
+						// Pindahkan file ke direktori tujuan
+						if (move_uploaded_file($fileTmp, $uploadedFile)) {
+							// Jika unggahan berhasil, kembalikan nama file
+							return ['status' => true, 'msg' => 'Upload berhasil', 'file' => $uploadedFileName];
+						} else {
+							// Jika gagal memindahkan file
+							return ['status' => false, 'msg' => 'Gagal memindahkan file'];
+						}
+					} else {
+						// Jika file tidak ada atau terjadi masalah saat pengunggahan
+						return ['status' => false, 'msg' => 'File tidak ada atau gagal diunggah'];
+					}
+				} else {
+					// Jika ukuran file melebihi batas
+					return ['status' => false, 'msg' => 'Ukuran file maksimal adalah 800 KB'];
+				}
+			} else {
+				// Jika tipe file atau ekstensi tidak diperbolehkan
+				return ['status' => false, 'msg' => 'Tipe atau ekstensi file tidak diperbolehkan'];
+			}
+		} else {
+			// Jika tidak ada file di $_FILES
+			return ['status' => false, 'msg' => 'Tidak ada file yang diunggah'];
+		}
+	}
+
+
+
 
 	public function update_pengajuan()
 	{
@@ -325,6 +569,9 @@ class Permohonan extends CI_Controller
 
 		return null;
 	}
+
+
+
 
 	public function permohonan_by_id_pemohon()
 	{

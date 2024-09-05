@@ -71,7 +71,13 @@
                                             </div>
                                             <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel"
                                                 aria-labelledby="v-pills-profile-tab">
-                                                <div class="container mt-4">
+                                                <form class="berkas-persyaratan" method="POST">
+                                                    <input type="hidden" name="idPendaftaran" id="idPendaftaran"
+                                                        value="<?= $idPendaftaran ?>">
+                                                    <input type="hidden" name="idPermohonan" id="idPermohonan"
+                                                        value="<?= $idPermohonan ?>">
+                                                    <input type="hidden" name="idPemohon" id="idPemohon"
+                                                        value="<?= $idPemohon ?>">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <?php foreach ($row as $r) : ?>
@@ -89,21 +95,32 @@
                                                                 </div>
                                                                 <div class="col-md-3 col-sm-12 mb-2">
                                                                     <div class="d-flex flex-column">
+
+                                                                        <!-- Input file yang disembunyikan -->
                                                                         <input type="file"
                                                                             name="<?= $r['tblpersyaratan_id'] ?>"
                                                                             id="<?= $r['tblpersyaratan_id'] ?>"
-                                                                            <?= isset($r['file']) ? '' : 'required' ?>
                                                                             style="display: none;">
-                                                                        <div class="invalid-feedback">Harus di upload
-                                                                        </div>
 
+                                                                        <!-- Tombol Upload -->
                                                                         <button type="button"
                                                                             class="btn btn-sm mb-2 btn-primary upload"
                                                                             onclick="upload('<?= $r['tblpersyaratan_id'] ?>')">Upload</button>
+
+                                                                        <!-- Tombol Review -->
                                                                         <button type="button"
                                                                             class="btn btn-sm mb-2 btn-warning review <?= $r['tblpersyaratan_id'] ?>"
                                                                             onclick="review_after_upload('<?= $r['tblpersyaratan_id'] ?>')"
                                                                             style="display: none;">Review</button>
+
+                                                                        <!-- Progress Bar -->
+                                                                        <div class="progress mt-2 mb-2">
+                                                                            <div id="progress-bar-<?= $r['tblpersyaratan_id'] ?>"
+                                                                                class="progress-bar" role="progressbar"
+                                                                                style="width: 0%;" aria-valuenow="0"
+                                                                                aria-valuemin="0" aria-valuemax="100">0%
+                                                                            </div>
+                                                                        </div>
 
                                                                         <?php if (isset($r['file'])) : ?>
                                                                         <button type="button"
@@ -119,8 +136,19 @@
                                                             <?php endforeach ?>
                                                         </div>
                                                     </div>
-                                                </div>
 
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="float-end">
+                                                                <a class="btn btn-outline-danger"
+                                                                    href="<?= site_url('permohonan') ?>">Batal</a>
+
+                                                                <button class="btn btn-primary"
+                                                                    type="submit">Lanjut</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
                                                 aria-labelledby="v-pills-messages-tab">

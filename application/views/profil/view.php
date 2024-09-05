@@ -42,7 +42,7 @@
                         <div class="card">
                             <div class="card-header">
 
-                                Profil Form
+                                Form Profil
                             </div>
                             <form class="needs-validation form-profil" novalidate method="POST">
                                 <input type="hidden" name="tblpemohon_id" value="<?= $this->session->tblpemohon_id ?>">

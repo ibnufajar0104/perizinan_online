@@ -78,9 +78,9 @@
                                                                     style="height: 50%">
                                                                     <option value="">Pilih</option>
                                                                     <?php foreach ($izin as $r) : ?>
-                                                                    <option value="<?= $r['tblizin_id'] ?>">
-                                                                        <?= $r['tblizin_nama'] ?>
-                                                                    </option>
+                                                                        <option value="<?= $r['tblizin_id'] ?>">
+                                                                            <?= $r['tblizin_nama'] ?>
+                                                                        </option>
                                                                     <?php endforeach ?>
                                                                 </select>
 
@@ -132,9 +132,9 @@
                                                                     required>
                                                                     <option value="">Pilih</option>
                                                                     <?php foreach ($kecamatan as $r) : ?>
-                                                                    <option value="<?= $r['tblkecamatan_id'] ?>">
-                                                                        <?= $r['tblkecamatan_nama'] ?>
-                                                                    </option>
+                                                                        <option value="<?= $r['tblkecamatan_id'] ?>">
+                                                                            <?= $r['tblkecamatan_nama'] ?>
+                                                                        </option>
                                                                     <?php endforeach ?>
                                                                 </select>
 

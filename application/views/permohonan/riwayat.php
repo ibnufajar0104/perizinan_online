@@ -45,84 +45,87 @@
                     <div class="col-12">
                         <div class="card mb-3 shadow-sm">
                             <div class="card-body">
-                                <div class="row">
-                                    <!-- Kolom pertama -->
-                                    <div class="col-md-4 col-12 mb-3">
-                                        <div class="title">Nomor Pendaftaran</div>
-                                        <div class="value"><?= $r['tblizinpendaftaran_nomor'] ?></div>
-                                    </div>
-
-                                    <div class="col-md-4 col-12 mb-3">
-                                        <div class="title">Tanggal Pendaftaran</div>
-                                        <div class="value"><?= $r['tgl_daftar'] ?></div>
-                                    </div>
-
-                                    <div class="col-md-4 col-12 mb-3">
-                                        <div class="title">Nama Izin</div>
-                                        <div class="value"><?= $r['tblizin_nama'] ?></div>
-                                    </div>
-
-                                    <!-- Kolom kedua -->
-                                    <div class="col-md-4 col-12 mb-3">
-                                        <div class="title">Nama Permohonan</div>
-                                        <div class="value"><?= $r['tblizinpermohonan_nama'] ?></div>
-                                    </div>
-
-                                    <div class="col-md-4 col-12 mb-3">
-                                        <div class="title">Tanggal Penetapan</div>
-                                        <div class="value">
-                                            <?php if ($r['tgl_penetapan']) : ?>
-                                            <?= $r['tgl_penetapan'] ?>
-                                            <?php else : ?>
-                                            -
-                                            <?php endif ?>
+                                <div class="row gy-4">
+                                    <!-- Informasi Pendaftaran -->
+                                    <div class="col-md-4 col-12">
+                                        <div class="mb-3">
+                                            <p class="title">Nomor Pendaftaran</p>
+                                            <p class="value"><?= $r['tblizinpendaftaran_nomor'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Tanggal Pendaftaran</p>
+                                            <p class="value"><?= $r['tgl_daftar'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Nama Izin</p>
+                                            <p class="value"><?= $r['tblizin_nama'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Nama Permohonan</p>
+                                            <p class="value"><?= $r['tblizinpermohonan_nama'] ?></p>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4 col-12 mb-3">
-                                        <div class="title">Berlaku Sampai</div>
-                                        <div class="value">
-                                            <?php if ($r['berlaku_sampai']) : ?>
-                                            <?= $r['berlaku_sampai'] ?>
-                                            <?php else : ?>
-                                            -
-                                            <?php endif ?>
+                                    <!-- Informasi Usaha/Tempat Kerja -->
+                                    <div class="col-md-4 col-12">
+                                        <div class="mb-3">
+                                            <p class="title">Nama Usaha/Tempat Bekerja</p>
+                                            <p class="value"><?= $r['tblizinpendaftaran_usaha'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Alamat Usaha/Tempat Bekerja</p>
+                                            <p class="value"><?= $r['tblizinpendaftaran_lokasiizin'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Kecamatan</p>
+                                            <p class="value"><?= $r['tblkecamatan_nama'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Kelurahan</p>
+                                            <p class="value"><?= $r['tblkelurahan_nama'] ?></p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Keterangan</p>
+                                            <p class="value"><?= $r['tblizinpendaftaran_keterangan'] ?></p>
+                                        </div>
+
+                                    </div>
+                                    <!-- Informasi Permohonan -->
+                                    <div class="col-md-4 col-12">
+
+                                        <div class="mb-3">
+                                            <p class="title">Tanggal Penetapan</p>
+                                            <p class="value">
+                                                <?php if ($r['tgl_penetapan']) : ?>
+                                                <?= $r['tgl_penetapan'] ?>
+                                                <?php else : ?>
+                                                -
+                                                <?php endif ?>
+                                            </p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="title">Berlaku Sampai</p>
+                                            <p class="value">
+                                                <?php if ($r['berlaku_sampai']) : ?>
+                                                <?= $r['berlaku_sampai'] ?>
+                                                <?php else : ?>
+                                                -
+                                                <?php endif ?>
+                                            </p>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <p class="title">Dokumen Digital</p>
+                                            <p class="value"><a class="btn btn-outline-primary" target="_blank"
+                                                    href="<?= $r['dokumen'] ?>">Download</a></p>
                                         </div>
                                     </div>
 
-                                    <!-- Kolom ketiga -->
-                                    <div class="col-md-4 col-12 mb-3">
-                                        <div class="title">Nama Usaha/Tempat Bekerja</div>
-                                        <div class="value"><?= $r['tblizinpendaftaran_usaha'] ?></div>
-                                    </div>
-
-                                    <div class="col-md-4 col-12 mb-3">
-                                        <div class="title">Alamat Usaha/Tempat Bekerja</div>
-                                        <div class="value"><?= $r['tblizinpendaftaran_lokasiizin'] ?></div>
-                                    </div>
-
-                                    <div class="col-md-4 col-12 mb-3">
-                                        <div class="title">Kecamatan</div>
-                                        <div class="value"><?= $r['tblkecamatan_nama'] ?></div>
-                                    </div>
-
-                                    <!-- Tambahan kolom untuk melanjutkan konten -->
-                                    <div class="col-md-4 col-12 mb-3">
-                                        <div class="title">Kelurahan</div>
-                                        <div class="value"><?= $r['tblkelurahan_nama'] ?></div>
-                                    </div>
-
-                                    <div class="col-md-4 col-12 mb-3">
-                                        <div class="title">Keterangan</div>
-                                        <div class="value"><?= $r['tblizinpendaftaran_keterangan'] ?></div>
-                                    </div>
-
-                                    <div class="col-md-4 col-12 mb-3">
-                                        <div class="title">Dokumen Perizinan</div>
-                                        <div class="value"><a class="btn btn-outline-primary" target="_blank"
-                                                href="<?= $r['dokumen'] ?>">Download</a></div>
-                                    </div>
                                 </div>
+
+
+
+
                             </div>
                         </div>
                     </div>

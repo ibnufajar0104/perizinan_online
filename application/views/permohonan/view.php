@@ -44,10 +44,10 @@
                                 <div class="d-md-flex justify-content-between align-items-center"
                                     style="font-weight: bold;">
                                     <?php if ($permohonan) : ?>
-                                    <p> Selalu periksa perkembangan permohonan anda dengan mengklik tombol
-                                        "Detail"</p>
+                                        <p> Selalu periksa perkembangan permohonan anda dengan mengklik tombol
+                                            "Detail"</p>
                                     <?php else : ?>
-                                    <p> Ajukan permohonan anda dengan menekan tombol "Ajukan Permohonan"</p>
+                                        <p> Ajukan permohonan anda dengan menekan tombol "Ajukan Permohonan"</p>
                                     <?php endif ?>
 
                                     <a href="<?= site_url('permohonan/informasiUmum') ?>"
@@ -77,34 +77,34 @@
                                         <tbody>
                                             <?php $no = 1 ?>
                                             <?php if ($permohonan) : ?>
-                                            <?php foreach ($permohonan as $r) : ?>
-                                            <tr>
-                                                <td><?= $no ?>.</td>
-                                                <td><?= $r['tblizinpendaftaran_nomor'] ?></td>
-                                                <td><?= $r['tblizin_nama'] ?></td>
-                                                <td><?= $r['tblizinpermohonan_nama'] ?></td>
-                                                <td><?= $r['tblizinpendaftaran_usaha'] ?></td>
+                                                <?php foreach ($permohonan as $r) : ?>
+                                                    <tr>
+                                                        <td><?= $no ?>.</td>
+                                                        <td><?= $r['tblizinpendaftaran_nomor'] ?></td>
+                                                        <td><?= $r['tblizin_nama'] ?></td>
+                                                        <td><?= $r['tblizinpermohonan_nama'] ?></td>
+                                                        <td><?= $r['tblizinpendaftaran_usaha'] ?></td>
 
-                                                <td><?= $r['tgl_daftar'] ?></td>
-                                                <td><?= status($r['status']) ?></td>
-                                                <td>
-                                                    <a href="<?= site_url('permohonan/detail/' . $r['tblizinpendaftaran_id']) ?>"
-                                                        class="btn btn-outline-secondary btn-sm">Detail</a>
+                                                        <td><?= $r['tgl_daftar'] ?></td>
+                                                        <td><?= status($r['status']) ?></td>
+                                                        <td class="text-nowrap">
+                                                            <a href="<?= site_url('permohonan/detail/' . $r['tblizinpendaftaran_id']) ?>"
+                                                                class="btn btn-outline-secondary btn-sm">Detail</a>
 
-                                                    <?php if ($r['status'] == 1) : ?>
-                                                    <a href="<?= site_url('permohonan/edit/' . $r['tblizinpendaftaran_id']) ?>"
-                                                        class="btn btn-outline-secondary btn-sm">Edit</a>
-                                                    <?php endif ?>
-                                                </td>
+                                                            <?php if ($r['status'] == 1 || $r['status']  == 5) : ?>
+                                                                <a href="<?= site_url('permohonan/informasiUmum/' . $r['tblizinpendaftaran_id']) ?>"
+                                                                    class="btn btn-outline-secondary btn-sm">Edit</a>
+                                                            <?php endif ?>
+                                                        </td>
 
 
-                                            </tr>
-                                            <?php $no++ ?>
-                                            <?php endforeach ?>
+                                                    </tr>
+                                                    <?php $no++ ?>
+                                                <?php endforeach ?>
                                             <?php else : ?>
-                                            <tr>
-                                                <td colspan="7" class="text-center">Belum ada permohonan</td>
-                                            </tr>
+                                                <tr>
+                                                    <td colspan="7" class="text-center">Belum ada permohonan</td>
+                                                </tr>
                                             <?php endif ?>
                                         </tbody>
                                     </table>

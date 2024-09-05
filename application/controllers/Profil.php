@@ -57,7 +57,8 @@ class Profil extends CI_Controller
         }
 
         $token = $this->jwt->get_token();
-        $response = $this->jwt->pos_request(ip() . 'permohonan/update_pemohon', $data, $token);
+
+        $response = $this->jwt->request(ip() . 'permohonan/update_pemohon', 'POST', json_encode($data), $token);
 
         if (isset($response['status'])) {
 
