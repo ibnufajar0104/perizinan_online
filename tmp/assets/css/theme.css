@@ -1,0 +1,191 @@
+/* General Styling */
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+table {
+  width: 100%;
+  /* Opsional, sesuaikan lebar tabel sesuai kebutuhan */
+}
+
+td,
+th {
+  vertical-align: top;
+  /* Mengatur semua sel tabel untuk align ke atas */
+}
+
+/* th {
+  font-weight: bold;
+} */
+
+/* Styling untuk card-custom */
+.card-custom {
+  border: 1px solid #e0e0e0;
+  border-radius: 0.25rem;
+  /* Radius sudut card (opsional) */
+  padding: 0px;
+  /* Sesuaikan padding di dalam card */
+  margin-bottom: 1rem;
+  /* Jarak bawah card */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  /* Bayangan untuk efek kedalaman */
+}
+
+/* Mengatur padding untuk elemen di dalam card-custom */
+.card-custom .card-body {
+  padding: 0;
+  /* Sesuaikan padding di dalam body card */
+}
+
+.card-custom .card-header {
+  padding: 0;
+  /* Sesuaikan padding di header card */
+}
+
+.card-custom .card-footer {
+  padding: 0;
+  /* Sesuaikan padding di footer card */
+}
+
+/* Select2 Customization */
+.select2-container .select2-selection--single {
+  height: 45px;
+}
+
+.select2-container--default
+  .select2-selection--single
+  .select2-selection__rendered {
+  line-height: 45px;
+}
+
+.select2-container--default
+  .select2-selection--single
+  .select2-selection__arrow {
+  height: 48px;
+}
+
+/* Title and Value Styling */
+.title {
+  margin-bottom: 0.2rem;
+}
+
+.value {
+  font-weight: bold;
+}
+
+/* Form Label */
+/* label {
+  font-weight: bold;
+} */
+
+/* Progress Bar */
+.progress {
+  margin-top: 20px;
+}
+
+.progress-bar {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  line-height: 25px;
+}
+
+/* Container Styling */
+/* .container-berkas-persyaratan {
+  color: #333;
+} */
+
+/* Mobile Menu Styling */
+.mobile-menu {
+  display: none;
+  /* Default hidden */
+}
+
+/* Mobile Menu (max-width: 767.98px) */
+@media (max-width: 768px) {
+  .mobile-menu {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 5px 0; /* Kurangi padding vertikal */
+  }
+
+  .mobile-menu .nav-pills {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    /* Menjaga penataan item menu secara merata */
+  }
+
+  .mobile-menu .nav-item {
+    flex: 1;
+    text-align: center;
+  }
+
+  .mobile-menu .nav-link {
+    color: #333;
+    padding: 8px 0; /* Kurangi padding untuk mengecilkan area klik */
+    font-size: 10px; /* Kurangi ukuran font */
+  }
+
+  .mobile-menu .nav-link i {
+    display: block;
+    font-size: 18px; /* Kurangi ukuran ikon */
+    margin-bottom: 3px; /* Kurangi jarak bawah antara ikon dan teks */
+    color: #333;
+  }
+
+  .mobile-menu .nav-link span {
+    display: block;
+    font-size: 10px; /* Kurangi ukuran font teks */
+  }
+
+  /* Gaya item menu aktif untuk mobile */
+  .mobile-menu .nav-link.active {
+    color: #007bff;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .mobile-menu .nav-link.active i {
+    color: #007bff;
+  }
+
+  /* Hide desktop menu on mobile */
+  .nav-pills.d-md-flex {
+    display: none;
+  }
+
+  .nav-pills.d-md-flex {
+    display: flex;
+  }
+
+  @media (max-width: 768px) {
+    .title,
+    .value {
+      display: inline-block;
+      width: 50%;
+      margin: 0;
+      vertical-align: top;
+    }
+
+    .title {
+      text-align: left;
+    }
+
+    .value {
+      text-align: right;
+    }
+
+    .mb-3 {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+}

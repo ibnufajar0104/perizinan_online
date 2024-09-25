@@ -135,44 +135,41 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="table-responsive">
-                                            <table class="table table-borderless">
-                                                <tr>
-                                                    <th>No.</th>
-                                                    <th>Dari</th>
-                                                    <th>Proses</th>
+                                            <table class="table table-borderless table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No.</th>
+                                                        <th>Dari</th>
+                                                        <th>Proses</th>
 
-                                                    <th>Tanggal</th>
-                                                    <th>Dikirim Ke</th>
+                                                        <th>Tanggal Mulai</th>
+                                                        <th>Tanggal Selesai</th>
+                                                        <th>Dikirim Ke</th>
 
-                                                    <th>Catatan</th>
-                                                    <th>Status</th>
-                                                    <th></th>
-                                                </tr>
-                                                <?php $no = 1 ?>
-                                                <?php foreach ($log as $key =>  $row) : ?>
+                                                        <th>Catatan</th>
+                                                        <th>Status</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $no = 1 ?>
+                                                    <?php foreach ($log as $key =>  $row) : ?>
 
                                                     <tr>
                                                         <td><?= $no ?>.</td>
                                                         <td><?= $row['nama_asal'] ?></td>
                                                         <td><?= $row['tblkendalibloksistemtugas_nama'] ?></td>
-
+                                                        <td><?= $row['tgl_mulai'] ?></td>
                                                         <td><?= $row['tgl_selesai'] ?></td>
                                                         <td><?= $row['nama_tujuan'] ?></td>
 
                                                         <td><?= $row['tblkendaliproses_catatan'] ?></td>
                                                         <td><?= $row['status'] ?></td>
-                                                        <td>
 
-                                                            <?php if ($row['tblkendaliproses_status'] == 10 && $key == 0) : ?>
-                                                                <a class="btn btn-success btn-sm"
-                                                                    href="<?= site_url('permohonan/edit/' . $row['tblizinpendaftaran_id']) ?>">Perbaiki</a>
-
-                                                            <?php endif ?>
-
-                                                        </td>
                                                     </tr>
                                                     <?php $no++; ?>
-                                                <?php endforeach ?>
+                                                    <?php endforeach ?>
+                                                </tbody>
                                             </table>
                                         </div>
                                     </div>

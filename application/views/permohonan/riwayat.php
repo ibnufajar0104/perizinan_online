@@ -64,6 +64,11 @@
                                             <p class="title">Nama Permohonan</p>
                                             <p class="value"><?= $r['tblizinpermohonan_nama'] ?></p>
                                         </div>
+                                        <div class="mb-3">
+                                            <p class="title">Keterangan</p>
+                                            <p class="value"><?= $r['tblizinpendaftaran_keterangan'] ?></p>
+                                        </div>
+
                                     </div>
 
                                     <!-- Informasi Usaha/Tempat Kerja -->
@@ -83,10 +88,6 @@
                                         <div class="mb-3">
                                             <p class="title">Kelurahan</p>
                                             <p class="value"><?= $r['tblkelurahan_nama'] ?></p>
-                                        </div>
-                                        <div class="mb-3">
-                                            <p class="title">Keterangan</p>
-                                            <p class="value"><?= $r['tblizinpendaftaran_keterangan'] ?></p>
                                         </div>
 
                                     </div>

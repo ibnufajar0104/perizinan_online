@@ -55,19 +55,22 @@ function return_json($str)
 function status($str)
 {
     if ($str == 2) {
-        return  '<button class="btn btn-sm btn-outline-danger">Ditolak</button>';
+
+        return ' <span class="badge bg-danger">Ditolak</span>';
     }
 
     if ($str == 4) {
-        return  '<button class="btn btn-sm btn-outline-success">Selesai</button>';
+
+        return ' <span class="badge bg-success">Selesai</span>';
     }
 
     if ($str == 5) {
-        return  '<button class="btn btn-sm btn-outline-primary">Draf</button>';
+
+        return ' <span class="badge bg-primary">Draf</span>';
     }
 
 
-    return  '<button class="btn btn-sm btn-outline-warning">Diproses</button>';
+    return ' <span class="badge bg-warning">Diproses</span>';
 }
 
 function path_persyaratan($file)

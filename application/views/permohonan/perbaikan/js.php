@@ -1,19 +1,6 @@
 <script>
 var global_url = '<?= base_url('permohonan/') ?>';
-$(document).ready(function() {
-    // Ganti kondisi ini dengan pengecekan sebenarnya apakah "Informasi Umum" sudah selesai
-    var isBerkasPersyaratan = false;
 
-    // Mencegah perpindahan tab jika informasi umum belum selesai
-    $('.resume-tab').on('show.bs.tab', function(event) {
-        if (!isBerkasPersyaratan) {
-            event.preventDefault(); // Mencegah tab untuk berpindah
-            showErrorMessage('Selesaikan berkas persyaratan terlebih dahulu');
-        }
-    });
-
-    window.upload = upload; // Pastikan fungsi upload tersedia di global scope
-});
 
 function upload(tblpersyaratan_id) {
     const fileInput = $("#" + tblpersyaratan_id);
@@ -165,7 +152,7 @@ $('.berkas-persyaratan').submit(function(event) {
     event.preventDefault();
 
     var formData = $(this).serialize();
-    var url = global_url + 'afterUploadPersyaratan';
+    var url = global_url + 'afterPerbaikan';
 
     postWithAjax(url, formData, function(response, error) {
         if (error) {
@@ -173,7 +160,7 @@ $('.berkas-persyaratan').submit(function(event) {
         } else {
             if (response.status) {
                 showSuccessMessage(response.msg);
-                redirectTo(global_url + 'resume/' + response.id)
+                redirectTo(global_url)
             } else {
                 showErrorMessage(response.msg);
                 afterLoad('Lanjut')

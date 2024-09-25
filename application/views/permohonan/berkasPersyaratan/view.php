@@ -42,124 +42,151 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
+
+
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
-                                            aria-orientation="vertical">
-                                            <a class="nav-link mb-2" id="v-pills-home-tab"
-                                                onclick="window.location.href='<?= site_url('permohonan/informasiUmum/' . $idPendaftaran) ?>'; return false;"
-                                                role="tab" aria-controls="v-pills-home" aria-selected="false">1.
-                                                Informasi Umum</a>
-                                            <a class="nav-link mb-2 active" id="v-pills-profile-tab"
-                                                data-bs-toggle="pill" href="#v-pills-profile" role="tab"
-                                                aria-controls="v-pills-profile" aria-selected="true">2. Berkas
-                                                Persyaratan</a>
-                                            <a class="nav-link mb-2" id="v-pills-messages-tab" data-bs-toggle="pill"
-                                                href="#v-pills-messages" role="tab" aria-controls="v-pills-messages"
-                                                aria-selected="false">3. Resume</a>
-                                        </div>
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-pills nav-justified d-none d-md-flex" role="tablist">
+                                    <li class="nav-item waves-effect waves-light">
+                                        <a class="nav-link informasi-umum-tab" data-bs-toggle="tab" href="#home-1"
+                                            role="tab"
+                                            onclick="window.location.href='<?= site_url('permohonan/informasiUmum/' . $idPendaftaran) ?>'; return false;">
+                                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                            <span class="d-none d-sm-block">1. Informasi Umum</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item waves-effect waves-light">
+                                        <a class="nav-link active berkas-persyaratan-tab" data-bs-toggle="tab"
+                                            href="#profile-1" role="tab">
+                                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                            <span class="d-none d-sm-block">2. Berkas Persyaratan</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item waves-effect waves-light">
+                                        <a class="nav-link resume-tab" data-bs-toggle="tab" href="#messages-1"
+                                            role="tab">
+                                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                                            <span class="d-none d-sm-block">3. Resume</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <!-- Tab panes -->
+                                <!-- mobile menu -->
+                                <div class="mobile-menu d-md-none">
+                                    <ul class="nav nav-pills nav-justified" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#home-1" role="tab"
+                                                onclick="window.location.href='<?= site_url('permohonan/informasiUmum/' . $idPendaftaran) ?>'; return false;">
+                                                <i class="fas fa-info-circle"></i>
+                                                <span>Informasi Umum</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="#profile-1" role="tab">
+                                                <i class="fas fa-file-alt"></i>
+                                                <span>Berkas Persyaratan</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link resume-tab" href="#messages-1" role="tab"
+                                                data-bs-toggle="tab">
+                                                <i class="fas fa-check-circle"></i>
+                                                <span>Resume</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content p-md-4">
+                                    <div class="tab-pane " id="home-1" role="tabpanel">
+
                                     </div>
+                                    <div class="tab-pane active" id="profile-1" role="tabpanel">
+                                        <form class="berkas-persyaratan mt-0 mt-md-4" method="POST">
+                                            <input type="hidden" name="idPendaftaran" id="idPendaftaran"
+                                                value="<?= $idPendaftaran ?>">
+                                            <input type="hidden" name="idPermohonan" id="idPermohonan"
+                                                value="<?= $idPermohonan ?>">
+                                            <input type="hidden" name="idPemohon" id="idPemohon"
+                                                value="<?= $idPemohon ?>">
+                                            <div class="row container-berkas-persyaratan">
+                                                <div class="col-md-12">
+                                                    <?php foreach ($row as $r) : ?>
+                                                        <div class="row mb-3 border-bottom px-0 px-md-4 pb-3">
+                                                            <div class="col-md-6 col-sm-12 mb-2">
+                                                                <div class="text-wrap">
 
-
-                                    <!-- end col -->
-                                    <div class="col-md-9">
-                                        <div class="tab-content text-muted mt-4 mt-md-0" id="v-pills-tabContent">
-                                            <div class="tab-pane fade" id="v-pills-home" role="tabpanel"
-                                                aria-labelledby="v-pills-home-tab">
-
-                                            </div>
-                                            <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel"
-                                                aria-labelledby="v-pills-profile-tab">
-                                                <form class="berkas-persyaratan" method="POST">
-                                                    <input type="hidden" name="idPendaftaran" id="idPendaftaran"
-                                                        value="<?= $idPendaftaran ?>">
-                                                    <input type="hidden" name="idPermohonan" id="idPermohonan"
-                                                        value="<?= $idPermohonan ?>">
-                                                    <input type="hidden" name="idPemohon" id="idPemohon"
-                                                        value="<?= $idPemohon ?>">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <?php foreach ($row as $r) : ?>
-                                                            <div class="row mb-3 border-bottom pb-2">
-                                                                <div class="col-md-6 col-sm-12 mb-2">
-                                                                    <div class="text-wrap">
-
-                                                                        <?= $r['tblpersyaratan_nama'] ?>
-                                                                    </div>
+                                                                    <?= $r['tblpersyaratan_nama'] ?>
                                                                 </div>
-                                                                <div class="col-md-3 col-sm-12 mb-2">
-                                                                    <div>
-                                                                        <strong>Format:</strong> <?= $r['format'] ?>
-                                                                    </div>
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-12 mb-2">
+                                                                <div>
+                                                                    <strong>Format:</strong> <?= $r['format'] ?>
                                                                 </div>
-                                                                <div class="col-md-3 col-sm-12 mb-2">
-                                                                    <div class="d-flex flex-column">
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-12">
+                                                                <div class="d-flex flex-column">
 
-                                                                        <!-- Input file yang disembunyikan -->
-                                                                        <input type="file"
-                                                                            name="<?= $r['tblpersyaratan_id'] ?>"
-                                                                            id="<?= $r['tblpersyaratan_id'] ?>"
-                                                                            style="display: none;">
+                                                                    <!-- Input file yang disembunyikan -->
+                                                                    <input type="file" name="<?= $r['tblpersyaratan_id'] ?>"
+                                                                        id="<?= $r['tblpersyaratan_id'] ?>"
+                                                                        style="display: none;">
 
-                                                                        <!-- Tombol Upload -->
-                                                                        <button type="button"
-                                                                            class="btn btn-sm mb-2 btn-primary upload"
-                                                                            onclick="upload('<?= $r['tblpersyaratan_id'] ?>')">Upload</button>
+                                                                    <!-- Tombol Upload -->
+                                                                    <button type="button"
+                                                                        class="btn btn-sm mb-2 btn-primary upload"
+                                                                        onclick="upload('<?= $r['tblpersyaratan_id'] ?>')">Upload</button>
 
-                                                                        <!-- Tombol Review -->
-                                                                        <button type="button"
-                                                                            class="btn btn-sm mb-2 btn-warning review <?= $r['tblpersyaratan_id'] ?>"
-                                                                            onclick="review_after_upload('<?= $r['tblpersyaratan_id'] ?>')"
-                                                                            style="display: none;">Review</button>
+                                                                    <!-- Tombol Review -->
+                                                                    <button type="button"
+                                                                        class="btn btn-sm mb-2 btn-warning review <?= $r['tblpersyaratan_id'] ?>"
+                                                                        onclick="review_after_upload('<?= $r['tblpersyaratan_id'] ?>')"
+                                                                        style="display: none;">Review</button>
 
-                                                                        <!-- Progress Bar -->
-                                                                        <div class="progress mt-2 mb-2">
-                                                                            <div id="progress-bar-<?= $r['tblpersyaratan_id'] ?>"
-                                                                                class="progress-bar" role="progressbar"
-                                                                                style="width: 0%;" aria-valuenow="0"
-                                                                                aria-valuemin="0" aria-valuemax="100">0%
-                                                                            </div>
+                                                                    <!-- Progress Bar -->
+                                                                    <div class="progress mt-2 mb-2">
+                                                                        <div id="progress-bar-<?= $r['tblpersyaratan_id'] ?>"
+                                                                            class="progress-bar" role="progressbar"
+                                                                            style="width: 0%;" aria-valuenow="0"
+                                                                            aria-valuemin="0" aria-valuemax="100">0%
                                                                         </div>
+                                                                    </div>
 
-                                                                        <?php if (isset($r['file'])) : ?>
+                                                                    <?php if (isset($r['file'])) : ?>
                                                                         <button type="button"
                                                                             onclick="review('<?= path_persyaratan($r['file']) ?>')"
                                                                             class="btn btn-success btn-sm mb-2 review">
                                                                             <i class="fadeIn animated bx bx-file"></i>
                                                                             File anda sebelumnya
                                                                         </button>
-                                                                        <?php endif ?>
-                                                                    </div>
+                                                                    <?php endif ?>
                                                                 </div>
                                                             </div>
-                                                            <?php endforeach ?>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="float-end">
-                                                                <a class="btn btn-outline-danger"
-                                                                    href="<?= site_url('permohonan') ?>">Batal</a>
-
-                                                                <button class="btn btn-primary"
-                                                                    type="submit">Lanjut</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                                                aria-labelledby="v-pills-messages-tab">
-
+                                                    <?php endforeach ?>
+                                                </div>
                                             </div>
 
-                                        </div>
-                                    </div><!--  end col -->
-                                </div><!-- end row -->
-                            </div>
-                        </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="float-end">
+                                                        <a class="btn  btn-outline-danger"
+                                                            href="<?= site_url('permohonan/informasiUmum/' . $idPendaftaran) ?>">Kembali</a>
+
+                                                        <button class="btn  btn-primary" type="submit">Lanjut</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane" id="messages-1" role="tabpanel">
+
+                                    </div>
+
+                                </div>
+                            </div><!-- end card-body -->
+                        </div><!-- end card -->
+
                     </div>
                 </div>
 
@@ -170,7 +197,19 @@
             </div><!-- end card -->
             <!-- end row -->
         </div> <!-- container-fluid -->
-        <?php include(APPPATH . 'views/permohonan/modal.php'); ?>
+
+    </div>
+    <div class="modal fade" id="fileModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Preview</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center" id="fileContent">
+                </div>
+            </div>
+        </div>
     </div>
     <!-- End Page-content -->
 
