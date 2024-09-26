@@ -84,7 +84,7 @@
                     <div class="p-3">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="m-0"> Notifications </h6>
+                                <h6 class="m-0"> Notifikasi </h6>
                             </div>
 
                         </div>
@@ -106,7 +106,7 @@
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
                     <a class="dropdown-item" href="<?= site_url('profil') ?>"><i
-                            class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Profile</a>
+                            class="mdi mdi-account font-size-16 align-middle me-1"></i> Profile</a>
 
                     <a class="dropdown-item" href="<?= site_url('profil/logout') ?>"><i
                             class="mdi mdi-logout font-size-16 align-middle me-1"></i> Logout</a>

@@ -97,84 +97,97 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="tab-content p-md-2">
+                                <div class="tab-content p-md-3">
                                     <div class="tab-pane " id="home-1" role="tabpanel">
 
                                     </div>
                                     <div class="tab-pane active" id="profile-1" role="tabpanel">
-                                        <form class="berkas-persyaratan mt-0 mt-md-4" method="POST">
+
+
+                                        <form class="berkas-persyaratan" method="POST">
                                             <input type="hidden" name="idPendaftaran" id="idPendaftaran"
                                                 value="<?= $idPendaftaran ?>">
                                             <input type="hidden" name="idPermohonan" id="idPermohonan"
                                                 value="<?= $idPermohonan ?>">
                                             <input type="hidden" name="idPemohon" id="idPemohon"
                                                 value="<?= $idPemohon ?>">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <?php foreach ($row as $r) : ?>
-                                                    <div class="row mb-3 border-bottom px-0 px-md-4 pb-3">
-                                                        <div class="col-md-6 col-sm-12 mb-2">
-                                                            <div class="text-wrap">
+                                            <?php foreach ($row as $r) : ?>
+                                                <div class="row border-bottom py-4 px-md-4">
+                                                    <div class="col-md-6 col-sm-12 mb-2 mb-md-0">
+                                                        <div class="text-wrap">
 
-                                                                <?= $r['tblpersyaratan_nama'] ?>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 col-sm-12 mb-2">
-                                                            <div>
-                                                                <strong>Format:</strong> <?= $r['format'] ?>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 col-sm-12">
-                                                            <div class="d-flex flex-column">
-
-                                                                <!-- Input file yang disembunyikan -->
-                                                                <input type="file" name="<?= $r['tblpersyaratan_id'] ?>"
-                                                                    id="<?= $r['tblpersyaratan_id'] ?>"
-                                                                    style="display: none;">
-
-                                                                <!-- Tombol Upload -->
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-rounded mb-2 btn-primary upload"
-                                                                    onclick="upload('<?= $r['tblpersyaratan_id'] ?>')">
-                                                                    <i class="fadeIn animated  bx bx-upload"></i>
-                                                                    Upload</button>
-
-                                                                <!-- Tombol Review -->
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-rounded mb-2 btn-warning  review <?= $r['tblpersyaratan_id'] ?>"
-                                                                    onclick="review_after_upload('<?= $r['tblpersyaratan_id'] ?>')"
-                                                                    style="display: none;"> <i
-                                                                        class="fadeIn animated  bx bx-eye"></i>
-                                                                    Review</button>
-
-                                                                <!-- Progress Bar -->
-                                                                <div class="progress mb-2 " style="display: none;"
-                                                                    id="progress-container-<?= $r['tblpersyaratan_id'] ?>">
-                                                                    <div id="progress-bar-<?= $r['tblpersyaratan_id'] ?>"
-                                                                        class="progress-bar" role="progressbar"
-                                                                        style="width: 0%;" aria-valuenow="0"
-                                                                        aria-valuemin="0" aria-valuemax="100">0%
-                                                                    </div>
-                                                                </div>
-
-                                                                <?php if (isset($r['file'])) : ?>
-                                                                <button type="button"
-                                                                    onclick="review('<?= path_persyaratan($r['file']) ?>')"
-                                                                    class="btn btn-success btn-sm btn-rounded mb-2 review">
-                                                                    <i class="fadeIn animated bx bx-file"></i>
-                                                                    File anda sebelumnya
-                                                                </button>
-                                                                <?php endif ?>
-                                                            </div>
+                                                            <?= $r['tblpersyaratan_nama'] ?>
                                                         </div>
                                                     </div>
-                                                    <?php endforeach ?>
+                                                    <div class="col-md-3 col-sm-12 mb-2 mb-md-0">
+                                                        <div>
+                                                            <strong>Format:</strong> <?= $r['format'] ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-12">
+                                                        <!-- <div class="d-flex flex-column"> -->
+
+                                                        <!-- Input file yang disembunyikan -->
+                                                        <input type="file" name="<?= $r['tblpersyaratan_id'] ?>"
+                                                            id="<?= $r['tblpersyaratan_id'] ?>" style="display: none;">
+
+                                                        <!-- Tombol Upload -->
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-rounded btn-secondary upload mb-2 mb-md-0"
+                                                            onclick="upload('<?= $r['tblpersyaratan_id'] ?>')">
+                                                            <i class="fadeIn animated  bx bx-upload"></i>
+                                                            Upload</button>
+
+
+
+
+                                                        <?php if (isset($r['file'])) : ?>
+                                                            <button type="button"
+                                                                onclick="review('<?= path_persyaratan($r['file']) ?>')"
+                                                                class="btn btn-success btn-sm btn-rounded review mb-2 mb-md-0">
+                                                                <i class="fadeIn animated bx bx-file"></i>
+                                                                File anda sebelumnya
+                                                            </button>
+                                                        <?php endif ?>
+
+                                                        <!-- Tombol Review -->
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-rounded btn-warning review <?= $r['tblpersyaratan_id'] ?> mb-2 mb-md-0"
+                                                            onclick="review_after_upload('<?= $r['tblpersyaratan_id'] ?>')"
+                                                            style="display: none;"> <i
+                                                                class="fadeIn animated bx bxs-detail"></i>
+                                                            Review</button>
+
+                                                        <!-- Progress Bar -->
+                                                        <div class="progress mb-2 mb-md-0" style="display: none;"
+                                                            id="progress-container-<?= $r['tblpersyaratan_id'] ?>">
+                                                            <div id="progress-bar-<?= $r['tblpersyaratan_id'] ?>"
+                                                                class="progress-bar" role="progressbar" style="width: 0%;"
+                                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%
+                                                            </div>
+                                                        </div>
+                                                        <!-- </div> -->
+
+                                                    </div>
                                                 </div>
-                                            </div>
-
-
+                                            <?php endforeach ?>
 
                                             <div class="row">
+                                                <div class="col-12">
+                                                    <div class="alert alert-warning mt-4 mb-4" role="alert">
+                                                        <h4 class="alert-heading">Perhatian!</h4>
+                                                        <p>1. Perhatikan format file yang anda upload</p>
+                                                        <hr>
+                                                        <p class="mb-0">2. Tombol File anda sebelumnya adalah tombol
+                                                            untuk
+                                                            melihat file yang pernah anda upload di permohonan
+                                                            sebelumnya.
+                                                            Jika ada perubahan
+                                                            silahkan upload ulang</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2">
                                                 <div class="col-12">
                                                     <div class="float-start">
                                                         <a class="btn btn-outline-primary btn-rounded waves-effect waves-light mb-2 me-2"

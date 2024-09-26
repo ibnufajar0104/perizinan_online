@@ -103,33 +103,33 @@
                                 </div>
 
                                 <!-- Tab panes -->
-                                <div class="tab-content p-md-4">
+                                <div class="tab-content p-md-3">
                                     <div class="tab-pane active" id="home-1" role="tabpanel">
                                         <form class="informasi-umum" method="POST">
                                             <input type="hidden" name="tblizinpendaftaran_id"
                                                 value="<?= $idPendaftaran ?>" id="tblizinpendaftaran_id">
-                                            <div class="row">
+                                            <div class="row py-md-4">
 
-                                                <div class="col-md-6 col-12  px-2 px-md-4 pb-4">
+                                                <div class="col-md-6 col-12 py-2 px-4">
                                                     <div class="form-group">
-                                                        <label class="form-label mb-1">Nama Izin</label>
+                                                        <label class="form-label">Nama Izin</label>
                                                         <select name="tblizin_id" id="tblizin_id"
                                                             class="form-control form-control-2 select2" required
                                                             style="height: 50%">
                                                             <option value="">Pilih</option>
                                                             <?php foreach ($izin as $r) : ?>
-                                                                <option value="<?= $r['tblizin_id'] ?>">
-                                                                    <?= $r['tblizin_nama'] ?>
-                                                                </option>
+                                                            <option value="<?= $r['tblizin_id'] ?>">
+                                                                <?= $r['tblizin_nama'] ?>
+                                                            </option>
                                                             <?php endforeach ?>
                                                         </select>
 
                                                     </div>
 
                                                 </div>
-                                                <div class="col-md-6 col-12  px-2 px-md-4 pb-4">
+                                                <div class="col-md-6 col-12 py-2 px-4">
                                                     <div class="form-group">
-                                                        <label class="mb-1 form-label">Nama Permohonan</label>
+                                                        <label class="form-label">Nama Permohonan</label>
                                                         <select name="tblizinpermohonan_id" id="tblizinpermohonan_id"
                                                             class="form-control form-control-2 select2" required>
                                                             <option value="">Pilih</option>
@@ -139,9 +139,9 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="col-md-6 col-12  px-2 px-md-4 pb-4">
+                                                <div class="col-md-6 col-12 py-2 px-4">
                                                     <div class="form-group">
-                                                        <label class="mb-1 form-label nama_usaha">Nama Usaha/Tempat
+                                                        <label class="form-label">Nama Usaha/Tempat
                                                             Berkerja</label>
                                                         <input type="text" class="form-control form-control-2"
                                                             name="tblizinpendaftaran_usaha"
@@ -150,9 +150,9 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6 col-12  px-2 px-md-4 pb-4">
+                                                <div class="col-md-6 col-12 py-2 px-4">
                                                     <div class="form-group">
-                                                        <label class="mb-1 form-label alamat_usaha">Alamat
+                                                        <label class="form-label">Alamat
                                                             Usaha/Tempat
                                                             Berkerja</label>
                                                         <input type="text" class="form-control form-control-2"
@@ -162,25 +162,25 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6 col-12  px-2 px-md-4 pb-4">
+                                                <div class="col-md-6 col-12 py-2 px-4">
                                                     <div class="form-group">
-                                                        <label class="form-label mb-1">Nama Kecamatan </label>
+                                                        <label class="form-label">Nama Kecamatan </label>
                                                         <select name="tblkecamatan_id" id="tblkecamatan_id"
                                                             class="form-control form-control-2 select2" required>
                                                             <option value="">Pilih</option>
                                                             <?php foreach ($kecamatan as $r) : ?>
-                                                                <option value="<?= $r['tblkecamatan_id'] ?>">
-                                                                    <?= $r['tblkecamatan_nama'] ?>
-                                                                </option>
+                                                            <option value="<?= $r['tblkecamatan_id'] ?>">
+                                                                <?= $r['tblkecamatan_nama'] ?>
+                                                            </option>
                                                             <?php endforeach ?>
                                                         </select>
 
                                                     </div>
 
                                                 </div>
-                                                <div class="col-md-6 col-12  px-2 px-md-4 pb-4">
+                                                <div class="col-md-6 col-12 py-2 px-4">
                                                     <div class="form-group">
-                                                        <label class="form-label mb-1">Nama Kelurahan /
+                                                        <label class="form-label">Nama Kelurahan /
                                                             Desa</label>
                                                         <select name="tblkelurahan_id" id="tblkelurahan_id"
                                                             class="form-control form-control-2 select select2" required>
@@ -191,9 +191,9 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="col-md-6 col-12  px-2 px-md-4 pb-4">
+                                                <div class="col-md-6 col-12 py-2 px-4">
                                                     <div class="form-group">
-                                                        <label class="form-label mb-1">Keterangan</label>
+                                                        <label class="form-label">Keterangan</label>
                                                         <textarea name="tblizinpendaftaran_keterangan"
                                                             id="tblizinpendaftaran_keterangan" class="form-control"
                                                             rows="4"></textarea>
@@ -203,7 +203,7 @@
 
                                             </div>
 
-                                            <div class="row">
+                                            <div class="row mt-4">
                                                 <div class="col-12">
                                                     <div class="float-start">
                                                         <a class="btn btn-danger btn-rounded waves-effect waves-light mb-2 me-2"

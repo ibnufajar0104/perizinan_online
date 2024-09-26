@@ -103,7 +103,7 @@
 
 
                                 <!-- Tab panes -->
-                                <div class="tab-content p-md-4">
+                                <div class="tab-content p-md-3">
                                     <div class="tab-pane " id="home-1" role="tabpanel">
 
                                     </div>
@@ -113,7 +113,7 @@
                                     <div class="tab-pane active" id="messages-1" role="tabpanel">
                                         <h5>Informasi Umum</h5>
                                         <hr>
-                                        <div class="row gy-4">
+                                        <div class="row gy-4 p-md-4">
                                             <!-- Informasi Pemohon -->
                                             <div class="col-md-6 col-lg-4">
                                                 <div class="mb-3">
@@ -126,7 +126,7 @@
                                                     </p>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <p class="title">Nomor NPWP</p>
+                                                    <p class="title">NPWP</p>
                                                     <p class="value"><?= $r['tblizinpendaftaran_npwp'] ?></p>
                                                 </div>
                                                 <div class="mb-3">
@@ -190,41 +190,68 @@
                                         </div>
                                         <h5 class="mt-4">Berkas Persyaratan</h5>
                                         <hr>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <?php foreach ($row as $r) : ?>
-                                                <div class="row mb-3 border-bottom pb-2">
-                                                    <div class="col-md-6 col-sm-12 mb-2">
-                                                        <div class="text-wrap">
+                                        <?php foreach ($row as $r) : ?>
+                                            <div class="row border-bottom py-4 px-md-4">
+                                                <div class="col-md-6 col-sm-12 mb-2 mb-md-0">
+                                                    <div class="text-wrap">
 
-                                                            <?= $r['tblpersyaratan_nama'] ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-12 mb-2">
-                                                        <div>
-                                                            <strong>Format:</strong> <?= $r['format'] ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-12 mb-2">
-                                                        <div class="d-flex flex-column">
-
-
-
-                                                            <?php if (isset($r['file'])) : ?>
-                                                            <button type="button"
-                                                                onclick="review('<?= path_persyaratan($r['file']) ?>')"
-                                                                class="btn btn-success btn-rounded btn-sm mb-2 review">
-                                                                <i class="fadeIn animated bx bx-file"></i>
-                                                                Lihat file
-                                                            </button>
-                                                            <?php endif ?>
-                                                        </div>
+                                                        <?= $r['tblpersyaratan_nama'] ?>
                                                     </div>
                                                 </div>
-                                                <?php endforeach ?>
+                                                <div class="col-md-3 col-sm-12 mb-2 mb-md-0">
+                                                    <div>
+                                                        <strong>Format:</strong> <?= $r['format'] ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-sm-12">
+
+                                                    <?php if (isset($r['file'])) : ?>
+                                                        <button type="button"
+                                                            onclick="review('<?= path_persyaratan($r['file']) ?>')"
+                                                            class="btn btn-success btn-rounded btn-sm review mb-2 mb-md-0">
+                                                            <i class="fadeIn animated bx bx-file"></i>
+                                                            Lihat file
+                                                        </button>
+                                                    <?php endif ?>
+
+                                                </div>
+                                            </div>
+                                        <?php endforeach ?>
+
+                                        <div class="row mt-4 px-2">
+                                            <div class="col-12">
+                                                <div class="alert alert-warning mt-md-4 mb-4" role="alert">
+                                                    <h4 class="alert-heading">Perhatian!</h4>
+                                                    <p>1. Periksa terlebih dahulu Informasi Umum dan Berkas Persyaratan
+                                                        anda apakah sudah benar
+                                                        ?</p>
+                                                    <hr>
+                                                    <p class="mb-0">2. Anda masih dapat mengedit Informasi Umum dan
+                                                        Berkas Persyaratan sebelum permohonan diajukan
+                                                    </p>
+                                                    <hr>
+                                                    <p class="mb-0">3. Data diri seperti Nomor Identitas, NPWP, Telepon,
+                                                        Email, dll, dapat diedit di menu profil atau, klik <a
+                                                            href="<?= site_url('profil') ?>">disini</a>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row justify-content-center">
+                                            <div class="col-auto">
+                                                <div class="form-check justify-content-center align-items-center">
+                                                    <input class="form-check-input" type="checkbox" id="pernyataan">
+                                                    <label class="form-check-label" for="pernyataan">
+                                                        <i>Semua informasi yang Saya masukkan adalah benar dan dapat
+                                                            dipertanggungjawabkan</i>
+                                                    </label>
+                                                    <p class="text-danger hide" id="warning-msg">Pernyataan harus
+                                                        dicentang</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-2">
                                             <div class="col-12">
                                                 <div class="float-start">
                                                     <a class="btn btn-outline-primary btn-rounded waves-effect waves-light mb-2 me-2"
@@ -284,7 +311,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="float-end">
-                                    <button class="btn btn-primary" type="submit">Yakin</button>
+                                    <button class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                                        type="submit">Yakin <i class="mdi mdi-check-bold"></i></button>
                                 </div>
                             </div>
                         </div>

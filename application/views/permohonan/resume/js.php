@@ -1,8 +1,15 @@
 <script>
 var global_url = '<?= base_url('permohonan/') ?>';
 $(document).ready(function() {
+    $('.hide').hide();
     $('#ajukan').click(function() {
-        $('#confirm-modal').modal('show');
+        if (!$('#pernyataan').is(':checked')) {
+            $('#warning-msg').show(); // Tampilkan pesan jika belum dicentang
+        } else {
+            $('#warning-msg').hide(); // Sembunyikan pesan jika sudah dicentang
+            $('#confirm-modal').modal('show');
+        }
+
     })
 
 

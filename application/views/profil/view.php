@@ -108,7 +108,7 @@
                                 <div class="modal-footer">
 
                                     <button class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2"
-                                        type="submit">Simpan</button>
+                                        type="submit">Simpan <i class="mdi mdi-check-bold"></i></button>
                                 </div>
                             </form>
                         </div>
