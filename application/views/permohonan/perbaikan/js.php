@@ -5,6 +5,7 @@ var global_url = '<?= base_url('permohonan/') ?>';
 function upload(tblpersyaratan_id) {
     const fileInput = $("#" + tblpersyaratan_id);
     const progressBar = $('#progress-bar-' + tblpersyaratan_id);
+    const progressContainer = $('#progress-container-' + tblpersyaratan_id);
     const uploadButton = $('.upload').filter(function() {
         // Temukan tombol upload berdasarkan tblpersyaratan_id yang sama
         return $(this).attr('onclick').includes(tblpersyaratan_id);
@@ -37,7 +38,7 @@ function upload(tblpersyaratan_id) {
         formData.append('idPendaftaran', idPendaftaran); // Tambahkan ID Pendaftaran ke FormData
         formData.append('tblpersyaratan_id', tblpersyaratan_id);
         formData.append('file', file); // Tambahkan file ke FormData
-
+        progressContainer.show();
         // AJAX request untuk upload file
         $.ajax({
             xhr: function() {
@@ -77,7 +78,7 @@ function upload(tblpersyaratan_id) {
                 progressBar.css('width', '0%');
                 progressBar.attr('aria-valuenow', '0');
                 progressBar.text('0%');
-
+                progressContainer.hide();
                 // Aktifkan kembali tombol upload dan input file
                 uploadButton.prop('disabled', false);
                 fileInput.prop('disabled', false);
@@ -89,7 +90,7 @@ function upload(tblpersyaratan_id) {
                 progressBar.css('width', '0%');
                 progressBar.attr('aria-valuenow', '0');
                 progressBar.text('0%');
-
+                progressContainer.hide();
                 // Aktifkan kembali tombol upload dan input file
                 uploadButton.prop('disabled', false);
                 fileInput.prop('disabled', false);

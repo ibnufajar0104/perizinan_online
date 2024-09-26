@@ -103,7 +103,7 @@
                                 </div>
 
                                 <!-- Tab panes -->
-                                <div class="tab-content p-md-3">
+                                <div class="tab-content px-md-3">
                                     <div class="tab-pane active" id="home-1" role="tabpanel">
                                         <form class="informasi-umum" method="POST">
                                             <input type="hidden" name="tblizinpendaftaran_id"
@@ -118,9 +118,9 @@
                                                             style="height: 50%">
                                                             <option value="">Pilih</option>
                                                             <?php foreach ($izin as $r) : ?>
-                                                            <option value="<?= $r['tblizin_id'] ?>">
-                                                                <?= $r['tblizin_nama'] ?>
-                                                            </option>
+                                                                <option value="<?= $r['tblizin_id'] ?>">
+                                                                    <?= $r['tblizin_nama'] ?>
+                                                                </option>
                                                             <?php endforeach ?>
                                                         </select>
 
@@ -169,9 +169,9 @@
                                                             class="form-control form-control-2 select2" required>
                                                             <option value="">Pilih</option>
                                                             <?php foreach ($kecamatan as $r) : ?>
-                                                            <option value="<?= $r['tblkecamatan_id'] ?>">
-                                                                <?= $r['tblkecamatan_nama'] ?>
-                                                            </option>
+                                                                <option value="<?= $r['tblkecamatan_id'] ?>">
+                                                                    <?= $r['tblkecamatan_nama'] ?>
+                                                                </option>
                                                             <?php endforeach ?>
                                                         </select>
 

@@ -103,7 +103,7 @@
 
 
                                 <!-- Tab panes -->
-                                <div class="tab-content p-md-3">
+                                <div class="tab-content px-md-3">
                                     <div class="tab-pane " id="home-1" role="tabpanel">
 
                                     </div>

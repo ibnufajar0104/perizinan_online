@@ -46,27 +46,27 @@
                                 <div class="card-body">
                                     <div class="row p-md-2">
 
-                                        <div class="col-md-6 col-12 px-4 pb-4">
+                                        <div class="col-md-6 col-12 py-2 px-4">
                                             <div class="form-group">
-                                                <label class="mb-1 form-label">Nama Pemohon</label>
+                                                <label class="form-label">Nama Pemohon</label>
                                                 <input type="text" class="form-control " name="tblpemohon_nama"
                                                     id="tblpemohon_nama" required
                                                     value="<?= $row['tblpemohon_nama'] ?>">
 
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12 px-4 pb-4">
+                                        <div class="col-md-6 col-12 py-2 px-4">
                                             <div class="form-group">
-                                                <label class="mb-1 form-label">Nomor WA Aktif</label>
+                                                <label class="form-label">Nomor WA</label>
                                                 <input type="text" class="form-control " name="tblpemohon_telpon"
                                                     id="tblpemohon_telpon" value="<?= $row['tblpemohon_telpon'] ?>"
                                                     required>
 
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12 px-4 pb-4">
+                                        <div class="col-md-6 col-12 py-2 px-4">
                                             <div class="form-group">
-                                                <label class="mb-1 form-label">NIK</label>
+                                                <label class="form-label">NIK</label>
                                                 <input type="text" class="form-control " name="tblpemohon_noidentitas"
                                                     id="tblpemohon_noidentitas" required
                                                     value="<?= $row['tblpemohon_noidentitas'] ?>">
@@ -74,27 +74,27 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6 col-12 px-4 pb-4">
+                                        <div class="col-md-6 col-12 py-2 px-4">
                                             <div class="form-group">
-                                                <label class="mb-1 form-label">NPWP</label>
+                                                <label class="form-label">NPWP</label>
                                                 <input type="text" class="form-control " name="tblpemohon_npwp"
                                                     id="tblpemohon_npwp" required
                                                     value="<?= $row['tblpemohon_npwp'] ?>">
 
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12 px-4 pb-4">
+                                        <div class="col-md-6 col-12 py-2 px-4">
                                             <div class="form-group">
-                                                <label class="mb-1 form-label">Alamat</label>
+                                                <label class="form-label">Alamat</label>
                                                 <textarea name="tblpemohon_alamat" id="tblpemohon_alamat"
                                                     class="form-control" rows="4"
                                                     required><?= $row['tblpemohon_alamat'] ?></textarea>
 
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12 px-4 pb-4">
+                                        <div class="col-md-6 col-12 py-2 px-4">
                                             <div class="form-group">
-                                                <label class="mb-1 form-label">Email Aktif</label>
+                                                <label class="form-label">Email</label>
                                                 <input type="text" class="form-control " name="tblpemohon_email"
                                                     id="tblpemohon_email" required
                                                     value="<?= $row['tblpemohon_email'] ?>">

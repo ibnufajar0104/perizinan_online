@@ -164,28 +164,4 @@ th {
   .nav-pills.d-md-flex {
     display: flex;
   }
-
-  @media (max-width: 768px) {
-    .title,
-    .value {
-      display: inline-block;
-      width: 50%;
-      margin: 0;
-      vertical-align: top;
-    }
-
-    .title {
-      text-align: left;
-    }
-
-    .value {
-      text-align: right;
-    }
-
-    .mb-3 {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-  }
 }

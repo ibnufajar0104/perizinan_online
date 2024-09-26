@@ -106,7 +106,7 @@
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
                     <a class="dropdown-item" href="<?= site_url('profil') ?>"><i
-                            class="mdi mdi-account font-size-16 align-middle me-1"></i> Profile</a>
+                            class="mdi mdi-account font-size-16 align-middle me-1"></i> Profil</a>
 
                     <a class="dropdown-item" href="<?= site_url('profil/logout') ?>"><i
                             class="mdi mdi-logout font-size-16 align-middle me-1"></i> Logout</a>

@@ -117,8 +117,11 @@
 
                                         <div class="mb-3">
                                             <p class="title">Dokumen Digital</p>
-                                            <p class="value"><a class="btn btn-outline-primary" target="_blank"
-                                                    href="<?= $r['dokumen'] ?>">Download</a></p>
+                                            <p class="value"><a
+                                                    class="btn btn-sm btn-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                                                    target="_blank" href="<?= $r['dokumen'] ?>"><i
+                                                        class="mdi mdi-download"></i>
+                                                    Unduh</a></p>
                                         </div>
                                     </div>
 

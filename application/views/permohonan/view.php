@@ -42,22 +42,15 @@
                         <div class="card">
 
                             <div class="card-body">
-                                <div class="row mb-2">
-                                    <div class="col-sm-4">
-                                        <div class="search-box me-2 mb-2 d-inline-block">
-                                            <div class="position-relative">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div class="text-sm-end">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="float-end ">
                                             <a href="<?= site_url('/permohonan/informasiUmum') ?>"
-                                                class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2">
+                                                class="btn btn-primary btn-rounded waves-effect waves-light mb-4">
                                                 <i class="mdi mdi-plus me-1"></i> Ajukan Permohonan</a>
 
                                         </div>
-                                    </div><!-- end col-->
+                                    </div>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table align-middle table-nowrap table-check">
@@ -77,49 +70,59 @@
                                         <tbody>
                                             <?php $no = 1 ?>
                                             <?php if ($permohonan) : ?>
-                                            <?php foreach ($permohonan as $r) : ?>
-                                            <tr>
-                                                <td><?= $no ?>.</td>
-                                                <td><?= $r['tblizinpendaftaran_nomor'] ?></td>
-                                                <td><?= $r['tblizin_nama'] ?></td>
-                                                <td><?= $r['tblizinpermohonan_nama'] ?></td>
-                                                <td><?= $r['tblizinpendaftaran_usaha'] ?></td>
+                                                <?php foreach ($permohonan as $r) : ?>
+                                                    <tr>
+                                                        <td><?= $no ?>.</td>
+                                                        <td><?= $r['tblizinpendaftaran_nomor'] ?></td>
+                                                        <td><?= $r['tblizin_nama'] ?></td>
+                                                        <td><?= $r['tblizinpermohonan_nama'] ?></td>
+                                                        <td><?= $r['tblizinpendaftaran_usaha'] ?></td>
 
-                                                <td><?= $r['tgl_daftar'] ?></td>
-                                                <td><?= status($r['status']) ?></td>
-                                                <td class="text-nowrap">
+                                                        <td><?= $r['tgl_daftar'] ?></td>
+                                                        <td><?= status($r['status']) ?></td>
+                                                        <td class="text-nowrap">
 
-                                                    <?php if ($r['status'] != 5) : ?>
-                                                    <a href="<?= site_url('permohonan/detail/' . $r['tblizinpendaftaran_id']) ?>"
-                                                        class="btn btn-outline-info btn-rounded waves-effect waves-light mb-2 me-2"><i
-                                                            class="mdi mdi-information-outline"></i> Detail</a>
-                                                    <?php endif ?>
-
-                                                    <?php if ($r['status'] == 5) : ?>
-                                                    <a href="<?= site_url('permohonan/informasiUmum/' . $r['tblizinpendaftaran_id']) ?>"
-                                                        class="btn btn-outline-primary btn-rounded waves-effect waves-light mb-2 me-2"><i
-                                                            class="mdi mdi-circle-edit-outline"></i> Selesaikan Draf</a>
-                                                    <?php endif ?>
-
-                                                    <?php if ($r['status']  == 2) : ?>
-                                                    <a href="<?= site_url('permohonan/perbaikan/' . $r['tblizinpendaftaran_id']) ?>"
-                                                        class="btn btn-sm btn-success">Perbaiki</a>
-                                                    <?php endif ?>
-                                                </td>
+                                                            <?php if ($r['status'] != 5) : ?>
+                                                                <a href="<?= site_url('permohonan/detail/' . $r['tblizinpendaftaran_id']) ?>"
+                                                                    class="btn btn-outline-primary btn-rounded waves-effect waves-light mb-2 me-2"><i
+                                                                        class="mdi mdi-information-outline"></i> Detail</a>
 
 
-                                            </tr>
-                                            <?php $no++ ?>
-                                            <?php endforeach ?>
+                                                            <?php endif ?>
+
+                                                            <?php if ($r['status'] == 5) : ?>
+                                                                <a href="<?= site_url('permohonan/informasiUmum/' . $r['tblizinpendaftaran_id']) ?>"
+                                                                    class="btn btn-outline-primary btn-rounded waves-effect waves-light mb-2 me-2"><i
+                                                                        class="mdi mdi-circle-edit-outline"></i> Selesaikan Draf</a>
+                                                            <?php endif ?>
+
+                                                            <?php if ($r['status']  == 2) : ?>
+                                                                <a href="<?= site_url('permohonan/perbaikan/' . $r['tblizinpendaftaran_id']) ?>"
+                                                                    class="btn btn-outline-primary btn-rounded waves-effect waves-light mb-2 me-2"><i
+                                                                        class="mdi mdi-circle-edit-outline"></i> Perbaiki</a>
+                                                            <?php endif ?>
+
+                                                            <?php if ($r['status']  == 4) : ?>
+                                                                <a class="btn btn-outline-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                                                                    target="_blank" href="<?= $r['dokumen'] ?>"><i
+                                                                        class="mdi mdi-download"></i>
+                                                                    Unduh Dokumen</a>
+                                                            <?php endif ?>
+                                                        </td>
+
+
+                                                    </tr>
+                                                    <?php $no++ ?>
+                                                <?php endforeach ?>
                                             <?php else : ?>
-                                            <tr>
-                                                <td colspan="8" class="text-center">Belum ada permohonan</td>
-                                            </tr>
+                                                <tr>
+                                                    <td colspan="8" class="text-center">Belum ada permohonan</td>
+                                                </tr>
                                             <?php endif ?>
                                         </tbody>
                                     </table>
                                 </div>
-
+                                <p class="d-flex d-md-none"> Swipe atau geser ke kanan</p>
                             </div>
                         </div>
                     </div> <!-- end col -->
