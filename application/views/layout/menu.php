@@ -1,25 +1,29 @@
-<div class="topnav">
-    <div class="container-fluid">
-        <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+<div class="vertical-menu">
 
-            <div class="collapse navbar-collapse" id="topnav-menu-content">
-                <ul class="navbar-nav">
+    <div data-simplebar class="h-100">
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="<?= site_url('permohonan') ?>"
-                            id="topnav-dashboard" role="button">
-                            <i data-feather="file-text"></i><span data-key="t-dashboard">Permohonan</span>
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="<?= site_url('permohonan/riwayat') ?>"
-                            id="topnav-dashboard" role="button">
-                            <i data-feather="clock"></i><span data-key="t-dashboard">Riwayat Permohonan</span>
-                        </a>
-                    </li>
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu list-unstyled" id="side-menu">
+                <li class="menu-title" data-key="t-menu">Menu</li>
 
-                </ul>
-            </div>
-        </nav>
+                <li>
+                    <a href="<?= site_url('permohonan') ?>">
+                        <i data-feather="file-text"></i>
+                        <span data-key="t-permohonan">Permohonan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= site_url('permohonan/riwayat') ?>">
+                        <i data-feather="clock"></i>
+                        <span data-key="t-riwayat">Riwayat Permohonan</span>
+                    </a>
+                </li>
+            </ul>
+
+
+        </div>
+        <!-- Sidebar -->
     </div>
 </div>

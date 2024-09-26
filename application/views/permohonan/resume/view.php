@@ -50,20 +50,23 @@
                                     <li class="nav-item waves-effect waves-light">
                                         <a class="nav-link" id="informasi-umum-tab-desktop" href="#home-1" role="tab"
                                             onclick="window.location.href='<?= site_url('permohonan/informasiUmum/' . $idPendaftaran) ?>'; return false;">
-                                            <span class="d-none d-sm-block">1. Informasi Umum</span>
+                                            1. Informasi Umum
+                                            <i class="fas fa-info-circle"></i>
                                         </a>
                                     </li>
                                     <li class="nav-item waves-effect waves-light">
                                         <a class="nav-link" id="berkas-persyaratan-tab-desktop" href="#profile-1"
                                             role="tab"
                                             onclick="window.location.href='<?= site_url('permohonan/berkasPersyaratan/' . $idPendaftaran) ?>'; return false;">
-                                            <span class="d-none d-sm-block">2. Berkas Persyaratan</span>
+                                            2. Berkas Persyaratan
+                                            <i class="fas fa-file-alt"></i>
                                         </a>
                                     </li>
                                     <li class="nav-item waves-effect waves-light">
                                         <a class="nav-link active" id="resume-tab-desktop" href="#messages-1"
                                             role="tab">
-                                            <span class="d-none d-sm-block">3. Resume</span>
+                                            3. Resume
+                                            <i class="fas fa-check-circle"></i>
                                         </a>
                                     </li>
                                 </ul>
@@ -108,140 +111,131 @@
 
                                     </div>
                                     <div class="tab-pane active" id="messages-1" role="tabpanel">
-                                        <div class="row p-md-4">
+                                        <h5>Informasi Umum</h5>
+                                        <hr>
+                                        <div class="row gy-4">
+                                            <!-- Informasi Pemohon -->
+                                            <div class="col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <p class="title">Nomor Pendaftaran</p>
+                                                    <p class="value"><?= $r['tblizinpendaftaran_nomor'] ?></p>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <p class="title">Nomor Identitas</p>
+                                                    <p class="value"><?= $r['tblizinpendaftaran_idpemohon'] ?>
+                                                    </p>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <p class="title">Nomor NPWP</p>
+                                                    <p class="value"><?= $r['tblizinpendaftaran_npwp'] ?></p>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <p class="title">Nama Pemohon</p>
+                                                    <p class="value"><?= $r['tblizinpendaftaran_namapemohon'] ?>
+                                                    </p>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <p class="title">No. Telepon</p>
+                                                    <p class="value">
+                                                        <?= $r['tblizinpendaftaran_telponpemohon'] ?></p>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <p class="title">Alamat</p>
+                                                    <p class="value"><?= $r['tblizinpendaftaran_almtpemohon'] ?>
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Informasi Permohonan Izin -->
+                                            <div class="col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <p class="title">Nama Izin</p>
+                                                    <p class="value"><?= $r['tblizin_nama'] ?></p>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <p class="title">Nama Permohonan</p>
+                                                    <p class="value"><?= $r['tblizinpermohonan_nama'] ?></p>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <p class="title">Tanggal Permohonan</p>
+                                                    <p class="value"><?= $r['tgl_daftar'] ?></p>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <p class="title">Keterangan</p>
+                                                    <p class="value"><?= $r['tblizinpendaftaran_keterangan'] ?>
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Informasi Usaha/Tempat Kerja -->
+                                            <div class="col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <p class="title">Nama Usaha/Tempat Berkerja</p>
+                                                    <p class="value"><?= $r['tblizinpendaftaran_usaha'] ?></p>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <p class="title">Alamat Usaha/Tempat Berkerja</p>
+                                                    <p class="value"><?= $r['tblizinpendaftaran_lokasiizin'] ?>
+                                                    </p>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <p class="title">Kecamatan</p>
+                                                    <p class="value"><?= $r['tblkecamatan_nama'] ?></p>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <p class="title">Kelurahan</p>
+                                                    <p class="value"><?= $r['tblkelurahan_nama'] ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h5 class="mt-4">Berkas Persyaratan</h5>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <?php foreach ($row as $r) : ?>
+                                                <div class="row mb-3 border-bottom pb-2">
+                                                    <div class="col-md-6 col-sm-12 mb-2">
+                                                        <div class="text-wrap">
+
+                                                            <?= $r['tblpersyaratan_nama'] ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-12 mb-2">
+                                                        <div>
+                                                            <strong>Format:</strong> <?= $r['format'] ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-12 mb-2">
+                                                        <div class="d-flex flex-column">
+
+
+
+                                                            <?php if (isset($r['file'])) : ?>
+                                                            <button type="button"
+                                                                onclick="review('<?= path_persyaratan($r['file']) ?>')"
+                                                                class="btn btn-success btn-rounded btn-sm mb-2 review">
+                                                                <i class="fadeIn animated bx bx-file"></i>
+                                                                Lihat file
+                                                            </button>
+                                                            <?php endif ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php endforeach ?>
+                                            </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="col-12">
-                                                <h5>Informasi Umum</h5>
-                                                <hr>
-                                                <div class="row gy-4">
-                                                    <!-- Informasi Pemohon -->
-                                                    <div class="col-md-6 col-lg-4">
-                                                        <div class="mb-3">
-                                                            <p class="title">Nomor Pendaftaran</p>
-                                                            <p class="value"><?= $r['tblizinpendaftaran_nomor'] ?></p>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <p class="title">Nomor Identitas</p>
-                                                            <p class="value"><?= $r['tblizinpendaftaran_idpemohon'] ?>
-                                                            </p>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <p class="title">Nomor NPWP</p>
-                                                            <p class="value"><?= $r['tblizinpendaftaran_npwp'] ?></p>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <p class="title">Nama Pemohon</p>
-                                                            <p class="value"><?= $r['tblizinpendaftaran_namapemohon'] ?>
-                                                            </p>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <p class="title">No. Telepon</p>
-                                                            <p class="value">
-                                                                <?= $r['tblizinpendaftaran_telponpemohon'] ?></p>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <p class="title">Alamat</p>
-                                                            <p class="value"><?= $r['tblizinpendaftaran_almtpemohon'] ?>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- Informasi Permohonan Izin -->
-                                                    <div class="col-md-6 col-lg-4">
-                                                        <div class="mb-3">
-                                                            <p class="title">Nama Izin</p>
-                                                            <p class="value"><?= $r['tblizin_nama'] ?></p>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <p class="title">Nama Permohonan</p>
-                                                            <p class="value"><?= $r['tblizinpermohonan_nama'] ?></p>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <p class="title">Tanggal Permohonan</p>
-                                                            <p class="value"><?= $r['tgl_daftar'] ?></p>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <p class="title">Keterangan</p>
-                                                            <p class="value"><?= $r['tblizinpendaftaran_keterangan'] ?>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- Informasi Usaha/Tempat Kerja -->
-                                                    <div class="col-md-6 col-lg-4">
-                                                        <div class="mb-3">
-                                                            <p class="title">Nama Usaha/Tempat Berkerja</p>
-                                                            <p class="value"><?= $r['tblizinpendaftaran_usaha'] ?></p>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <p class="title">Alamat Usaha/Tempat Berkerja</p>
-                                                            <p class="value"><?= $r['tblizinpendaftaran_lokasiizin'] ?>
-                                                            </p>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <p class="title">Kecamatan</p>
-                                                            <p class="value"><?= $r['tblkecamatan_nama'] ?></p>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <p class="title">Kelurahan</p>
-                                                            <p class="value"><?= $r['tblkelurahan_nama'] ?></p>
-                                                        </div>
-                                                    </div>
+                                                <div class="float-start">
+                                                    <a class="btn btn-outline-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                                                        href="<?= site_url('permohonan/berkasPersyaratan/' . $idPendaftaran) ?>"><i
+                                                            class="mdi mdi-arrow-left"></i>Sebelumnya</a>
                                                 </div>
-                                                <h5 class="mt-4">Berkas Persyaratan</h5>
-                                                <hr>
-                                                <div class="row container-berkas-persyaratan">
-                                                    <div class="col-md-12">
-                                                        <?php foreach ($row as $r) : ?>
-                                                            <div class="row mb-3 border-bottom pb-2">
-                                                                <div class="col-md-6 col-sm-12 mb-2">
-                                                                    <div class="text-wrap">
-
-                                                                        <?= $r['tblpersyaratan_nama'] ?>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-3 col-sm-12 mb-2">
-                                                                    <div>
-                                                                        <strong>Format:</strong> <?= $r['format'] ?>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-3 col-sm-12 mb-2">
-                                                                    <div class="d-flex flex-column">
-
-
-
-                                                                        <?php if (isset($r['file'])) : ?>
-                                                                            <button type="button"
-                                                                                onclick="review('<?= path_persyaratan($r['file']) ?>')"
-                                                                                class="btn btn-success btn-sm mb-2 review">
-                                                                                <i class="fadeIn animated bx bx-file"></i>
-                                                                                Lihat file
-                                                                            </button>
-                                                                        <?php endif ?>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        <?php endforeach ?>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="row mt-4">
-                                                    <div class="col-12">
-                                                        <p>Mohon periksa terlebih dahulu <strong>Informasi Umum</strong>
-                                                            dan <strong>Berkas Persyaratan</strong>. Jika sudah, silakan
-                                                            klik <strong>Ajukan Permohonan</strong> untuk melanjutkan.
-                                                        </p>
-                                                    </div>
-                                                    <div class="col-12  col-md-6 mb-2 d-flex flex-column">
-                                                        <button class="btn btn-outline-danger">Nanti Saja</button>
-
-                                                    </div>
-
-                                                    <div class="col-12  col-md-6 d-flex flex-column">
-
-                                                        <button class="btn btn-primary" id="ajukan">Ajukan
-                                                            Permohonan</button>
-                                                    </div>
+                                                <div class="float-end">
+                                                    <button
+                                                        class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                                                        type="submit" id="ajukan">Selanjutnya <i
+                                                            class="mdi mdi-arrow-right"></i></button>
                                                 </div>
                                             </div>
                                         </div>

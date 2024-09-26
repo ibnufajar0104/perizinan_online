@@ -51,22 +51,22 @@
                                         <a class="nav-link informasi-umum-tab" data-bs-toggle="tab" href="#home-1"
                                             role="tab"
                                             onclick="window.location.href='<?= site_url('permohonan/informasiUmum/' . $idPendaftaran) ?>'; return false;">
-                                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                                            <span class="d-none d-sm-block">1. Informasi Umum</span>
+                                            1. Informasi Umum
+                                            <i class="fas fa-info-circle"></i>
                                         </a>
                                     </li>
                                     <li class="nav-item waves-effect waves-light">
                                         <a class="nav-link active berkas-persyaratan-tab" data-bs-toggle="tab"
                                             href="#profile-1" role="tab">
-                                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
-                                            <span class="d-none d-sm-block">2. Berkas Persyaratan</span>
+                                            2. Berkas Persyaratan
+                                            <i class="fas fa-file-alt"></i>
                                         </a>
                                     </li>
                                     <li class="nav-item waves-effect waves-light">
                                         <a class="nav-link resume-tab" data-bs-toggle="tab" href="#messages-1"
                                             role="tab">
-                                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
-                                            <span class="d-none d-sm-block">3. Resume</span>
+                                            3. Resume
+                                            <i class="fas fa-check-circle"></i>
                                         </a>
                                     </li>
 
@@ -97,7 +97,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="tab-content p-md-4">
+                                <div class="tab-content p-md-2">
                                     <div class="tab-pane " id="home-1" role="tabpanel">
 
                                     </div>
@@ -109,71 +109,83 @@
                                                 value="<?= $idPermohonan ?>">
                                             <input type="hidden" name="idPemohon" id="idPemohon"
                                                 value="<?= $idPemohon ?>">
-                                            <div class="row container-berkas-persyaratan">
+                                            <div class="row">
                                                 <div class="col-md-12">
                                                     <?php foreach ($row as $r) : ?>
-                                                        <div class="row mb-3 border-bottom px-0 px-md-4 pb-3">
-                                                            <div class="col-md-6 col-sm-12 mb-2">
-                                                                <div class="text-wrap">
+                                                    <div class="row mb-3 border-bottom px-0 px-md-4 pb-3">
+                                                        <div class="col-md-6 col-sm-12 mb-2">
+                                                            <div class="text-wrap">
 
-                                                                    <?= $r['tblpersyaratan_nama'] ?>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-3 col-sm-12 mb-2">
-                                                                <div>
-                                                                    <strong>Format:</strong> <?= $r['format'] ?>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-3 col-sm-12">
-                                                                <div class="d-flex flex-column">
-
-                                                                    <!-- Input file yang disembunyikan -->
-                                                                    <input type="file" name="<?= $r['tblpersyaratan_id'] ?>"
-                                                                        id="<?= $r['tblpersyaratan_id'] ?>"
-                                                                        style="display: none;">
-
-                                                                    <!-- Tombol Upload -->
-                                                                    <button type="button"
-                                                                        class="btn btn-sm mb-2 btn-primary upload"
-                                                                        onclick="upload('<?= $r['tblpersyaratan_id'] ?>')">Upload</button>
-
-                                                                    <!-- Tombol Review -->
-                                                                    <button type="button"
-                                                                        class="btn btn-sm mb-2 btn-warning review <?= $r['tblpersyaratan_id'] ?>"
-                                                                        onclick="review_after_upload('<?= $r['tblpersyaratan_id'] ?>')"
-                                                                        style="display: none;">Review</button>
-
-                                                                    <!-- Progress Bar -->
-                                                                    <div class="progress mt-2 mb-2">
-                                                                        <div id="progress-bar-<?= $r['tblpersyaratan_id'] ?>"
-                                                                            class="progress-bar" role="progressbar"
-                                                                            style="width: 0%;" aria-valuenow="0"
-                                                                            aria-valuemin="0" aria-valuemax="100">0%
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <?php if (isset($r['file'])) : ?>
-                                                                        <button type="button"
-                                                                            onclick="review('<?= path_persyaratan($r['file']) ?>')"
-                                                                            class="btn btn-success btn-sm mb-2 review">
-                                                                            <i class="fadeIn animated bx bx-file"></i>
-                                                                            File anda sebelumnya
-                                                                        </button>
-                                                                    <?php endif ?>
-                                                                </div>
+                                                                <?= $r['tblpersyaratan_nama'] ?>
                                                             </div>
                                                         </div>
+                                                        <div class="col-md-3 col-sm-12 mb-2">
+                                                            <div>
+                                                                <strong>Format:</strong> <?= $r['format'] ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-12">
+                                                            <div class="d-flex flex-column">
+
+                                                                <!-- Input file yang disembunyikan -->
+                                                                <input type="file" name="<?= $r['tblpersyaratan_id'] ?>"
+                                                                    id="<?= $r['tblpersyaratan_id'] ?>"
+                                                                    style="display: none;">
+
+                                                                <!-- Tombol Upload -->
+                                                                <button type="button"
+                                                                    class="btn btn-sm btn-rounded mb-2 btn-primary upload"
+                                                                    onclick="upload('<?= $r['tblpersyaratan_id'] ?>')">
+                                                                    <i class="fadeIn animated  bx bx-upload"></i>
+                                                                    Upload</button>
+
+                                                                <!-- Tombol Review -->
+                                                                <button type="button"
+                                                                    class="btn btn-sm btn-rounded mb-2 btn-warning  review <?= $r['tblpersyaratan_id'] ?>"
+                                                                    onclick="review_after_upload('<?= $r['tblpersyaratan_id'] ?>')"
+                                                                    style="display: none;"> <i
+                                                                        class="fadeIn animated  bx bx-eye"></i>
+                                                                    Review</button>
+
+                                                                <!-- Progress Bar -->
+                                                                <div class="progress mb-2 " style="display: none;"
+                                                                    id="progress-container-<?= $r['tblpersyaratan_id'] ?>">
+                                                                    <div id="progress-bar-<?= $r['tblpersyaratan_id'] ?>"
+                                                                        class="progress-bar" role="progressbar"
+                                                                        style="width: 0%;" aria-valuenow="0"
+                                                                        aria-valuemin="0" aria-valuemax="100">0%
+                                                                    </div>
+                                                                </div>
+
+                                                                <?php if (isset($r['file'])) : ?>
+                                                                <button type="button"
+                                                                    onclick="review('<?= path_persyaratan($r['file']) ?>')"
+                                                                    class="btn btn-success btn-sm btn-rounded mb-2 review">
+                                                                    <i class="fadeIn animated bx bx-file"></i>
+                                                                    File anda sebelumnya
+                                                                </button>
+                                                                <?php endif ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <?php endforeach ?>
                                                 </div>
                                             </div>
 
+
+
                                             <div class="row">
                                                 <div class="col-12">
+                                                    <div class="float-start">
+                                                        <a class="btn btn-outline-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                                                            href="<?= site_url('permohonan/informasiUmum/' . $idPendaftaran) ?>"><i
+                                                                class="mdi mdi-arrow-left"></i>Sebelumnya</a>
+                                                    </div>
                                                     <div class="float-end">
-                                                        <a class="btn  btn-outline-danger"
-                                                            href="<?= site_url('permohonan/informasiUmum/' . $idPendaftaran) ?>">Kembali</a>
-
-                                                        <button class="btn  btn-primary" type="submit">Lanjut</button>
+                                                        <button
+                                                            class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                                                            type="submit">Selanjutnya <i
+                                                                class="mdi mdi-arrow-right"></i></button>
                                                     </div>
                                                 </div>
                                             </div>

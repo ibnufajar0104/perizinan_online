@@ -98,7 +98,7 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item bg-light-subtle border-start border-end"
                     id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="<?= base_url() ?>tmp/assets/images/3.png"
+                    <img class="rounded-circle header-profile-user" src="<?= base_url() ?>tmp/assets/images/2.png"
                         alt="Header Avatar">
                     <span class="d-none d-xl-inline-block ms-1 fw-medium"><?= $this->session->nama; ?></span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
@@ -108,7 +108,7 @@
                     <a class="dropdown-item" href="<?= site_url('profil') ?>"><i
                             class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Profile</a>
 
-                    <a class="dropdown-item" href="<?= site_url('profil/logout') ?>"><i
+                    <a class="dropdown-item" href="<?= site_url('logout') ?>"><i
                             class="mdi mdi-logout font-size-16 align-middle me-1"></i> Logout</a>
                 </div>
             </div>

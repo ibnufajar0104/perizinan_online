@@ -40,27 +40,35 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <div class="d-md-flex justify-content-between align-items-center" style="color: #333;">
-                                    <p></p>
-                                    <a href="<?= site_url('permohonan/informasiUmum') ?>"
-                                        class="btn btn-sm btn-primary">Ajukan
-                                        Permohonan</a>
-                                </div>
 
-                            </div>
                             <div class="card-body">
+                                <div class="row mb-2">
+                                    <div class="col-sm-4">
+                                        <div class="search-box me-2 mb-2 d-inline-block">
+                                            <div class="position-relative">
 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="text-sm-end">
+                                            <a href="<?= site_url('/permohonan/informasiUmum') ?>"
+                                                class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2">
+                                                <i class="mdi mdi-plus me-1"></i> Ajukan Permohonan</a>
+
+                                        </div>
+                                    </div><!-- end col-->
+                                </div>
                                 <div class="table-responsive">
-                                    <table class="table table-borderless table-striped">
-                                        <thead>
+                                    <table class="table align-middle table-nowrap table-check">
+                                        <thead class="table-light">
                                             <tr>
                                                 <th>#</th>
-                                                <th>No. Pendaftaran</th>
-                                                <th>Izin</th>
-                                                <th>Permohonan</th>
+                                                <th>Nomor Pendaftaran</th>
+                                                <th>Nama Izin</th>
+                                                <th>Nama Permohonan</th>
                                                 <th>Usaha/Tempat Berkerja</th>
-                                                <th>Tanggal</th>
+                                                <th>Tanggal Permohonan</th>
                                                 <th>Status</th>
                                                 <th>Opsi</th>
                                             </tr>
@@ -83,12 +91,14 @@
 
                                                     <?php if ($r['status'] != 5) : ?>
                                                     <a href="<?= site_url('permohonan/detail/' . $r['tblizinpendaftaran_id']) ?>"
-                                                        class="btn btn-sm btn-outline-primary ">Detail</a>
+                                                        class="btn btn-outline-info btn-rounded waves-effect waves-light mb-2 me-2"><i
+                                                            class="mdi mdi-information-outline"></i> Detail</a>
                                                     <?php endif ?>
 
                                                     <?php if ($r['status'] == 5) : ?>
                                                     <a href="<?= site_url('permohonan/informasiUmum/' . $r['tblizinpendaftaran_id']) ?>"
-                                                        class="btn btn-sm btn-outline-success">Edit</a>
+                                                        class="btn btn-outline-primary btn-rounded waves-effect waves-light mb-2 me-2"><i
+                                                            class="mdi mdi-circle-edit-outline"></i> Selesaikan Draf</a>
                                                     <?php endif ?>
 
                                                     <?php if ($r['status']  == 2) : ?>

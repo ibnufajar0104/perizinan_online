@@ -39,4 +39,4 @@
     <link href="<?= base_url() ?>tmp/assets/css/theme.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body data-layout="horizontal" data-topbar="dark">
+<body data-topbar="dark">

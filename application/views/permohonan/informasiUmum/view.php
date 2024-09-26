@@ -46,26 +46,30 @@
 
                             <div class="card-body">
                                 <!-- Nav tabs -->
+
                                 <ul class="nav nav-pills nav-justified d-none d-md-flex" role="tablist">
                                     <li class="nav-item waves-effect waves-light">
                                         <a class="nav-link active informasi-umum-tab" data-bs-toggle="tab"
                                             href="#home-1" role="tab">
-                                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                                            <span class="d-none d-sm-block">1. Informasi Umum</span>
+
+
+                                            1. Informasi Umum
+                                            <i class="fas fa-info-circle"></i>
                                         </a>
                                     </li>
                                     <li class="nav-item waves-effect waves-light">
                                         <a class="nav-link berkas-persyaratan-tab" data-bs-toggle="tab"
                                             href="#profile-1" role="tab">
-                                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
-                                            <span class="d-none d-sm-block">2. Berkas Persyaratan</span>
+
+                                            2. Berkas Persyaratan
+                                            <i class="fas fa-file-alt"></i>
                                         </a>
                                     </li>
                                     <li class="nav-item waves-effect waves-light">
                                         <a class="nav-link resume-tab" data-bs-toggle="tab" href="#messages-1"
                                             role="tab">
-                                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
-                                            <span class="d-none d-sm-block">3. Resume</span>
+                                            3. Resume
+                                            <i class="fas fa-check-circle"></i>
                                         </a>
                                     </li>
 
@@ -201,11 +205,16 @@
 
                                             <div class="row">
                                                 <div class="col-12">
+                                                    <div class="float-start">
+                                                        <a class="btn btn-danger btn-rounded waves-effect waves-light mb-2 me-2"
+                                                            href="<?= site_url('permohonan') ?>"><i
+                                                                class="mdi mdi-close"></i> Batal</a>
+                                                    </div>
                                                     <div class="float-end">
-                                                        <a class="btn btn-outline-danger"
-                                                            href="<?= site_url('permohonan') ?>">Batal</a>
-
-                                                        <button class="btn btn-primary" type="submit">Lanjut</button>
+                                                        <button
+                                                            class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                                                            type="submit">Selanjutnya <i
+                                                                class="mdi mdi-arrow-right"></i></button>
                                                     </div>
                                                 </div>
                                             </div>

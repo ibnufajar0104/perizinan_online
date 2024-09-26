@@ -121,90 +121,84 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <div class="d-md-flex justify-content-between align-items-center">
-                                    <p> Timeline Berkas Permohonan</p>
-                                    <!-- <a href="#" class="btn btn-primary" onclick="detail()">Detail
-                                        Permohonan </a> -->
-                                </div>
-
-
+                                <p> Timeline Berkas Permohonan</p>
                             </div>
                             <div class="card-body">
 
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-borderless table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No.</th>
-                                                        <th>Dari</th>
-                                                        <th>Proses</th>
+                                        <table class="table align-middle table-nowrap table-check">
+                                            <thead class="table-light">
 
-                                                        <th>Tanggal Mulai</th>
-                                                        <th>Tanggal Selesai</th>
-                                                        <th>Dikirim Ke</th>
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Dari</th>
+                                                    <th>Proses</th>
 
-                                                        <th>Catatan</th>
-                                                        <th>Status</th>
+                                                    <th>Tanggal Mulai</th>
+                                                    <th>Tanggal Selesai</th>
+                                                    <th>Dikirim Ke</th>
 
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php $no = 1 ?>
-                                                    <?php foreach ($log as $key =>  $row) : ?>
+                                                    <th>Catatan</th>
+                                                    <th>Status</th>
 
-                                                    <tr>
-                                                        <td><?= $no ?>.</td>
-                                                        <td><?= $row['nama_asal'] ?></td>
-                                                        <td><?= $row['tblkendalibloksistemtugas_nama'] ?></td>
-                                                        <td><?= $row['tgl_mulai'] ?></td>
-                                                        <td><?= $row['tgl_selesai'] ?></td>
-                                                        <td><?= $row['nama_tujuan'] ?></td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $no = 1 ?>
+                                                <?php foreach ($log as $key =>  $row) : ?>
 
-                                                        <td><?= $row['tblkendaliproses_catatan'] ?></td>
-                                                        <td><?= $row['status'] ?></td>
+                                                <tr>
+                                                    <td><?= $no ?>.</td>
+                                                    <td><?= $row['nama_asal'] ?></td>
+                                                    <td><?= $row['tblkendalibloksistemtugas_nama'] ?></td>
+                                                    <td><?= $row['tgl_mulai'] ?></td>
+                                                    <td><?= $row['tgl_selesai'] ?></td>
+                                                    <td><?= $row['nama_tujuan'] ?></td>
 
-                                                    </tr>
-                                                    <?php $no++; ?>
-                                                    <?php endforeach ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                    <td><?= $row['tblkendaliproses_catatan'] ?></td>
+                                                    <td><?= $row['status'] ?></td>
+
+                                                </tr>
+                                                <?php $no++; ?>
+                                                <?php endforeach ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-
                             </div>
-                        </div>
-                    </div> <!-- end col -->
-                </div> <!-- end row -->
-
-                <!-- end row -->
-
-            </div> <!-- container-fluid -->
-            <div class="modal fade" id="detailModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Detail</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
 
                         </div>
                     </div>
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+
+            <!-- end row -->
+
+        </div> <!-- container-fluid -->
+        <div class="modal fade" id="detailModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Detail</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
                 </div>
             </div>
-
-
         </div>
-        <!-- End Page-content -->
 
 
-        <?php include(APPPATH . 'views/layout/footer.php'); ?>
     </div>
-    <!-- end main content-->
+    <!-- End Page-content -->
+
+
+    <?php include(APPPATH . 'views/layout/footer.php'); ?>
+</div>
+<!-- end main content-->
 
 </div>
 <!-- END layout-wrapper -->

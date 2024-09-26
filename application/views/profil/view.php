@@ -40,80 +40,65 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
 
-                                Form Profil
-                            </div>
-                            <form class="needs-validation form-profil" novalidate method="POST">
+                            <form class="form-profil" method="POST">
                                 <input type="hidden" name="tblpemohon_id" value="<?= $this->session->tblpemohon_id ?>">
                                 <div class="card-body">
-                                    <div class="row">
+                                    <div class="row p-md-2">
 
                                         <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
-                                                <label for="" class="mb-1">Nama Pemohon</label>
-                                                <input type="text" class="form-control form-control-2"
-                                                    name="tblpemohon_nama" id="tblpemohon_nama" required
+                                                <label class="mb-1 form-label">Nama Pemohon</label>
+                                                <input type="text" class="form-control " name="tblpemohon_nama"
+                                                    id="tblpemohon_nama" required
                                                     value="<?= $row['tblpemohon_nama'] ?>">
-                                                <div class="invalid-feedback">
-                                                    Harus diisi.
-                                                </div>
+
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
-                                                <label for="" class="mb-1">Nomor WA Aktif</label>
-                                                <input type="text" class="form-control form-control-2"
-                                                    name="tblpemohon_telpon" id="tblpemohon_telpon"
-                                                    value="<?= $row['tblpemohon_telpon'] ?>" required>
-                                                <div class="invalid-feedback">
-                                                    Harus diisi.
-                                                </div>
+                                                <label class="mb-1 form-label">Nomor WA Aktif</label>
+                                                <input type="text" class="form-control " name="tblpemohon_telpon"
+                                                    id="tblpemohon_telpon" value="<?= $row['tblpemohon_telpon'] ?>"
+                                                    required>
+
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
-                                                <label for="" class="mb-1">NIK</label>
-                                                <input type="text" class="form-control form-control-2"
-                                                    name="tblpemohon_noidentitas" id="tblpemohon_noidentitas" required
+                                                <label class="mb-1 form-label">NIK</label>
+                                                <input type="text" class="form-control " name="tblpemohon_noidentitas"
+                                                    id="tblpemohon_noidentitas" required
                                                     value="<?= $row['tblpemohon_noidentitas'] ?>">
-                                                <div class="invalid-feedback">
-                                                    Harus diisi.
-                                                </div>
+
                                             </div>
                                         </div>
 
                                         <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
-                                                <label for="" class="mb-1">NPWP</label>
-                                                <input type="text" class="form-control form-control-2"
-                                                    name="tblpemohon_npwp" id="tblpemohon_npwp" required
+                                                <label class="mb-1 form-label">NPWP</label>
+                                                <input type="text" class="form-control " name="tblpemohon_npwp"
+                                                    id="tblpemohon_npwp" required
                                                     value="<?= $row['tblpemohon_npwp'] ?>">
-                                                <div class="invalid-feedback">
-                                                    Harus diisi.
-                                                </div>
+
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
-                                                <label for="" class="mb-1">Alamat</label>
+                                                <label class="mb-1 form-label">Alamat</label>
                                                 <textarea name="tblpemohon_alamat" id="tblpemohon_alamat"
                                                     class="form-control" rows="4"
                                                     required><?= $row['tblpemohon_alamat'] ?></textarea>
-                                                <div class="invalid-feedback">
-                                                    Harus diisi.
-                                                </div>
+
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12 px-4 pb-4">
                                             <div class="form-group">
-                                                <label for="" class="mb-1">Email Aktif</label>
-                                                <input type="text" class="form-control form-control-2"
-                                                    name="tblpemohon_email" id="tblpemohon_email" required
+                                                <label class="mb-1 form-label">Email Aktif</label>
+                                                <input type="text" class="form-control " name="tblpemohon_email"
+                                                    id="tblpemohon_email" required
                                                     value="<?= $row['tblpemohon_email'] ?>">
-                                                <div class="invalid-feedback">
-                                                    Harus diisi.
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -122,7 +107,8 @@
 
                                 <div class="modal-footer">
 
-                                    <button class="btn btn-primary" type="submit">Simpan</button>
+                                    <button class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                                        type="submit">Simpan</button>
                                 </div>
                             </form>
                         </div>
