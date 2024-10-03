@@ -35,7 +35,6 @@ class Login extends CI_Controller
 			fail('Form tidak lengkap');
 		}
 
-
 		$data = [
 			'username' => $this->input->post('username'),
 			'password' => $this->input->post('password')

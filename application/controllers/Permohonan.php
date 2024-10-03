@@ -82,7 +82,7 @@ class Permohonan extends CI_Controller
 			'log' => $log
 		];
 
-		$this->load->view('permohonan/detail', $data);
+		$this->load->view('permohonan/detail/view', $data);
 	}
 
 	public function get_token()

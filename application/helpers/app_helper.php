@@ -3,8 +3,6 @@
 function login_required()
 {
     $ci = &get_instance();
-
-
     if (!$ci->session->logged) {
         redirect('login');
     }
