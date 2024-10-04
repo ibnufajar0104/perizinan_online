@@ -6,10 +6,10 @@
 
     <div class="container">
         <div class="row justify-content-center align-items-center" style="height: 100vh;">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="card  d-flex flex-column align-items-center mt-4">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <h5 class="text-center mt-4 p-4"><?= aplikasi() ?></h5>
                             <p class="text-center mt-4">Login untuk memulai sesi</p>
                             <form method="post" class="form-login p-4">
@@ -57,12 +57,6 @@
 
                         </div>
 
-                        <div class="col-md-6 text-center">
-
-                            <img class="form-image"
-                                src="https://raw.githubusercontent.com/ibnufajar0104/img_statis/main/fotopns123-1.png"
-                                alt="" width="400">
-                        </div>
                     </div>
                 </div>
             </div>

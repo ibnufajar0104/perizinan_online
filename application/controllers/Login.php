@@ -41,29 +41,26 @@ class Login extends CI_Controller
 		];
 
 		$token = $this->jwt->get_token();
+
 		$response = $this->jwt->request(ip() . 'permohonan/login', 'POST', json_encode($data), $token);
 
-		if (isset($response['status'])) {
-			if ($response['status']) {
-
-				$newdata = array(
-					'logged' => true,
-					'id' =>  $response['id'],
-					'nama' =>  $response['nama'],
-					'tblpemohon_id' => $response['tblpemohon_id'],
-					'no_identitas' => $response['no_identitas'],
-					'alamat' => $response['alamat'],
-					'telepon' => $response['telepon'],
-					'email' => $response['email'],
-					'npwp' => $response['npwp'],
-				);
-
-				$this->session->set_userdata($newdata);
-			}
-
-			return_json($response);
+		if (!$response['status']) {
+			fail();
 		}
 
-		fail();
+		$newdata = array(
+			'logged' => true,
+			'id' =>  $response['id'],
+			'nama' =>  $response['nama'],
+			'tblpemohon_id' => $response['tblpemohon_id'],
+			'no_identitas' => $response['no_identitas'],
+			'alamat' => $response['alamat'],
+			'telepon' => $response['telepon'],
+			'email' => $response['email'],
+			'npwp' => $response['npwp'],
+		);
+
+		$this->session->set_userdata($newdata);
+		return_json($response);
 	}
 }

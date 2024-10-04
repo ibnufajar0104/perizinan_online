@@ -5,11 +5,9 @@ class Registrasi extends CI_Controller
 {
 
 	protected $url = 'registrasi';
-
 	public function __construct()
 	{
 		parent::__construct();
-
 		$this->load->model('M_jwt', 'jwt');
 	}
 
@@ -19,7 +17,6 @@ class Registrasi extends CI_Controller
 		$data['js'] = $this->url . '/js';
 		$this->load->view($this->url . '/view', $data);
 	}
-
 
 	public function form()
 	{
@@ -47,7 +44,6 @@ class Registrasi extends CI_Controller
 			fail('Tolong isi NIK');
 		}
 
-
 		$d = [
 			'jenis' => $jenis,
 			'tblpemohon_noidentitas' => $noidentitas,
@@ -55,26 +51,23 @@ class Registrasi extends CI_Controller
 		];
 
 		$token = $this->jwt->get_token();
-		$response = $this->jwt->request(ip() . 'permohonan/cek_pernah_daftar', 'POST', json_encode($d), $token);
+		$response = $this->jwt->request(ip() . 'permohonan/get_pernah_daftar', 'POST', json_encode($d), $token);
+		if (!$response['status']) {
+			$newdata = [
+				'cek' => false,
+			];
 
-		if (isset($response['status'])) {
-			if ($response['status']) {
-				$newdata = [
-					'cek' => true,
-					'jenis' => $jenis,
-					'username' => $response['username']
-				];
-				$this->session->set_userdata($newdata);
-			}
+			$this->session->set_userdata($newdata);
 			return_json($response);
 		}
 
 		$newdata = [
-			'cek' => false,
+			'cek' => true,
+			'jenis' => $jenis,
+			'username' => $response['username']
 		];
-
 		$this->session->set_userdata($newdata);
-		fail();
+		return_json($response);
 	}
 
 	public function daftar()
@@ -96,14 +89,12 @@ class Registrasi extends CI_Controller
 		}
 
 		$token = $this->jwt->get_token();
-		$response = $this->jwt->request(ip() . 'permohonan/daftar_akun', 'POST', json_encode($d), $token);
-
-
-		if (isset($response['status'])) {
-			$this->session->unset_userdata('cek');
-			return_json($response);
+		$response = $this->jwt->request(ip() . 'permohonan/registrasi', 'POST', json_encode($d), $token);
+		if (!$response['status']) {
+			fail();
 		}
 
-		fail();
+		$this->session->unset_userdata('cek');
+		return_json($response);
 	}
 }
