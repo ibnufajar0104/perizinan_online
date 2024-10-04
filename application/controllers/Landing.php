@@ -70,4 +70,19 @@ class Landing extends CI_Controller
 
 		echo json_encode($data, true);
 	}
+
+	public function get_persyaratan()
+	{
+		$d = ['tblizinpermohonan_id' => $this->input->post('permohonan')];
+		$token = $this->jwt->get_token();
+		$response = $this->jwt->request(ip() . '/perizinan/get_persyaratan', 'POST', json_encode($d), $token);
+
+		if (!isset($response['data'])) {
+			echo '<p>Persyaratan belum di set untuk permohonan tersebut</p>';
+			die();
+		}
+
+
+		$this->load->view('landing/persyaratan', ['rows' => $response['data']]);
+	}
 }

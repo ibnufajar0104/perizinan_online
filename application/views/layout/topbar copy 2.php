@@ -3,7 +3,7 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="" class="logo logo-dark">
+                <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="<?= base_url() ?>tmp/assets/images/1.png" alt="" height="24">
                     </span>
@@ -13,7 +13,7 @@
                     </span>
                 </a>
 
-                <a href="" class="logo logo-light">
+                <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="<?= base_url() ?>tmp/assets/images/1.png" alt="" height="24">
                     </span>
@@ -23,14 +23,16 @@
                     </span>
                 </a>
             </div>
-            <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">
+
+            <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
+                data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
                 <i class="fa fa-fw fa-bars"></i>
             </button>
 
             <!-- App Search-->
             <form class="app-search d-none d-lg-block">
                 <div class="position-relative">
-                    <input type="search" class="form-control" placeholder="Pencarian">
+                    <input type="text" class="form-control" placeholder="Pencarian ...">
                     <button class="btn btn-primary" type="button"><i class="bx bx-search-alt align-middle"></i></button>
                 </div>
             </form>
@@ -49,7 +51,7 @@
                     <form class="p-3">
                         <div class="form-group m-0">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Pencarian"
+                                <input type="text" class="form-control" placeholder="Pencarian ..."
                                     aria-label="Search Result">
 
                                 <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
@@ -58,6 +60,7 @@
                     </form>
                 </div>
             </div>
+
 
 
             <div class="dropdown d-none d-sm-inline-block">

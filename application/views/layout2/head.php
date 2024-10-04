@@ -37,10 +37,6 @@
             background-color: #e6f2ff;
         }
 
-        .form-padding {
-            padding: 40px;
-        }
-
         .card {
             background-color: #FAFDFE;
             /* Warna latar belakang yang lebih terang untuk kontras */

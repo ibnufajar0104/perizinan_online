@@ -16,17 +16,20 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
 
     <style>
-    /* Pastikan elemen Select2 memiliki tinggi yang sama dengan elemen Bootstrap */
-    .select2-container--bootstrap .select2-selection {
-        height: calc(1.5em + 0.75rem + 2px);
-        /* Sesuaikan dengan tinggi dari form-control */
-        padding: 0.375rem 0.75rem;
-        border-radius: 0.25rem;
+    /* Mengubah tinggi dan font size elemen select2 */
+    .select2-container .select2-selection--single {
+        height: 35px;
+        /* Atur tinggi sesuai kebutuhan */
+        font-size: 14px;
+        /* Atur ukuran font sesuai kebutuhan */
+        padding: 5px;
+        /* Sesuaikan padding jika diperlukan */
     }
 
-    /* Sesuaikan posisi teks di tengah secara vertikal */
-    .select2-container--bootstrap .select2-selection__rendered {
-        line-height: calc(1.5em + 0.75rem);
+    /* Mengubah ukuran font dropdown select2 */
+    .select2-container .select2-dropdown {
+        font-size: 14px;
+        /* Atur ukuran font dropdown */
     }
     </style>
 </head>
@@ -127,30 +130,30 @@
         <div class="container">
             <h2 class="text-center">Informasi Persyaratan</h2>
             <div class="form-wrapper">
+                <form action="" method="post" id="cekPersyaratan">
+                    <div class="row justify-content-center">
+                        <div class="form-group col-12 col-lg-6 mb-3">
+                            <label for="izin" class="form-label">Nama Izin</label>
+                            <select name="izin" id="izin" class="form-control" required>
+                                <option value="">pilih</option>
+                            </select>
+                        </div>
 
-                <div class="row justify-content-center">
-                    <div class="form-group col-12 col-lg-6">
-                        <label for="izin" class="form-label">Nama Izin</label>
-                        <select name="izin" id="izin" class="form-control" required>
-                            <option value="">pilih</option>
-                        </select>
+                        <div class="form-group col-12 col-lg-6 mb-3">
+                            <label for="permohonan" class="form-label">Nama Permohonan</label>
+                            <select name="permohonan" id="permohonan" class="form-control" required>
+                                <option value="">pilih</option>
+                            </select>
+                        </div>
                     </div>
-
-                    <div class="form-group col-12 col-lg-6">
-                        <label for="permohonan" class="form-label">Nama Permohonan</label>
-                        <select name="permohonan" id="permohonan" class="form-control" required>
-                            <option value="">pilih</option>
-                        </select>
+                    <div class="row justify-content-center">
+                        <div class="form-group col-12 col-lg-6 text-center">
+                            <button class="btn btn-primary btn-sm btn-block" id="cekInfo" type="submit">
+                                Cek Info
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div class="row justify-content-center mt-3">
-                    <div class="form-group col-12 col-lg-6 text-center">
-                        <button class="btn btn-primary btn-sm cek btn-block" type="submit">
-                            Cek Info
-                        </button>
-                    </div>
-                </div>
-
+                </form>
             </div>
 
         </div>
@@ -261,7 +264,22 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modalPersyaratan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="largeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="largeModalLabel">Persyaratan</h5>
+                </div>
+                <div class="modal-body">
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <footer class="footer bg-custom py-5">
@@ -359,12 +377,37 @@
                 $('#modalStatusPendaftaran .modal-body').html(response);
                 $('#modalStatusPendaftaran').modal('show');
 
-                $('#cekBtn').prop('disabled', false).text('Cek Pendaftaran');
+                $('#cekBtn').prop('disabled', false).text('Cek Status');
             },
             error: function(xhr, status, error) {
 
                 console.error(error)
-                $('#cekBtn').prop('disabled', false).text('Cek Pendaftaran');
+                $('#cekBtn').prop('disabled', false).text('Cek Status');
+            }
+        });
+    });
+
+    $('#cekPersyaratan').on('submit', function(e) {
+        e.preventDefault();
+
+        $('#cekInfo').prop('disabled', true).text('Sedang memuat...');
+
+        var formData = $(this).serialize();
+
+        $.ajax({
+            url: '<?= site_url('landing/get_persyaratan') ?>',
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+                $('#modalPersyaratan .modal-body').html(response);
+                $('#modalPersyaratan').modal('show');
+
+                $('#cekInfo').prop('disabled', false).text('Cek Info');
+            },
+            error: function(xhr, status, error) {
+
+                console.error(error)
+                $('#cekInfo').prop('disabled', false).text('Cek Info');
             }
         });
     });
