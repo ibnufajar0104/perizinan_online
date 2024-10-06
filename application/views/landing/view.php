@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Select2 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
-
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfrUFkqAAAAABIvZAv_0nQHiiAlmx5_nh5RyfoP"></script>
     <style>
     /* Mengubah tinggi dan font size elemen select2 */
     .select2-container .select2-selection--single {
@@ -102,6 +102,7 @@
                     pendaftaran
                 </p>
                 <form action="" method="post" id="cekForm">
+                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
                     <div class="row justify-content-center">
                         <div class="form-group col-md-8 col-lg-6">
                             <label for="nomorPendaftaran" class="form-label">Nomor Pendaftaran</label>
@@ -341,6 +342,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
 
     <script>
+    var key = '6LfrUFkqAAAAABIvZAv_0nQHiiAlmx5_nh5RyfoP';
     document.addEventListener("DOMContentLoaded", function() {
         // Menangkap semua link dengan href yang mengarah ke ID di halaman
         const links = document.querySelectorAll('.navbar-nav a[href^="#"]');
@@ -362,28 +364,37 @@
         });
     });
 
+
     $('#cekForm').on('submit', function(e) {
         e.preventDefault();
 
         $('#cekBtn').prop('disabled', true).text('Sedang memuat...');
 
-        var formData = $(this).serialize();
 
-        $.ajax({
-            url: '<?= site_url('landing/permohonan_by_no_pendaftaran') ?>',
-            type: 'POST',
-            data: formData,
-            success: function(response) {
-                $('#modalStatusPendaftaran .modal-body').html(response);
-                $('#modalStatusPendaftaran').modal('show');
+        grecaptcha.ready(function() {
+            grecaptcha.execute(key, {
+                action: 'submit'
+            }).then(function(token) {
 
-                $('#cekBtn').prop('disabled', false).text('Cek Status');
-            },
-            error: function(xhr, status, error) {
 
-                console.error(error)
-                $('#cekBtn').prop('disabled', false).text('Cek Status');
-            }
+                var formData = $('#cekForm').serialize() + '&g-recaptcha-response=' + token;
+
+                $.ajax({
+                    url: '<?= site_url('landing/permohonan_by_no_pendaftaran') ?>',
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        $('#modalStatusPendaftaran .modal-body').html(response);
+                        $('#modalStatusPendaftaran').modal('show');
+
+                        $('#cekBtn').prop('disabled', false).text('Cek Status');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                        $('#cekBtn').prop('disabled', false).text('Cek Status');
+                    }
+                });
+            });
         });
     });
 
@@ -392,89 +403,102 @@
 
         $('#cekInfo').prop('disabled', true).text('Sedang memuat...');
 
-        var formData = $(this).serialize();
 
-        $.ajax({
-            url: '<?= site_url('landing/get_persyaratan') ?>',
-            type: 'POST',
-            data: formData,
-            success: function(response) {
-                $('#modalPersyaratan .modal-body').html(response);
-                $('#modalPersyaratan').modal('show');
+        grecaptcha.ready(function() {
+            grecaptcha.execute(key, {
+                action: 'submit'
+            }).then(function(token) {
 
-                $('#cekInfo').prop('disabled', false).text('Cek Info');
-            },
-            error: function(xhr, status, error) {
 
-                console.error(error)
-                $('#cekInfo').prop('disabled', false).text('Cek Info');
-            }
+                var formData = $('#cekPersyaratan').serialize() + '&g-recaptcha-response=' +
+                    token;
+
+                $.ajax({
+                    url: '<?= site_url('landing/get_persyaratan') ?>',
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        $('#modalPersyaratan .modal-body').html(response);
+                        $('#modalPersyaratan').modal('show');
+
+                        $('#cekInfo').prop('disabled', false).text('Cek Info');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                        $('#cekInfo').prop('disabled', false).text('Cek Info');
+                    }
+                });
+            });
         });
     });
+
 
     $('#izin,#permohonan', ).select2({
         placeholder: "pilih",
         allowClear: true,
     });
 
-    $.ajax({
-        url: '<?= site_url('landing/get_izin') ?>', // URL endpoint untuk mengambil data izin
-        type: 'GET',
-        dataType: 'json',
-        success: function(data) {
 
-            $('#izin').empty();
-
-
-            $('#izin').append('<option value="">pilih</option>');
-
-            $.each(data, function(key, value) {
-                $('#izin').append('<option value="' + value.key + '">' + value.value +
-                    '</option>');
-            });
-        },
-        error: function(xhr, status, error) {
-            console.error('Gagal memuat data izin:', error);
-        }
-    });
-
-
-    // Ketika opsi #izin berubah, load data untuk #permohonan
-    $('#izin').on('change', function() {
-        var selectedIzin = $(this).val(); // Ambil nilai izin yang dipilih
-
-        // Cek apakah ada izin yang dipilih
-        if (selectedIzin) {
-            // Lakukan AJAX request dengan POST untuk mendapatkan data permohonan berdasarkan izin yang dipilih
+    grecaptcha.ready(function() {
+        grecaptcha.execute(key, {
+            action: 'get_izin'
+        }).then(function(token) {
             $.ajax({
-                url: '<?= site_url('landing/get_permohonan') ?>', // URL untuk mengambil data permohonan terkait izin
-                type: 'POST', // Menggunakan metode POST
+                url: '<?= site_url('landing/get_izin') ?>',
+                type: 'GET',
                 data: {
-                    izin: selectedIzin
-                }, // Kirim data izin yang dipilih via POST
+                    'g-recaptcha-response': token
+                },
                 dataType: 'json',
                 success: function(data) {
-                    // Kosongkan opsi sebelumnya di #permohonan
-                    $('#permohonan').empty();
-
-                    // Tambahkan placeholder "pilih"
-                    $('#permohonan').append('<option value="">Pilih</option>');
-
-                    // Isi opsi dengan data permohonan yang diterima
+                    $('#izin').empty();
+                    $('#izin').append('<option value="">pilih</option>');
                     $.each(data, function(key, value) {
-                        $('#permohonan').append('<option value="' + value.key + '">' + value
-                            .value + '</option>');
+                        $('#izin').append('<option value="' + value.key + '">' +
+                            value.value + '</option>');
                     });
-
-                    // Refresh Select2 untuk #permohonan
-                    $('#permohonan').trigger('change');
                 },
                 error: function(xhr, status, error) {
-                    console.error('Gagal memuat data permohonan:', error);
+                    console.error('Gagal memuat data izin:', error);
                 }
             });
+        });
+    });
+
+    $('#izin').on('change', function() {
+        var selectedIzin = $(this).val();
+
+        if (selectedIzin) {
+            grecaptcha.ready(function() {
+                grecaptcha.execute(key, {
+                    action: 'get_permohonan'
+                }).then(function(token) {
+                    $.ajax({
+                        url: '<?= site_url('landing/get_permohonan') ?>',
+                        type: 'POST',
+                        data: {
+                            izin: selectedIzin,
+                            'g-recaptcha-response': token
+                        },
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#permohonan').empty();
+                            $('#permohonan').append(
+                                '<option value="">Pilih</option>');
+                            $.each(data, function(key, value) {
+                                $('#permohonan').append('<option value="' +
+                                    value.key + '">' + value.value +
+                                    '</option>');
+                            });
+                            $('#permohonan').trigger('change');
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Gagal memuat data permohonan:', error);
+                        }
+                    });
+                });
+            });
         } else {
-            // Jika tidak ada izin yang dipilih, kosongkan opsi #permohonan
             $('#permohonan').empty();
             $('#permohonan').append('<option value="">Pilih</option>');
             $('#permohonan').trigger('change');

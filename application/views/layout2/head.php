@@ -31,35 +31,35 @@
     <!-- alertifyjs default themes  Css -->
     <link href="<?= base_url() ?>tmp/assets/libs/alertifyjs/build/css/themes/default.min.css" rel="stylesheet"
         type="text/css" />
-
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfrUFkqAAAAABIvZAv_0nQHiiAlmx5_nh5RyfoP"></script>
     <style>
-        body {
-            background-color: #e6f2ff;
-        }
+    body {
+        background-color: #e6f2ff;
+    }
 
-        .card {
-            background-color: #FAFDFE;
-            /* Warna latar belakang yang lebih terang untuk kontras */
-            border: none;
-            /* Menghapus border default card */
-            border-radius: 10px;
-            /* Membulatkan sudut card */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            /* Memberikan bayangan ringan */
-            margin-bottom: 15px;
-        }
+    .card {
+        background-color: #FAFDFE;
+        /* Warna latar belakang yang lebih terang untuk kontras */
+        border: none;
+        /* Menghapus border default card */
+        border-radius: 10px;
+        /* Membulatkan sudut card */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Memberikan bayangan ringan */
+        margin-bottom: 15px;
+    }
 
 
+    .form-image {
+        margin-top: 40px;
+    }
+
+    @media only screen and (max-width: 600px) {
         .form-image {
-            margin-top: 40px;
+            display: none;
         }
 
-        @media only screen and (max-width: 600px) {
-            .form-image {
-                display: none;
-            }
 
-
-        }
+    }
     </style>
 </head>
